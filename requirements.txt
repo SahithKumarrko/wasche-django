@@ -7,6 +7,6 @@ python-decouple
 Pillow==6.0.0
 Markdown==3.1.1
 bleach==1.5.0
-whitenoise==5.0.1
+whitenoise
 requests==2.22.0
 mysqlclient

@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gi68(1k7x@brmw8d+qzz^wevn90p*urqx50td-7dha_9pq=78m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["localhost","wasche-services.herokuapp.com"]
 
@@ -157,7 +157,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static")
 ]
 STATIC_ROOT = os.path.join(BASE_DIR,"assets")
-# STATICFILES_STORAGE = 'whitenoise.django.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

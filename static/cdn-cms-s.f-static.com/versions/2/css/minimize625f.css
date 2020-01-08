@@ -33277,6 +33277,7 @@ article.wow:hover span:nth-child(3){
 	flex-basis: 100%;
     flex-grow: 1;
     align-items: center;
+    position:fixed !important;
 }
 .mobile-nav-cust.collapsing-out {
     animation: hide-navbar-collapse .2s ease forwards;
@@ -33397,4 +33398,7 @@ box-shadow: 0 50px 100px rgba(50, 50, 93, 0.2), 0 15px 35px rgba(0, 0, 208, 0.1)
 }
 .mob-menu-ul li a{
 color: #353b43 !important;
+}
+.mobile-nav-cust{
+    position:fixed !important;
 }

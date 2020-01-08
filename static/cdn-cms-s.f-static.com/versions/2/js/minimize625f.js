@@ -32825,21 +32825,30 @@ $('.header-client-zone-wrapper').eq(0).css("display","inline-block");
 var custmodulem=$('.lt1 .moduleMenu .txt-container');
 custmodulem.eq(0).html('Dashboard');
 custmodulem.eq(1).html('Billing');
-custmodulem.eq(0).parent().attr('href','dashboard.php')
-custmodulem.eq(1).parent().attr('href','billing.php');
+custmodulem.eq(0).parent().attr('href','/dashboard')
+custmodulem.eq(1).parent().attr('href','/billing');
 $('.loginbt').css('display','none');
+custmodulem.eq(0).parent().attr("onclick","");
+custmodulem.eq(1).parent().attr("onclick","");
+
 $('.signup').css('display','none');
 custmodulem=$('.lm1 .moduleMenu .txt-container');
 custmodulem.eq(0).html('Dashboard');
 custmodulem.eq(1).html('Billing');
-custmodulem.eq(0).parent().attr('href','dashboard.php');
-custmodulem.eq(1).parent().attr('href','billing.php');
+custmodulem.eq(0).parent().attr("onclick","");
+custmodulem.eq(1).parent().attr("onclick","");
+
+custmodulem.eq(0).parent().attr('href','/dashboard');
+custmodulem.eq(1).parent().attr('href','/billing');
 custmodulem=$('.lf1 .moduleMenu .txt-container');
 custmodulem.eq(0).html('Dashboard');
+custmodulem.eq(0).parent().attr("onclick","");
+custmodulem.eq(1).parent().attr("onclick","");
+
 custmodulem.eq(1).html('Billing');
-custmodulem.eq(0).parent().attr('href','dashboard.php');
-custmodulem.eq(1).parent().attr('href','billing.php');
-    
+custmodulem.eq(0).parent().attr('href','/dashboard');
+custmodulem.eq(1).parent().attr('href','/billing');
+
     
 console.log("completed adding icon");
 

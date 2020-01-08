@@ -89,17 +89,27 @@ WSGI_APPLICATION = 'wasche.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': "wdjango",
+#         'USER':'root',
+#         'PASSWORD':'19101972',
+#         'HOST':'localhost',
+#         'PORT':'3306',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "wdjango",
-        'USER':'root',
-        'PASSWORD':'19101972',
-        'HOST':'localhost',
+        'NAME': "dDI6RYQRW2",
+        'USER':'dDI6RYQRW2',
+        'PASSWORD':'YxixdpCWQH',
+        'HOST':'remotemysql.com',
         'PORT':'3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

@@ -3076,11 +3076,12 @@ return false;
 								$('#clientLoginForm .form-group').eq(0).append("<div id='clientEmail-error' class='help-block'>Email format is not valid.</div>");
 							}else{
 								if(response.g){
-									bootbox.alert({
-										title:"Success!",
-										message:"Successfully logged in. Redirecting you...",
-										backdrop:true
-									});
+								//	bootbox.alert({
+								//		title:"Success!",
+								//		message:"Successfully logged in. Redirecting you...",
+								//		backdrop:true
+								//	});
+								location.href = "/dashboard/";
 								//window.localStorage.setItem('wasche-services',res2);
 								//setTimeout(function(){
 								//	location.reload();

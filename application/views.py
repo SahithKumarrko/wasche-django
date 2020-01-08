@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from user.models import User
 
 def send_mail_to_client(email,subject,text_msg,html_message):
@@ -16,8 +16,8 @@ def send_mail_to_client(email,subject,text_msg,html_message):
         raise e
 def check_cookie(req):
     print("entered")
-    print(req.COOKIES['wasche'])
-    print("wasche" in req.COOKIES)
+    # print(req.COOKIES['wasche'])
+    # print("wasche" in req.COOKIES)
     data=[]
     try:
         if "wasche" in req.COOKIES:
@@ -48,6 +48,7 @@ def home(request):
     #     User.objects.filter(email="t@gmail.com").delete()
     # co = Contracts(contract_name="No College",contract_address="",contract_phone_number="",contract_zip_code="",contract_country="",contract_state="")
     # co.save()
+    print("GET\n",request.GET,"\n","POST\n",request.POST)
     data=check_cookie(request)
 
     if data==None:
@@ -163,3 +164,31 @@ def contact_mail(request):
     except:
         data['sent']=False
     return HttpResponse(json.dumps(data))
+def onsignal(request):
+    import requests
+    import json
+
+    header = {"Content-Type": "application/json; charset=utf-8"}
+
+    payload = {"app_id": "df0790ca-561e-44c3-8cb2-9d1b78bf0bab",
+            "include_player_ids": ["4ecbbf86-2427-467a-9d0b-b488c5d4e828"],
+            "contents": {"en": "working"},"headings":{"en":"Wasche"},"data":{"got":"soomething"},"content_available":True,"url":"localhost:8000"}
+    
+    req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
+    
+    print(req.status_code, req.reason)
+    print(req)
+    return HttpResponse("okk")
+    # api = ""
+    # try:
+    #     api = request.POST["appId"]
+    # except:
+    #     api = request.GET["appId"]
+    # print(api)
+    # return HttpResponse("OneSignalWorker")
+
+def logout(request):
+    print("logging out")
+    response = HttpResponseRedirect("/u/")
+    response.delete_cookie("wasche")
+    return response

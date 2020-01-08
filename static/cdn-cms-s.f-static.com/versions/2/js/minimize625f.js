@@ -30633,6 +30633,43 @@ $('.top-logout-btn').on('click',function(){
     // $clientZoneLink.prepend("<a class='client-zone-link' data-close-location='right' href='#'><i class='fa fa-user' aria-hidden='true'></i></a>");
 // location.reload();
     // ClientZone.updateClientIcon();
+    location.href = "/ajax/logout/";
+    //  $.ajax({
+    //         type: "POST",
+    //         url: '/ajax/logout/',
+    //         data: $("#csrf").serialize(),
+    //         success: function( response ) {
+    //             // var response = $.parseJSON(response);
+    //             console.log(response);
+    //             location.href = "/u/";
+
+    //         },
+    //         error:function (jqXHR, exception) {
+    //                     var msg = '';
+    //                     if (jqXHR.status === 0) {
+    //                         msg = 'Not connect.\n Verify Network.';
+    //                     } else if (jqXHR.status == 404) {
+    //                         msg = 'Requested page not found. [404]';
+    //                     } else if (jqXHR.status == 500) {
+    //                         msg = 'Internal Server Error [500].';
+    //                     } else if (exception === 'parsererror') {
+    //                         msg = 'Requested JSON parse failed.';
+    //                     } else if (exception === 'timeout') {
+    //                         msg = 'Time out error.';
+    //                     } else if (exception === 'abort') {
+    //                         msg = 'Ajax request aborted.';
+    //                     } else {
+    //                         msg = 'Uncaught Error.\n' + jqXHR.responseText;
+    //                     }
+    //                     console.log(msg);
+    //                 // bootbox.alert({
+    //                 // 			title:"Error",
+    //                 // 			message:msg+" Please Try again later. Thank you.",
+    //                 // 			backdrop:true
+    //                 //         });
+    //         }
+                
+    //     });
 
 });
 

@@ -322,6 +322,7 @@ def check_resend_password(request):
                     print(up.first_name +" " + up.last_name,data['e'])
 
                     dif =  str(timezone.now() - i.date_sent)
+                    print(dif)
                     dif = dif.split(":")
                     if not (int(dif[0]) >= 1 and int(dif[0])>0):
                         print("still there")

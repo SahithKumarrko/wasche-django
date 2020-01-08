@@ -4996,7 +4996,7 @@ input[type="button"].btn-block {
   padding: 1.25rem 1.5rem;
   margin-bottom: 0;
   background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .card-header:first-child {
@@ -8194,7 +8194,7 @@ button.bg-darker:focus {
 }
 
 .shadow-lg {
-  box-shadow: 0 0 3rem rgba(136, 152, 170, 0.175) !important;
+  box-shadow: 0 0 3rem rgba(136, 152, 170, 0.75) !important;
 }
 
 .shadow-none {
@@ -14473,7 +14473,7 @@ button.section-darker:focus {
 }
 
 .shadow-lg--hover:hover {
-  box-shadow: 0 0 3rem rgba(136, 152, 170, 0.175) !important;
+  box-shadow: 0 0 3rem rgba(136, 152, 170, 0.75) !important;
 }
 
 .shadow-none--hover:hover {

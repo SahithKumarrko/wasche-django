@@ -61,6 +61,18 @@ class User(AbstractUser):
         from django.urls import reverse
         return reverse('user_detail', kwargs={'pk': self.pk})
     # def get_full_name(self):
+    # def save(self, *args, **kwargs):
+    #     # date = timezone.now()
+    #     # ood = Overflown_Orders_Data(email=self.email,overflown_data=self.ordered_dates)
+    #     # ood.save()
+    #     from dashboard.models import Order_DashBoard
+            
+    #     if not self.id:
+    #         print("Created new date for user")
+    #         o = Order_DashBoard(email=self.email)
+    #         o.save()
+    #     return super(User,self).save(*args,**kwargs)
+    
     #     """
     #     Returns the first_name plus the last_name, with a space in between.
     #     """

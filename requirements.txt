@@ -12,3 +12,5 @@ requests==2.22.0
 mysqlclient
 channels
 channels-redis
+pyqrcode
+pyzbar

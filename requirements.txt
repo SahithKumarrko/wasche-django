@@ -10,3 +10,5 @@ bleach==1.5.0
 whitenoise
 requests==2.22.0
 mysqlclient
+channels
+channels-redis

@@ -47,6 +47,10 @@
     <!-- <meta property="og:url" content="https://5d9844d886969.site123.me/" class="s123-js-pjax">  -->
     <meta property="og:image" content="{% static 'cdn-cms.f-static.com/ready_uploads/media/49023/2000_5ce2c023e1e45.jpg' %}" class="s123-js-pjax">
     <meta property="og:description" content="Laundry Service with best features" class="s123-js-pjax">
+    <script data-ad-client="ca-pub-1884752906231318" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  
     <meta property="og:title" content="Wasche" class="s123-js-pjax">
     <meta property="og:site_name" content="Wasche" class="s123-js-pjax">
     <!-- <meta property="og:see_also" content="https://5d9844d886969.site123.me" class="s123-js-pjax">  -->
@@ -281,7 +285,9 @@ body {
 </div> </div> </nav> </div> 
 <nav id="mainNavMobile" class="navbar-fixed-top">
    <div class="navPagesLeft">
-      <div class="header-menu-wrapper"><a data-close-location="left" data-menu-color="" data-menu-type="0" data-menu-align="center" data-is-mobile="true" class="mobile-menu-btn actionButton" role="button" data-container="body" data-toggle="menuCallActionIcons"><i class="fa fa-bars"></i></a></div>
+      <div class="header-menu-wrapper"><a data-close-location="left" data-menu-color="" data-menu-type="0" data-menu-align="center" data-is-mobile="true" class="mobile-menu-btn actionButton" role="button" data-container="body" data-toggle="menuCallActionIcons">
+         <!-- <i class="fa fa-bars"></i> -->
+      </a></div>
    </div>
    <div class="navbar-header"> <a class="navbar-brand page-unique logo_name  weight700 " style="position:relative;border-radius:10px;overflow:hidden;" href="/"> 
       <span class="website-name" style="color:white;z-index:10;">Wasche</span>
@@ -377,18 +383,43 @@ body {
                   </ul>
    </div>
 </nav>
-<div id="top-menu-mobile" style="display:none;">
+<div class="mobile-nav-cust collapse">
+      <div id="mobile-nav-head">
+          <a href="/">Wasche</a>
+          <div id="mobile-nav-close">
+          <span></span>
+          <span></span>
+          </div>
+          
+     </div>
+  
+  <div id="top-menu-mobile">
+     <ul class="lm1">
+     <li class="moduleMenu active">
+                      <a class="page-unique homepageMenu" href="/">Home</a></li>
+                  <li class="moduleMenu" data-menu-module-id="5b0a4ba521825"><a href="#" class="page-unique s123-fast-page-load" onclick="MoveFirstSection(2);" data-pjax-state=""><span class="txt-container">About</span></a></li>
+                  <li class="moduleMenu" data-menu-module-id="5d0a0f53588b1"><a class="page-unique" onclick="MoveFirstSection(4);" href="#"><span class="txt-container">Services</span></a></li>
+                  <li class="moduleMenu" data-menu-module-id="5b0a4ba521825"><a href="#" class="page-unique" onclick="MoveFirstSection(11);"><span class="txt-container">Contact</span></a></li>
+                  <!-- <li class="moduleMenu" data-menu-module-id="5d985dca46598"><a class="page-unique" href="tracker.php"><span class="txt-container">Tracker</span></a></li> -->
+      <div> 
+      <li class="moduleMenu loginbt" data-menu-module-id="5b0a4ba521825"><a style="margin-right: 7px;font-weight: bold;" class="page-unique" href="#" onclick="setTimeout(function(){document.location.href='/u/#login';},1500);">Login</a></li>
+                  <li class="moduleMenu signup" data-menu-module-id="5b0a4ba521825" style=""><a style="color:white !important;" class="page-unique" onclick="document.location.href='/u/#register'" href="#">Sign Up</a></li>
+                 </div>
+     </ul>
+  </div>
+  </div>
+<!-- <div id="top-menu-mobile" style="display:none;">
 <ul class="lm1">
       <li class="moduleMenu"><a class="page-unique homepageMenu" href="/">Home</a></li>
       <li class="moduleMenu" data-menu-module-id="5b0a4ba50e4e8"><a class="page-unique" href="/about"><span class="txt-container">About</span></a></li>
       <li class="moduleMenu" data-menu-module-id="5d0a0f53588b1"><a class="page-unique" href="/services"><span class="txt-container">Services</span></a></li>
       <li class="moduleMenu active" data-menu-module-id="5b0a4ba521825"><a class="page-unique" href="/contact"><span class="txt-container">Contact</span></a></li>
-      <!-- <li class="moduleMenu" data-menu-module-id="5d985dca46598"><a class="page-unique" href="tracker.php"><span class="txt-container">Tracker</span></a></li> -->
+      <li class="moduleMenu" data-menu-module-id="5d985dca46598"><a class="page-unique" href="tracker.php"><span class="txt-container">Tracker</span></a></li>
 	  <li class="moduleMenu loginbt" data-menu-module-id="5b0a4ba521825"><a style="margin-right: 7px;font-weight: bold;" class="page-unique" onclick="document.location.href='/u/#login'" href="#">Login</a></li>
 	  <li class="moduleMenu signup" data-menu-module-id="5b0a4ba521825" style="padding:6px !important;padding-top:4px !important;padding-bottom:4px !important;width:50%;margin:auto;"><a style="color:white !important;" class="page-unique"  onclick="document.location.href='/u/#register'" href="#">Sign Up</a></li>
 	  
 	</ul>
-</div>
+</div> -->
 <div id="s123PjaxMainContainer">
    <div id="s123ModulesContainer" class="s123-content-area s123-modules-container">
    <div class="breadcrumb-wrap" style="background:#353b43 !important;" >
@@ -502,7 +533,7 @@ body {
 					{% csrf_token %} 
                      
                      <div class="form-group">
-                        <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span> <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your email" aria-required="true" required data-msg-required="This field is required." data-rule-email="true" data-msg-email="Please enter a valid email."  > <span class="input-group-btn"> <button class="btn btn-primary" type="submit"><span>Subscribe</span>
+                        <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span> <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Email" aria-required="true" required data-msg-required="This field is required." data-rule-email="true" data-msg-email="Please enter a valid email."  > <span class="input-group-btn"> <button class="btn btn-primary" type="submit"><span>Subscribe</span>
 			   <i id="subscribebtnLoading" class="ace-icon fa fa-spinner fa-spin blue fa-1x" style="display: none;"></i></button> </span> </div>
                      </div>
                      <div id="mail-success2" style="text-align:center;" class="success">

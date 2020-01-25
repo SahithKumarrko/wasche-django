@@ -1,5 +1,7 @@
 from django.db import models
-from django.utils import timezone
+# from django.utils import timezone
+from datetime import datetime
+from wasche.custom_settings import settings
 # Create your models here.
 class Contracts(models.Model):
     contract_name = models.CharField(max_length=254,primary_key=True,unique=True)
@@ -12,8 +14,10 @@ class Contracts(models.Model):
 
     def save(self,*args,**kwargs):
         
-        self.contract_established_date = timezone.now()
+        self.contract_established_date = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
         return super(Contracts,self).save(*args,**kwargs)
+    def __str__(self):
+        return self.contract_name
 
     class Meta:
         verbose_name_plural = "Contracts"

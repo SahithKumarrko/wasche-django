@@ -799,7 +799,10 @@ input:-webkit-autofill:active  {
         background: transparent;
     }
 }
-
+#regterms:hover{
+	color:rgb(47, 62, 158) !important;
+	text-decoration:none;
+}
 input:-webkit-autofill {
     -webkit-animation-name: autofill;
     -webkit-animation-fill-mode: both;
@@ -1876,7 +1879,7 @@ padding:5px 0 !important;
 						</div>
 						    -->
 					 <div class="form-group" style="border:0;margin-bottom:0;">
-						 <div class="checkbox" style="margin-bottom:0;"> <label style="padding:0;margin:0;height:fit-content;"> <input type="checkbox" id="agreeToTerms" name="agreeToTerms"><label for="agreeToTerms" style="display:inline-block;padding-right:1px;margin:0;"> I agree to the </label><a href="/terms" target="_blank" style="display:inline-block;color:rgba(255,255,255,0.8);">Terms of Service</a>.                            </label> </div>
+						 <div class="checkbox" style="margin-bottom:0;"> <label style="padding:0;margin:0;height:fit-content;"> <input type="checkbox" id="agreeToTerms" name="agreeToTerms"><label for="agreeToTerms" style="display:inline-block;padding-right:1px;margin:0;"> I agree to the </label><a id="regterms" href="/terms" target="_blank" style="display:inline-block;color:rgba(255,255,255,0.8);">Terms of Service</a>.                            </label> </div>
 						 </div>
 					<!-- <div class="form-group">  -->
 						<!-- <button type="submit" class="cbtn">Register</button> -->
@@ -1982,7 +1985,7 @@ padding:5px 0 !important;
                   <form id="widget_subscribe_form" class="widget_subscribe_form">
 					{% csrf_token %} 
 					<div class="form-group">
-                        <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span> <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your email" aria-required="true" required data-msg-required="This field is required." data-rule-email="true" data-msg-email="Please enter a valid email."  > <span class="input-group-btn"> <button class="btn btn-primary" type="submit">Subscribe</button> </span> </div>
+                        <div class="input-group"> <span class="input-group-addon"><i class="fa fa-envelope"></i></span> <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Email" aria-required="true" required data-msg-required="This field is required." data-rule-email="true" data-msg-email="Please enter a valid email."  > <span class="input-group-btn"> <button class="btn btn-primary" type="submit">Subscribe</button> </span> </div>
 					 </div>
 					 <div id="mail-success2" class="success">
 						Thank you. The Mailman is on His Way :)
@@ -3873,23 +3876,40 @@ $('#close-password').click(function(event){
 			console.log('clicked r2');
 			if($clientR2.hasClass('open')){
 				console.log('r2');
+				$('#clientRegisterform2').find('help-block').remove();
+				
 				if(!$clientR2.valid()){
 					console.log('no data');
 					return false;
 				}
 				var crt=0;
+
 				$('#regload2').show();
-			if($('#phno').val().length!=10){
+				if(/^\d+$/.test($("#phno").val())){
+
+				
+			 if($('#phno').val().length!=10){
 				// $('#clientRegisterForm .form-group').eq(3).addClass('has-error');
-				// $('#clientRegisterForm .form-group').eq(3).append("<div id='clientEmail-error' class='help-block'>Password does not match.</div>");
-				$('#clientRegisterForm2 .form-group').eq(2).removeClass('has-error');
-				$('#clientRegisterForm2 .form-group').eq(2).find('.help-block').remove();
-				$('#clientRegisterForm2 .form-group').eq(2).addClass('has-error');
-				$('#clientRegisterForm2 .form-group').eq(2).append("<div class='help-block'>Phone number does not have 10 numbers.</div>");
+				 //$('#clientRegisterForm .form-group').eq(3).append("<div id='clientEmail-error' class='help-block'>Password does not match.</div>");
+				$('#clientRegisterform2 .form-group').eq(1).removeClass('has-error');
+				$('#clientRegisterform2 .form-group').eq(1).find('.help-block').remove();
+				$('#clientRegisterform2 .form-group').eq(1).addClass('has-error');
+				$('#clientRegisterform2 .form-group').eq(1).append("<div class='help-block'>Phone number does not have 10 digits.</div>");
 				// console.log('sadsa');
 				// $('#regload2').hide();
 				crt=1;
-			}
+			} 
+		}else{
+			$('#clientRegisterform2 .form-group').eq(1).removeClass('has-error');
+				$('#clientRegisterform2 .form-group').eq(1).find('.help-block').remove();
+				$('#clientRegisterform2 .form-group').eq(1).addClass('has-error');
+				$('#clientRegisterform2 .form-group').eq(1).append("<div class='help-block'>Phone number should contain only digits.</div>");
+
+				//$('#clientRegisterform2 .form-group').eq(1).append("<div class='help-block'>Your phone number is wrong. <br>-> It should contain only digits.<br>-> It should have 10 digits.</div>");
+				// console.log('sadsa');
+				// $('#regload2').hide();
+				crt=1;
+		}
 			
 			if($('#rgender').val()==''){
 				$('#clientRegisterForm2 .form-group').eq(1).removeClass('has-error');

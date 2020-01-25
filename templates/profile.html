@@ -1,0 +1,1740 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class=" inside_page inside_page_header_design s_layout1">
+<!-- Mirrored from 5d9844d886969.site123.me/about by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Oct 2019 11:39:03 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    {% if data is False %}
+		<meta id="user-log" data-name="no">
+		{% else %}
+		<meta id="user-log" data-name="{{ data }}">
+    {% endif %}
+    <script data-ad-client="ca-pub-1884752906231318" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  
+    <!-- <script data-ad-client="ca-pub-1884752906231318" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> -->
+  
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'cdn-cms-s.f-static.com/manager/site123_website/files/logos/brand_files/logo-top.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'cdn-cms-s.f-static.com/manager/site123_website/files/logos/brand_files/logo-top.png' %}" type="image/x-icon">
+    <!-- <link rel="manifest" href="http://cdn-cms-s.f-static.com/versions/2/css/manifest.js' %}on?w=&amp;orderScreen=&amp;websiteID=2630165&amp;onlyContent=&amp;tranW=&amp;v=n5670_11928280&amp;wd=5d9844d886969.site123.me"> -->
+    <!-- Status Bar -->
+    <meta id="user-data" data-name="{{ ud }}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- 152px icon -->
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'cdn-cms.f-static.com/ready_uploads/pwaScreenLogo/152_152_000000_ffffff_W-v22.png' %}">
+    <!-- 180px icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'cdn-cms.f-static.com/ready_uploads/pwaScreenLogo/180_180_000000_ffffff_W-v22.png' %}">
+    <!-- 167px icon -->
+    <link rel="apple-touch-icon" sizes="167x167" href="{% static 'cdn-cms.f-static.com/ready_uploads/pwaScreenLogo/167_167_000000_ffffff_W-v22.png' %}">
+    <!-- Mobile Browser Address Bar Color -->
+    <!-- <link rel="stylesheet" href="{% static 'plugins/themefisher-font/style.css' %}"> -->
+    <!-- <link rel="stylesheet" href="{% static 'simple-sidebar.css' %}"> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="{% static 'assets/js/plugins/nucleo/css/nucleo.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css' %}" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="{% static 'assets/css/argon-dashboard.css' %}" rel="stylesheet" />
+	
+    <meta name="theme-color" content="#019875">
+    <!-- Regular Meta Info -->
+    <title class="s123-js-pjax">Profile - {{ ud.fn }}</title>
+    <meta name="description" content="Laundry Service with best features" class="s123-js-pjax">
+    <meta name="keywords" content="washing, ironing, pickup and delivery" class="s123-js-pjax">
+    <link rel="canonical" href="/" class="s123-js-pjax" />
+    <!-- Global site tag (gtag.js' %}) - Google Analytics -->
+    <!-- Facebook Meta Info -->
+    <!-- <meta property="og:url" content="https://5d9844d886969.site123.me/" class="s123-js-pjax">  -->
+    <meta property="og:image" content="{% static 'cdn-cms.f-static.com/ready_uploads/media/49023/2000_5ce2c023e1e45.jpg' %}" class="s123-js-pjax">
+    <meta property="og:description" content="Laundry Service with best features" class="s123-js-pjax">
+    <meta property="og:title" content="Wasche" class="s123-js-pjax">
+    <meta property="og:site_name" content="Wasche" class="s123-js-pjax">
+    <!-- <meta property="og:see_also" content="https://5d9844d886969.site123.me" class="s123-js-pjax">  -->
+    <!-- Google+ Meta Info -->
+    <meta itemprop="name" content="Wasche" class="s123-js-pjax">
+    <meta itemprop="description" content="Laundry Service with best features" class="s123-js-pjax">
+    <meta itemprop="image" content="{% static 'cdn-cms.f-static.com/ready_uploads/media/49023/2000_5ce2c023e1e45.jpg' %}" class="s123-js-pjax">
+    <!-- Twitter Meta Info -->
+    <meta name="twitter:card" content="summary" class="s123-js-pjax">
+    <meta name="twitter:title" content="Wasche" class="s123-js-pjax">
+    <meta name="twitter:description" content="Laundry Service with best features" class="s123-js-pjax">
+    <meta name="twitter:image" content="{% static 'cdn-cms.f-static.com/ready_uploads/media/49023/2000_5ce2c023e1e45.jpg' %}" class="s123-js-pjax">
+ 
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "df0790ca-561e-44c3-8cb2-9d1b78bf0bab",
+        notifyButton: {
+          enable: false,
+        },
+        allowLocalhostAsSecureOrigin: true,
+       // welcomeNotification: {
+         // "title": "Welcome",
+          //"message": "Thanks for subscribing!",
+          // "url": "" /* Leave commented for the notification to not open a window on Chrome and Firefox (on Safari, it opens to your webpage) */
+        //},
+      });
+    });
+  </script>
+    
+
+    
+    
+            
+
+    
+
+    <!-- Website CSS variables --> <style> 
+ 
+
+        .ic-Super-toggle__label {
+          box-sizing: border-box;
+          margin: 0;
+          -webkit-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+        }
+        .ic-Form-group.ic-Form-group--horizontal .ic-Super-toggle__label {
+          display: inline-flex;
+          align-items: center;
+        }
+        
+        .ic-Super-toggle__input {
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        .ic-Super-toggle-switch{
+          cursor:pointer;
+        }
+        .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-switch:after {
+          -webkit-transform: translate3d(100%, 0, 0);
+                  transform: translate3d(100%, 0, 0);
+        }
+        .ic-Super-toggle__input:checked ~ label .ic-Super-toggle__disabled-msg:before {
+          content: attr(data-checked);
+        }
+        .ic-Super-toggle__input[disabled] ~ label .ic-Super-toggle__disabled-msg {
+          display: none;
+        }
+        .ic-Super-toggle__input[disabled] ~ label .ic-Super-toggle-switch,
+        .ic-Super-toggle__input[disabled] ~ label [class^="ic-Super-toggle-option-"] {
+          display: inline-block;
+        }
+        
+        .ic-Super-toggle-switch {
+          transition: background 0.1s, border-color 0.1s;
+          display: inline-block;
+          position: relative;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          background-clip: padding-box;
+        }
+        .ic-Super-toggle-switch::after {
+          transition: all 0.1s ease-in-out;
+          content: "";
+          position: absolute;
+          top: -3px;
+          left: -2px;
+          -webkit-transform: translate3d(0, 0, 0);
+                  transform: translate3d(0, 0, 0);
+          border-radius: 100%;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+          background-image: url("https://cl.ly/320m31452k2X/handle.svg");
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: 20px;
+        }
+        
+        .ic-Super-toggle__disabled-msg {
+          display: none;
+        }
+        .ic-Super-toggle__disabled-msg:before {
+          content: attr(data-unchecked);
+          font-style: italic;
+          opacity: 0.8;
+        }
+        
+        [class^="ic-Super-toggle-option-"] {
+          transition: opacity 0.2s, -webkit-transform 0.2s;
+          transition: opacity 0.2s, transform 0.2s;
+          transition: opacity 0.2s, transform 0.2s, -webkit-transform 0.2s;
+          flex: 0 0 50%;
+          text-align: center;
+          position: relative;
+          z-index: 1;
+          text-transform: uppercase;
+          font-weight: bold;
+          line-height: 1;
+          speak: none;
+          box-sizing: border-box;
+        }
+        
+        .ic-Super-toggle__screenreader {
+          border: 0;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+        }
+        
+        .ic-Super-toggle--on-off {
+          display: none;
+          vertical-align: middle;
+          position: relative;
+          transform:translateX(6.5rem);
+
+        }
+
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:focus ~ label .ic-Super-toggle-switch::after {
+          box-shadow: inset 0 0 0 1px white, inset 0 0 0 3px #333, 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-switch {
+          background: #009b16;
+          border-color: #009b16;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT {
+          color: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT .ic-Super-toggle__svg > * {
+          fill: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT {
+          color: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT .ic-Super-toggle__svg > * {
+          fill: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked:focus ~ label .ic-Super-toggle-switch::after {
+          box-shadow: inset 0 0 0 1px white, inset 0 0 0 3px #009b16, 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-switch {
+          width: 40px;
+          height: 20px;
+          background: #333;
+          border: 2px solid #333;
+          border-radius: 18.5px;
+        }
+        .ic-Form-group.ic-Form-group--horizontal .ic-Super-toggle--on-off .ic-Super-toggle-switch {
+          flex: 0 0 66px;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-switch:after {
+          background-color: white;
+          width: 21px;
+          height: 21px;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-LEFT {
+          color: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-LEFT .ic-Super-toggle__svg > * {
+          fill: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-RIGHT {
+          color: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-RIGHT .ic-Super-toggle__svg > * {
+          fill: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__svg {
+          max-width: 10.5px;
+          max-height: 12.5px;
+          margin-top:-3px;
+        }
+        .ic-Super-toggle--on-off [class^="ic-Super-toggle-option-"] {
+          transition-delay: 0.1s;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-LEFT {
+          opacity: 0;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-RIGHT {
+          opacity: 1;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT {
+          opacity: 1;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT {
+          opacity: 0;
+        }
+        
+        .ic-Super-toggle--ui-switch {
+          display: inline-block;
+          vertical-align: middle;
+          position: relative;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:focus ~ label .ic-Super-toggle-switch::after {
+          box-shadow: inset 0 0 0 1px white, inset 0 0 0 3px #333, 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-switch {
+          background: #333;
+          border-color: #333;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT {
+          color: #253138;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT .ic-Super-toggle__svg > * {
+          fill: #253138;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT {
+          color: #00ac19;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT .ic-Super-toggle__svg > * {
+          fill: #00ac19;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked:focus ~ label .ic-Super-toggle-switch::after {
+          box-shadow: inset 0 0 0 1px white, inset 0 0 0 3px #333, 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-switch {
+          width: 66px;
+          height: 33px;
+          background: #333;
+          border: 2px solid #333;
+          border-radius: 18.5px;
+        }
+        .ic-Form-group.ic-Form-group--horizontal .ic-Super-toggle--ui-switch .ic-Super-toggle-switch {
+          flex: 0 0 66px;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-switch:after {
+          background-color: white;
+          width: 33px;
+          height: 33px;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-LEFT {
+          color: #da062a;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-LEFT .ic-Super-toggle__svg > * {
+          fill: #da062a;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-RIGHT {
+          color: #253138;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-RIGHT .ic-Super-toggle__svg > * {
+          fill: #253138;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__svg {
+          max-width: 16.5px;
+          max-height: 16.5px;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__label {
+          display: inline-flex;
+          align-items: center;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-switch {
+          display: block;
+        }
+        .ic-Super-toggle--ui-switch [class^="ic-Super-toggle-option-"] {
+          flex: none;
+          min-width: 24px;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-LEFT {
+          text-align: left;
+          -webkit-transform: scale(1.1);
+                  transform: scale(1.1);
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-RIGHT {
+          text-align: right;
+          -webkit-transform: scale(0.9);
+                  transform: scale(0.9);
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT {
+          -webkit-transform: scale(0.9);
+                  transform: scale(0.9);
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT {
+          -webkit-transform: scale(1.1);
+                  transform: scale(1.1);
+        }
+        
+ .dropdown-menu{
+   width:20rem;
+ }
+        .frame {
+          position: relative;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          border-radius: 2px;
+          color: #fff;
+          transform:translate(-50%,-50%);
+          
+        }
+        
+        .frame .center {
+          position: absolute;
+          width: 220px;
+          height: 220px;
+          top: 47%;
+          left: 50%;
+          transform:translate(-50%,-50%);
+          
+        }
+        i#prev-order-list.full{
+          color:rgba(0,0,0,0.35);
+        }
+        i#next-order-list.full{
+          color:rgba(0,0,0,0.35);
+        }
+        i#prev-order-list.full:after {
+          content: '';
+          width: 20.81px;
+          height: 20px;
+          /* padding: 4px; */
+          border-radius: 2px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          cursor: not-allowed;
+          background: rgba(0,0,0,0.2);
+      }
+      i#next-order-list.full:after {
+        content: '';
+        width: 20.81px;
+        height: 20px;
+        /* padding: 4px; */
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: not-allowed;
+        background: rgba(0,0,0,0.2);
+    }
+        
+        .dot-1 {
+          position: absolute;
+          z-index: 3;
+          width: 30px;
+          height: 30px;
+          top: 95px;
+          left: 95px;
+          background: #4973ff;
+          border-radius: 50%;
+          -webkit-animation-fill-mode: both;
+                  animation-fill-mode: both;
+          -webkit-animation: jump-jump-1 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+                  animation: jump-jump-1 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+        }
+        
+        .dot-2 {
+          position: absolute;
+          z-index: 2;
+          width: 60px;
+          height: 60px;
+          top: 80px;
+          left: 80px;
+          background: #fff;
+          border-radius: 50%;
+          -webkit-animation-fill-mode: both;
+                  animation-fill-mode: both;
+          -webkit-animation: jump-jump-2 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+                  animation: jump-jump-2 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+        }
+        
+        .dot-3 {
+          position: absolute;
+          z-index: 1;
+          width: 90px;
+          height: 90px;
+          top: 65px;
+          left: 65px;
+          background: #5e72e4;
+          border-radius: 50%;
+          -webkit-animation-fill-mode: both;
+                  animation-fill-mode: both;
+          -webkit-animation: jump-jump-3 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+                  animation: jump-jump-3 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+        }
+        
+
+
+        .gegga {
+          width: 0;
+        }
+        .snurra {
+          filter: url(#gegga);
+        }
+        .stopp1 {
+          stop-color: #f700a8;
+          stop-color : #3090e2;
+        }
+        .stopp2 {
+          stop-color: #ff8000;
+          stop-color:#b43ed2;
+        }
+        .halvan {
+          animation: Snurra1 10s infinite linear;
+          stroke-dasharray: 180 800;
+          fill: none;
+          stroke: url(#gradient);
+          stroke-width: 23;
+          stroke-linecap: round;
+        }
+        .strecken {
+          animation: Snurra1 3s infinite linear;
+          stroke-dasharray: 26 54;
+          fill: none;
+          stroke: url(#gradient);
+          stroke-width: 23;
+          stroke-linecap: round;
+        }
+        .skugga {
+          filter: blur(5px);
+          opacity: 0.3;
+          position: absolute;
+          transform: translate(3px, 3px);
+        }
+        @keyframes Snurra1 {
+          0% {
+            stroke-dashoffset: 0;
+          }
+          100% {
+            stroke-dashoffset: -403px;
+          }
+        }
+        
+        @-webkit-keyframes jump-jump-1 {
+          0%, 70% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        
+        @keyframes jump-jump-1 {
+          0%, 70% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        @-webkit-keyframes jump-jump-2 {
+          0%, 40% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        @keyframes jump-jump-2 {
+          0%, 40% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        @-webkit-keyframes jump-jump-3 {
+          0%, 10% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        @keyframes jump-jump-3 {
+          0%, 10% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        
+                  
+@-webkit-keyframes enter-load {
+  0%, 10% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes enter-load {
+  0%, 10% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes exit-load {
+  0%, 10% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+@keyframes exit-load {
+  0%, 10% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+@media (min-width:768px){
+  .prc111{
+    margin-top:42px !important;
+    margin-left:-2.5rem !important;
+  }
+}
+
+.full-msg-div{
+  
+  background: #fff;
+  width:100%;
+  box-shadow: 0 0 2.5rem 0 rgba(10, 10, 10, 0.65), inset 0 0 5px 0 rgba(0,0,0,0.5);
+  border-radius: 3px;
+  z-index: 6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: scale(0);
+  transition: all 0.5s;
+  transform-origin: top center;
+  padding: 16px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom:16px;
+
+}
+
+.full-msg-div-header{
+  display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.mnoti-small{
+  cursor:pointer;
+}
+.full-msg-div-header-details{
+  
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+@keyframes enter-text{
+  0%{
+      opacity:0;
+      transform:scale(0);
+  }
+  100%{
+      opacity:1;
+      transform:scale(1);
+  }
+}
+
+@keyframes exit-text{
+  0%{
+      opacity:1;
+      transform:scale(1);
+  }
+  100%{
+      opacity:0;
+      transform:scale(0);
+  }
+}
+
+.full-msg-div.exit {
+  animation: exit-text 0.4s linear forwards !important;
+}
+.full-msg-div.enter{
+  animation: enter-text 0.6s cubic-bezier(0,0.38,0.48,1.17) forwards;
+}
+::-webkit-scrollbar {
+    width: 9px;
+    height: 7px;
+    background-color: #F5F5F5;
+} 
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.5);
+  border-radius:5px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+.filter-cont{
+  transform: scale(0);
+
+}
+  
+.filter-cont.open{
+  display: flex !important;
+  animation: enter-load 1s forwards;
+}
+
+
+.filter-cont.close{
+  animation: exit-load 1s forwards;
+}
+.filter-cont2{
+  transform: scale(0);
+
+}
+  
+.filter-cont2.open{
+  display: flex !important;
+  animation: enter-load 1s forwards;
+}
+
+
+.filter-cont2.close{
+  animation: exit-load 1s forwards;
+}
+.o-day{
+  font-size:0.9rem !important;
+}
+.o-time{
+  display:block;
+  font-size:0.75rem !important;
+}
+.mnoti-text{
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.15rem;
+  word-break:break-all;
+  letter-spacing: 0.5px;
+  max-height: 3rem;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  
+}
+
+.mnoti-cont.not-seen-msg::before{
+  content: '';
+    position: absolute;
+    left: 4px;
+    top: 21%;
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+    background: rgb(105, 109, 226);
+    border-radius: 100%;
+}
+.notification-alert-msg{
+  
+  width: 14rem;
+  padding: 8px 12px;
+  text-align: center;
+  /* margin: auto; */
+  position: fixed;
+  top: 4px;
+  z-index: 2000;
+  /* transform-origin: 50% 50%; */
+  left: 50%;
+  transform: translate(-50%,-250px);
+  font-size: 0.875rem;
+  color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 5px 5px 14px rgba(0,0,0,0.3);
+  transition: all 0.6s cubic-bezier(0, 0.38, 0.48, 1.17);
+  box-shadow: 0 50px 100px rgba(50, 50, 93, 0.2), 0 15px 35px rgba(50, 50, 93, 0.4), 0 5px 15px rgba(0, 0, 0, 0.2);
+
+}
+.notification-alert-msg.noti-msg-success{
+  
+  background-color: #4fd69c;
+  border-color: #4fd69c;
+}
+
+.notification-alert-msg.noti-msg-danger{
+  background-color: #f75676;
+    border-color: #f75676;
+}
+.notification-alert-msg.noti-msg-show{
+  transform: translate(-50%,0%) !important;
+}
+.mnoti-cont{
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 20px;
+  padding-bottom:0;
+  position:relative;
+}
+.mnoti-time{
+  width: 100%;
+  display: block;
+  margin:0;
+  padding:0;
+  border-bottom:1px solid #e9ecef;
+}
+.mnoti img{
+  width:35px;
+  margin-right:13px;
+}
+
+.mnoti-title{
+  margin: 0;
+  width: 100%;
+  font-weight: 600;
+  line-height: 1.2rem;
+  max-height: 1.3rem !important;
+  overflow: hidden;
+  word-break:break-all;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+.mnoti-title.mnoti-heading{
+  margin:6px 0;
+}
+.big-noti-msg.show{
+  transform:scale(1) !important;
+}
+#desk-noti-options-div li div:before{
+  content:'';
+  position:absolute;
+  top:50%;
+  width:90%;
+  height:1px;
+  border:1px solid #eee;
+  z-index:-1;
+  left:0;
+}
+#desk-noti-options-div #no-deci{
+  list-style-type: none;
+  text-align: -webkit-center;
+  text-align: center;
+}
+#desk-noti-options-div li div h3{
+  background:#f75676;
+  border-color:#f75676;
+  z-index:2;
+  display:inline;
+}
+.notification-all-cont{
+  position: fixed;
+  top: 0;
+  padding: 16px;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transform:scale(0);
+  background: rgba(0,0,0,0.3);
+
+}
+.notification-all-cont.enter{
+  animation: enter-text 0.6s cubic-bezier(0,0.38,0.48,1.17) forwards !important;
+
+}
+
+.notification-all-cont.exit{
+  animation: exit-text 0.4s linear forwards !important;
+
+}
+.full-msg-div i{
+  font-size: 25px;
+  border: 0.5px solid rgba(0,0,0,0.6);
+  border-radius: 2px;
+}
+.mnoti.add-noti-shadow{
+
+ padding: 5px 0 !important;
+  border-radius: 3px !important;
+  
+  position: relative !important;
+
+}
+.mnoti.mnoti-click{
+  cursor:pointer !important;
+}
+
+.mnoti.mnoti-click:hover{
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  
+}
+.full-msg-div .f-msg-title{
+  margin: 0;
+    display: inline-block;
+}
+.remove-full-msg{
+  cursor:pointer;
+}
+#remove-view-all-notif{
+  cursor:pointer;
+}
+.full-msg-div img{
+  margin-top:5px;
+}
+.full-msg-div p{
+  margin:0;
+  word-spacing:2px;
+}
+.cont-all-noti{
+  background: #fff;
+    position: relative;
+    box-shadow: 0 0 2.5rem 0 rgba(10, 10, 10, 0.65), inset 0 0 5px 0 rgba(0,0,0,0.5);
+    border-radius: 3px;
+    z-index: 6;
+    padding: 16px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+@media (min-width:768px){
+  .navbar-top{
+    
+    position: fixed !important;
+    width: calc(100% - 250px) !important;
+    margin-left: 250px;
+    /* right: 0; */
+    z-index: 2 !important;
+    background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+    box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.55) !important;
+
+  }
+}
+.marker {
+  position: absolute;
+    top: 3px;
+    right: 6px;
+    height: 10px;
+    width: 10px;
+    border-radius: 70px;
+    background: #ff5e00;
+    display:none;
+    color: #f00;
+}
+.pulse {
+  position: absolute;
+    right: 1px;
+    height: 20px;
+    width: 20px;
+    top: -2px;
+    z-index: 10;
+    border: 5px solid #ff5e00;
+    border-radius: 70px;
+    display:none;
+    animation: pulse-noti 1s ease-out infinite;
+  }
+@keyframes pulse-noti{
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+}
+
+25% {
+    -webkit-transform: scale(0.1);
+    opacity: 0.1;
+}
+50% {
+    -webkit-transform: scale(0.5);
+    opacity: 0.3;
+}
+75% {
+    -webkit-transform: scale(0.8);
+    opacity: 0.5;
+}
+100% {
+    -webkit-transform: scale(1);
+    opacity: 0;
+}
+}
+#err-msg-btn:hover{
+  transform:scale(1.02);
+  box-shadow:0px 10px 15px rgba(0,0,0,0.35);
+}
+@media (min-width:768px){
+    #qr-code-cont{
+        left:50%;
+        background:transparent;
+        transform: translate(-50%,-38%);
+      }
+}
+    </style> <!-- Custom CSS --> <!-- Minimize CSS files -->
+    <!-- End Cookie Consent plugin --> <!-- Froala Editor CSS --> 
+    </head>
+    <body class="">
+            <div class="notification-all-cont">
+                    <div class="cont-all-noti col">
+                        <div style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        position: fixed;
+                        z-index: 2010;
+                        width: calc(100% - 74px);
+                        background: #fff;
+                        margin-top: -13.5px;
+                        padding: 15px;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                    border-radius:3px;
+                    ">
+                            <h3 style="margin:0;display:inline-block;
+                        ">All Notifications</h3><i id="remove-view-all-notif" class="ni ni-fat-remove" style="
+                        font-size: 25px;
+                        border: 0.5px solid rgba(0,0,0,0.6);
+                        border-radius: 2px;  
+                    "></i>
+                    </div><div class="dropdown-divider"></div>
+                    <div style="padding-top:34px;" class="all-noti-cont-msg none-noti"></div>
+                    
+                    <div id="load-more-noti">
+                        <h4 id="h4-load-more-noti" style="
+                        display: none;
+                        text-align: center;
+                    ">No more notifications to load.</h4>
+                            <div class="prcnoti" style="display: flex;margin: auto;justify-content: center;align-items: center;">
+                                            <img style="width: 40px;" src="/static/pulse.svg">&nbsp;<h4 style="
+                        margin: 0;
+                    ">Loading More ...</h4></div>
+                        </div>
+                    
+                    <!-- <div class="dropdown-divider"></div> -->
+                    
+                    </div>
+                    </div>
+                    
+        <div class="big-noti-msg" style="
+        position: fixed;
+        z-index: 2000;
+        width: 100%;
+        height: 100%;
+        transition: all 0.6s cubic-bezier(0, 0.38, 0.48, 1.17);
+        transform: scale(0);
+        background: rgba(0,0,0,0.3);
+        /* top: 50%; */
+        /* left: 50%; */
+        /* transform: translate(-50%,-50%); */
+    "><div style="
+        position: absolute;
+        top: 50%;
+        /* width: 100%; */
+        /* height: 100%; */
+        background-color: #f75676;
+        border-color: #f75676;
+        color: #fff;
+        left: 50%;
+        border-radius: 5px;
+        box-shadow: 0 50px 100px rgba(50, 50, 93, 0.2), 0 15px 35px rgba(50, 50, 93, 0.4), 0 5px 15px rgba(0, 0, 0, 0.2);
+        padding: 8px 16px;
+        transform: translate(-50%,-50%);
+    "><div style="
+        text-align: center;
+        padding-top: 8px;
+    ">
+        <p>You have blocked the notifications.<br></p>
+    <h3>Revoke Notification Settings</h3><ol id="desk-noti-options-div" style="
+        text-align: initial;
+    "><li>Click on&nbsp;<strong>Lock icon</strong>&nbsp;<img src="{% static 'lock.png' %}" style="width:25px;">&nbsp;on the top of page.
+        
+        </li>
+        <li>Choose&nbsp;<strong>Allow</strong>&nbsp;from&nbsp;<strong>Notifications options</strong>&nbsp;if shown.</li>
+        <li id="no-deci">
+            <div style="
+        position: relative;
+    ">
+                <h3 style="
+        color: #eee;
+        z-index: 2;
+        display: inline;
+        background: #f75676;
+    ">OR</h3>
+            </div>
+        </li>
+        <li value="3">
+            Click on&nbsp;<strong>Site Settings</strong>&nbsp;and choose&nbsp;<strong>Allow</strong>&nbsp;from&nbsp;<strong>Notifications options</strong>
+        </li>
+        </ol><ol id="mobile-noti-options-div" style="
+        text-align: initial;
+    ">
+            <li>
+                To the right of the address bar, tap More&nbsp;<img src="{% static 'dot-menu.jpg' %}" style="width:25px;">&nbsp;<img src="{% static 'arrow.png' %}" style="width:25px;">&nbsp;<strong>Settings</strong>.
+    
+            </li>
+            <li>
+                Tap&nbsp;<strong>Site Settings</strong>&nbsp;<img src="{% static 'arrow.png' %}" style="width:25px;">&nbsp;<strong>Notifications</strong>
+            </li>
+            <li>
+                Choose&nbsp;<strong>Allow</strong>&nbsp;or&nbsp;<strong>Block</strong>.
+            </li>
+        </ol>
+        
+    
+    <div style="
+        width: 80px;
+        margin: auto;
+        margin-bottom: 15px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 24px rgba(0,0,0,0.5), inset 0 0 10px rgba(0,0,0,0.2);
+        cursor: pointer;
+        border-radius: 3px;
+        transition: all 0.3s;
+    " id="err-noti-btn"><span>Ok</span></div></div>
+        </div>
+        </div>
+      <div class="notification-alert-msg"></div>
+      <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main" style="position:fixed;width:100%;z-index:2;">
+        <div class="container-fluid">
+          <!-- Toggler -->
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Brand -->
+          <!-- <a class="navbar-brand pt-0" href="{% static 'index.html">
+            <img src="{% static 'assets/img/brand/blue.png' %}" class="navbar-brand-img" alt="...">
+          </a> -->
+    <a class="navbar-brand page-unique logo_name  weight700 top" style="width:fit-content;height:fit-content;padding: 20px;overflow:hidden;z-index: 1;position:relative;border-radius:10px;" href="/"> 
+                            <span class="website-name" style="color:white;z-index: 10;/* display: flex; */position: relative;">Wasche</span> 
+                            <div class="liquid" style="
+                                                        box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+                                                        padding: 0;
+                                                        margin: 0;
+                                                        width: 0;
+                                                        position: absolute;
+                                                        height: 0;
+                                                        left: 0;
+                                                        top: -90px;
+                                                        width: 200px;
+                                                        height: 200px;
+                                                        background: #4973ff;
+                                                        transition: 0.5s;
+                                                    "></div>
+                  </a>
+          <!-- User -->
+          <ul class="nav align-items-center d-md-none">
+            <li class="nav-item dropdown">
+              <a style="width:100%;" class="nav-link nav-link-icon notifications" href="#" role="button"  aria-haspopup="true" aria-expanded="false">
+                <i class="ni ni-bell-55"></i>
+                <div class="pulse"></div>
+                <div class="marker"></div>
+              </a>
+              <div class="dropdown-menu dropm dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                  <h3 style="
+                  margin: 0;
+                  padding:9px 0px;
+                  padding-left: 16px;
+                  display: inline-block;
+              ">Notifications</h3>  
+              <!-- <div class="prc4" style="display: none;margin-left: 6rem;">
+                  <img style="width: 40px;/* height: 40px; */" src="/static/pulse.svg">
+               </div>
+                <div class="ic-Super-toggle--on-off">
+                      <input type="checkbox" id="demo11" class="ic-Super-toggle__input" checked>
+                      <label class="ic-Super-toggle__label" for="demo11">
+                        <div class="ic-Super-toggle__screenreader">Enable flux capacitor</div>
+                        <div class="ic-Super-toggle__disabled-msg" data-checked="On" data-unchecked="Off" aria-hidden="true"></div>
+                        <div class="ic-Super-toggle-switch" aria-hidden="true">
+                          <div class="ic-Super-toggle-option-LEFT" aria-hidden="true">
+                            <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="548.9" height="548.9" viewBox="0 0 548.9 548.9" xml:space="preserve"><polygon points="449.3 48 195.5 301.8 99.5 205.9 0 305.4 95.9 401.4 195.5 500.9 295 401.4 548.9 147.5 "/></svg>
+                          </div>
+                          <div class="ic-Super-toggle-option-RIGHT" aria-hidden="true">
+                            <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 28 28" xml:space="preserve"><polygon points="28 22.4 19.6 14 28 5.6 22.4 0 14 8.4 5.6 0 0 5.6 8.4 14 0 22.4 5.6 28 14 19.6 22.4 28 " fill="#030104"/></svg>
+                          </div>
+                        </div>
+                      </label>
+                    </div> -->
+                <!-- <a class="dropdown-item" href="#">Action</a> -->
+                <!-- <a class="dropdown-item" href="#">Another action</a> -->
+                
+                <div class="cont-mnoti">
+                    <div class="prc5" style="display: flex;margin: auto;justify-content: center;align-items: center;">
+                        <img style="width: 40px;" src="/static/pulse.svg">&nbsp;<h4 style="
+    margin: 0;
+">Loading ...</h4></div>
+                  </div>
+                  <h4 class="popup-noti-h4" style="
+                        margin: 0;
+                        padding:9px 0px;
+                        padding-left: 16px;
+                        display: inline-block;
+                        font-size: 0.92rem;
+                    ">PopUp Notifications</h4> 
+                    <div class="prc4" style="display: inline;margin-left: 4rem;">
+                        <img style="width: 40px;/* height: 40px; */" src="/static/pulse.svg">
+                     </div> 
+                      <div class="ic-Super-toggle--on-off">
+                            <input type="checkbox" id="demo1" class="ic-Super-toggle__input" checked="">
+                            <label class="ic-Super-toggle__label" for="demo1">
+                              <div class="ic-Super-toggle__screenreader">Enable flux capacitor</div>
+                              <div class="ic-Super-toggle__disabled-msg" data-checked="On" data-unchecked="Off" aria-hidden="true"></div>
+                              <div class="ic-Super-toggle-switch" aria-hidden="true">
+                                <div class="ic-Super-toggle-option-LEFT" aria-hidden="true">
+                                  <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="548.9" height="548.9" viewBox="0 0 548.9 548.9" xml:space="preserve"><polygon points="449.3 48 195.5 301.8 99.5 205.9 0 305.4 95.9 401.4 195.5 500.9 295 401.4 548.9 147.5 "></polygon></svg>
+                                </div>
+                                <div class="ic-Super-toggle-option-RIGHT" aria-hidden="true">
+                                  <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 28 28" xml:space="preserve"><polygon points="28 22.4 19.6 14 28 5.6 22.4 0 14 8.4 5.6 0 0 5.6 8.4 14 0 22.4 5.6 28 14 19.6 22.4 28 " fill="#030104"></polygon></svg>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+<div class="dropdown-divider"></div>
+                <a class="dropdown-item view-all-notif" href="#"><h4 style="margin:0;">View all notications</h4></a>
+                    <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    
+                  </span>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                <div class=" dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome!</h6>
+                  <h4 class="text-overflow m-0 text-info user-name"></h4>
+                </div>
+                <a href="/" class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span>My profile</span>
+                </a>
+                <a href="/" class="dropdown-item">
+                  <i class="ni ni-settings-gear-65"></i>
+                  <span>Settings</span>
+                </a>
+                <a href="/" class="dropdown-item">
+                  <i class="ni ni-calendar-grid-58"></i>
+                  <span>Activity</span>
+                </a>
+                <a href="/" class="dropdown-item">
+                  <i class="ni ni-support-16"></i>
+                  <span>Support</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#!" class="dropdown-item top-logout-btn">
+                  <i class="ni ni-user-run"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+          <!-- Collapse -->
+          <div class="navbar-collapse collapse" id="sidenav-collapse-main" style="padding-top:1.1rem;position:fixed;">
+            <!-- Collapse header -->
+            <div class="navbar-collapse-header d-md-none">
+              <div class="row">
+                <div class="col-6 collapse-brand">
+                  <a class="navbar-brand page-unique logo_name  weight700" style="width:fit-content;height:fit-content;padding: 10px;overflow:hidden;z-index: 1;position:relative;border-radius:10px;" href="/"> 
+                    <span class="website-name" style="color:white;z-index: 10;/* display: flex; */position: relative;">Wasche</span> 
+                    <div class="liquid" style="
+                                                box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+                                                padding: 0;
+                                                margin: 0;
+                                                width: 0;
+                                                position: absolute;
+                                                height: 0;
+                                                left: 0;
+                                                top: -90px;
+                                                width: 200px;
+                                                height: 200px;
+                                                background: #4973ff;
+                                                transition: 0.5s;
+                                            "></div>
+          </a>
+                </div>
+                <div class="col-6 collapse-close">
+                  <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                    <span></span>
+                    <span></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Form -->
+            <form class="mt-4 mb-3 d-md-none" style="display:none;">
+              <div class="input-group input-group-rounded input-group-merge" style="display:none;">
+                <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <span class="fa fa-search"></span>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!-- Navigation -->
+            <ul class="navbar-nav">
+              <li class="nav-item"  class="active">
+              <a class=" nav-link active " href=" {% static 'index.html"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link " href="/">
+                  <i class="ni ni-single-02 text-yellow"></i>Profile</a>
+              </li>
+    <li class="nav-item">
+                <a class="nav-link " href="{% static 'examples/maps.html">
+                  <i class="ni ni-pin-3 text-orange"></i>Track Order</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link " href="{% static 'examples/tables.html">
+                  <i class="ni text-red ni-settings"></i>Billing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% static 'examples/login.html">
+                  <i class="ni ni-badge text-info"></i>Subscription</a>
+              </li>
+    <li class="nav-item">
+                <a class="nav-link" href="{% static 'examples/login.html">
+                  <i class="ni ni-credit-card text-blue"></i>Wallet</a>
+              </li>
+              
+            </ul>
+            <!-- Divider -->
+            <hr class="my-3">
+            <!-- Heading -->
+            
+            <!-- Navigation -->
+            <ul class="navbar-nav mb-md-3">
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">
+                  <i class="ni ni-spaceship"></i>Contact Us</a>
+              </li>
+              
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="main-content" style="padding-bottom: 30px;">
+        <!-- Navbar -->
+        <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main" >
+          <div class="container-fluid">
+            <!-- Brand -->
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="#">Profile</a>
+            <!-- Form -->
+            <form style="display:none;"class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+              <div class="form-group mb-0 focused" style="display:none;">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Search" type="text">
+                </div>
+              </div>
+            </form>
+            <!-- User -->
+            <ul class="navbar-nav align-items-center d-none d-md-flex">
+                <li class="nav-item dropdown">
+                    <a class="nav-link nav-link-icon notifications" href="#" role="button"  aria-haspopup="true" aria-expanded="false" style="
+          font-size: 1.22rem;
+          border-radius: 3px;
+          width:100%;
+          box-shadow: 0px 6px 1rem rgba(0,0,0,0.4);
+      ">
+                      <i class="ni ni-bell-55"></i>
+                      <div class="pulse"></div>
+                      <div class="marker"></div>
+                    </a>
+                    <div class="dropdown-menu dropm dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <h3 style="
+                        margin: 0;
+                        padding:9px 0px;
+                        padding-left: 16px;
+                        display: inline-block;
+                    ">Notifications</h3> 
+                      <div class="cont-mnoti">
+                          <div class="prc5" style="display: flex;margin: auto;justify-content: center;align-items: center;">
+                              <img style="width: 40px;" src="/static/pulse.svg">&nbsp;<h4 style="
+          margin: 0;
+      ">Loading ...</h4></div>
+                        </div>
+                        <h4 class="popup-noti-h4" style="
+                        margin: 0;
+                        padding:9px 0px;
+                        padding-left: 16px;
+                        display: inline-block;
+                        font-size: 0.92rem;
+                    ">PopUp Notifications</h4> 
+                    <div class="prc4" style="display: inline;margin-left: 4rem;">
+                        <img style="width: 40px;/* height: 40px; */" src="/static/pulse.svg">
+                     </div> 
+                      <div class="ic-Super-toggle--on-off">
+                            <input type="checkbox" id="demo1" class="ic-Super-toggle__input" checked="">
+                            <label class="ic-Super-toggle__label" for="demo1">
+                              <div class="ic-Super-toggle__screenreader">Enable flux capacitor</div>
+                              <div class="ic-Super-toggle__disabled-msg" data-checked="On" data-unchecked="Off" aria-hidden="true"></div>
+                              <div class="ic-Super-toggle-switch" aria-hidden="true">
+                                <div class="ic-Super-toggle-option-LEFT" aria-hidden="true">
+                                  <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="548.9" height="548.9" viewBox="0 0 548.9 548.9" xml:space="preserve"><polygon points="449.3 48 195.5 301.8 99.5 205.9 0 305.4 95.9 401.4 195.5 500.9 295 401.4 548.9 147.5 "></polygon></svg>
+                                </div>
+                                <div class="ic-Super-toggle-option-RIGHT" aria-hidden="true">
+                                  <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 28 28" xml:space="preserve"><polygon points="28 22.4 19.6 14 28 5.6 22.4 0 14 8.4 5.6 0 0 5.6 8.4 14 0 22.4 5.6 28 14 19.6 22.4 28 " fill="#030104"></polygon></svg>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+<div class="dropdown-divider"></div>
+                      <a class="dropdown-item view-all-notif" href="#"><h4 style="margin:0;">View all notications</h4></a>
+                      
+                      <!-- <a class="dropdown-item settings-notif" href="#">Notify Me : </a> -->
+                    </div>
+                  </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="media align-items-center">
+                    <span class="avatar avatar-sm rounded-circle">
+                      
+                    </span>
+                    <div class="media-body ml-2 d-none d-lg-block">
+                      <span class="mb-0 text-sm  font-weight-bold pname"></span>
+                    </div>
+                  </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                  <div class=" dropdown-header noti-title">
+                    <h6 class="text-overflow m-0">Welcome!</h6>
+
+                  </div>
+                  <a href="/" class="dropdown-item">
+                    <i class="ni ni-single-02"></i>
+                    <span>My profile</span>
+                  </a>
+                  <a href="/" class="dropdown-item">
+                    <i class="ni ni-settings-gear-65"></i>
+                    <span>Settings</span>
+                  </a>
+                  <a href="/" class="dropdown-item">
+                    <i class="ni ni-calendar-grid-58"></i>
+                    <span>Activity</span>
+                  </a>
+                  <a href="/" class="dropdown-item">
+                    <i class="ni ni-support-16"></i>
+                    <span>Support</span>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#!" class="dropdown-item top-logout-btn">
+                    <i class="ni ni-user-run"></i>
+                    <span>Logout</span>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- End Navbar -->
+        <!-- Header -->
+
+        <!-- HEADER -->
+
+
+        <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style="min-height: 400px;  background-size: cover; background-position: center top;">
+            <!-- Mask -->
+            <span class="mask bg-gradient-default opacity-8"></span>
+            <!-- Header container -->
+            <div class="container-fluid d-flex align-items-center">
+              <div class="row">
+                <div class="col-lg-7 col-md-10">
+                  <h1 class="display-2 text-white">Hello {{ ud.fn }}</h1>
+                  <!-- <p class="text-white mt-0 mb-5">This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p> -->
+                  <!-- <a href="#!" class="btn btn-info">Edit profile</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="container-fluid mt--7">
+                <div class="row">
+                  <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                    <div class="card card-profile shadow">
+                      <div class="row justify-content-center">
+                        <div class="col-lg-3 order-lg-2">
+                          <!-- <div class="card-profile-image">
+                            <a href="#">
+                                {% if ud.pav is True %}
+                              <img src="{{ ud.pp }}" style="max-width:140px !important;" class="rounded-circle">
+                            {% else %}
+                            <img src="{% static 'te-no.svg' %}" style="max-width:140px !important;" class="rounded-circle">
+{% endif %}
+                            </a>
+                          </div> -->
+                        </div>
+                      </div>
+                      <div id="qr-code-cont"  class="card-header text-center border-0" style="position:absolute;">
+                        <img src="{{ qr_code }}" style="width:75px;margin-bottom:1rem;">
+                        <div class="d-flex justify-content-between">
+                          <!-- <a href="#" class="btn btn-sm btn-info mr-4">Connect</a> -->
+                          <a href="{{ qr_code }}" download="qr.png" id = "qr-img-download"  class="btn btn-sm btn-default float-right">Download Qr Code</a>
+                        
+                        </div>
+                      </div>
+                      <div class="card-body pt-0 pt-md-4" >
+                        <div class="row">
+                          <div class="col">
+                            <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                              <div>
+                                <span class="heading">{{ ud.tot }}</span>
+                                <span class="description">Total Orders</span>
+                              </div> 
+                              <!-- <div>
+                                <span class="heading">{{ ud. }}</span>
+                                <span class="description">Photos</span>
+                              </div>
+                              <div>
+                                <span class="heading">89</span>
+                                <span class="description">Comments</span>
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-center">
+                          <h3>
+                            {{ ud.fullname }}<span class="font-weight-light"></span>
+                          </h3>
+                          <div class="h5 font-weight-300">
+                            <i class="ni location_pin mr-2"></i>{{ ud.addr }}
+                          </div>
+                          <div class="h5 mt-4">
+                            <i class="ni business_briefcase-24 mr-2"></i>{{ ud.plan }}
+                          </div>
+                          <div>
+                            <i class="ni education_hat mr-2"></i>{{ ud.col }}
+                          </div>
+                          <hr class="my-4" />
+                          <!-- <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
+                          <a href="#">Show more</a> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-8 order-xl-1">
+                    <div class="card bg-secondary shadow">
+                      <div class="card-header bg-white border-0">
+                        <div class="row align-items-center">
+                          <div class="col-8">
+                            <h3 class="mb-0">My account</h3>
+                          </div>
+                          <div class="col-4 text-right">
+                            <!-- <a href="#!" class="btn btn-sm btn-primary">Settings</a> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <form>
+                          <h6 class="heading-small text-muted mb-4">Account Information</h6>
+                          <div class="pl-lg-4">
+                            <div class="row">
+                              <!-- <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-username">Username</label>
+                                  <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="">
+                                </div>
+                              </div> -->
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-email">Email address</label>
+                                  <input type="email" id="input-email" readonly class="form-control form-control-alternative" placeholder="{{ ud.email }}">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-first-name">First name</label>
+                                  <input type="text" id="input-first-name" readonly class="form-control form-control-alternative" placeholder="First name" value="{{ ud.fn }}">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-last-name">Last name</label>
+                                  <input type="text" id="input-last-name" readonly class="form-control form-control-alternative" placeholder="Last name" value="{{ ud.ln }}">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <hr class="my-4" />
+                          <!-- Address -->
+                          <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                          <div class="pl-lg-4">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label class="form-control-label" readonly for="input-address">Address</label>
+                                  <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" readonly value="{{ ud.addr }}" type="text">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <!-- <div class="col-lg-4">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-city">City</label>
+                                  <input type="text" id="input-city" class="form-control form-control-alternative" readonly placeholder="City" value="Hyderabad">
+                                </div>
+                              </div> -->
+                              <div class="col-lg-4">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-country">Country</label>
+                                  <input type="text" id="input-country" readonly class="form-control form-control-alternative" placeholder="Country" value="India">
+                                </div>
+                              </div>
+                              <!-- <div class="col-lg-4">
+                                <div class="form-group">
+                                  <label class="form-control-label" for="input-country">Postal code</label>
+                                  <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="{{ ud.pc }}">
+                                </div>
+                              </div> -->
+                            </div>
+                          </div>
+                          <hr class="my-4" />
+                          <h6 class="heading-small text-muted mb-4">Servicing Location</h6>
+                          <div class="pl-lg-4">
+                            <div class="row">
+                                    <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label" for="input-colname">Service Location</label>
+                                              <input id="input-colname" class="form-control form-control-alternative" readonly placeholder="College Name" value="{{ ud.col }}" type="text">
+                                            </div>
+                                          </div>
+                                    <div class="col-md-12">
+                                            <div class="form-group">
+                                              <label class="form-control-label" for="input-coladdress">Address</label>
+                                              <input id="input-coladdress" class="form-control form-control-alternative" readonly placeholder="College Address" value="{{ ud.coladdr }}" type="text">
+                                            </div>
+                                          </div>
+                          </div>
+                          </div>
+                          <!-- Description -->
+                          <!-- <h6 class="heading-small text-muted mb-4">About me</h6>
+                          <div class="pl-lg-4">
+                            <div class="form-group">
+                              <label>About Me</label>
+                              <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                            </div>
+                          </div> -->
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+        <!-- <div class="container-fluid mt--7">
+             -->
+        
+        
+        <!-- Loader -->
+        <!-- <div class="prc1" style="display:flex;flex-direction:column;justify-content:center;align-items:center;margin-top:100px;">
+        <h3>Collecting Data</h3>
+          <svg class="gegga" style="display:none;">
+          <defs>
+            <filter id="gegga">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+              <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 20 -10"
+                result="inreGegga"
+              />
+              <feComposite in="SourceGraphic" in2="inreGegga" operator="atop" />
+            </filter>
+          </defs>
+        </svg>
+    <svg class="snurra" width="200" height="200" viewBox="0 0 200 200">
+          <defs>
+            <linearGradient id="linjärGradient">
+              <stop class="stopp1" offset="0" />
+              <stop class="stopp2" offset="1" />
+            </linearGradient>
+            <linearGradient
+              y2="160"
+              x2="160"
+              y1="40"
+              x1="40"
+              gradientUnits="userSpaceOnUse"
+              id="gradient"
+              xlink:href="#linjärGradient"
+            />
+          </defs>
+          <path
+            class="halvan"
+            d="m 164,100 c 0,-35.346224 -28.65378,-64 -64,-64 -35.346224,0 -64,28.653776 -64,64 0,35.34622 28.653776,64 64,64 35.34622,0 64,-26.21502 64,-64 0,-37.784981 -26.92058,-64 -64,-64 -37.079421,0 -65.267479,26.922736 -64,64 1.267479,37.07726 26.703171,65.05317 64,64 37.29683,-1.05317 64,-64 64,-64"
+          />
+          <circle class="strecken" cx="100" cy="100" r="64" />
+        </svg>
+      </div> -->
+    <!-- <svg class="skugga" width="200" height="200" viewBox="0 0 200 200">
+          <path
+            class="halvan"
+            d="m 164,100 c 0,-35.346224 -28.65378,-64 -64,-64 -35.346224,0 -64,28.653776 -64,64 0,35.34622 28.653776,64 64,64 35.34622,0 64,-26.21502 64,-64 0,-37.784981 -26.92058,-64 -64,-64 -37.079421,0 -65.267479,26.922736 -64,64 1.267479,37.07726 26.703171,65.05317 64,64 37.29683,-1.05317 64,-64 64,-64"
+          />
+          <circle class="strecken" cx="100" cy="100" r="64" />
+        </svg> -->
+
+
+        <form style="display:none;" id="csrf">
+          {% csrf_token %}
+        </form>
+          
+      <!-- </div> -->
+      <!--   Core   -->
+      
+<!--[if IE 9]><script src="classList.min.js"></script><![endif]-->
+<!-- <script src="{% static 'simple-sidebar.min.js' %}"></script> -->
+      <script src="{% static 'assets/js/plugins/jquery/dist/jquery.min.js' %}"></script>
+      <script src="{% static 'assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+      <!--   Optional JS   -->
+      <script src="{% static 'assets/js/plugins/chart.js/dist/Chart.min.js' %}"></script>
+      <script src="{% static 'assets/js/plugins/chart.js/dist/Chart.extension.js' %}"></script>
+      <!--   Argon JS   -->
+      <script src="{% static 'assets/js/argon-dashboard.min.js' %}"></script>
+      <!-- <script src="https://cdn.trackjs.com/agent/v3/latest/t.js' %}"></script> -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script> -->
+
+</body>
+</html>

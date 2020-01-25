@@ -2,11 +2,13 @@ from django.shortcuts import render
 from django.http import JsonResponse,HttpResponse
 from .models import User
 from django.contrib import auth
-from django.utils import timezone
+# from django.utils import timezone
+from wasche.custom_settings import settings
 from django.middleware import csrf
 from django.template import RequestContext
 from application.views import send_mail_to_client
 from django.shortcuts import redirect
+from datetime import datetime
 # Create your views here.
 # from datetime import datetime
 from django.db.models.signals import pre_delete
@@ -19,8 +21,9 @@ import gzip
 import re
 from difflib import SequenceMatcher
 from pathlib import Path
-
-from django.conf import settings
+import pyqrcode
+from wasche.custom_settings import settings
+# from django.conf import settings
 from django.core.exceptions import (
     FieldDoesNotExist, ImproperlyConfigured, ValidationError,
 )
@@ -102,8 +105,44 @@ def user_login_page(request):
         return render(request,"user.html",{"data":False})
     else:
         return redirect("/dashboard")
-    
-    
+
+
+
+def profile(request):
+    from application.models import Plans
+    data=check_cookie(request)
+    if data==None:
+        return redirect("/u/")
+    else:
+        import json
+        # from contracts.models import Contracts
+        dd= json.loads(data)
+        u = User.objects.get(email=dd["e"])
+        ud = {}
+        ud["email"] = u.email
+        ud["fn"] = u.first_name
+        ud["ln"] = u.last_name
+        ud["pav"] = True
+        ud["pp"] = u.profile_image
+        if ud["pp"]=="No":
+            ud["pav"] = False
+
+        ud["fullname"] = u.first_name + " " + u.last_name
+        ud["addr"] = u.address
+        # c = Contracts.objects.get(contract_name=u.contract_name)
+        ud["col"] = u.contract_name.contract_name
+        ud["coladdr"] = u.contract_name.contract_address
+        p = Plans.objects.get(user = u)
+        if p.plan=="None":
+            ud["plan"] = "Currently you have no plan."
+        else:
+            ud["plan"] = p.plan + " Kit."
+        print(ud)
+        ud["tot"] = u.order_dashboard.total_orders
+        qr = u.qr_code_data
+        return render(request,"profile.html",{"data":data,"ud":ud,"qr_code":qr.decode('utf-8')})
+
+
 
 def login(request):
     email = request.POST["clientEmail"]
@@ -140,7 +179,7 @@ def login(request):
             if u.check_password(password):
                     # lo=u.first_name+"   "+u.email
                 print("enter")
-                u.last_login=timezone.now()
+                u.last_login=datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
                 u.save()
                 pr = Password_Reset.objects.filter(email=u)
                 if pr:
@@ -211,9 +250,19 @@ def register(request):
                 col=request.POST["college"]
                 con_u = Contracts.objects.get(contract_name = col)
                 coladd=request.POST['coladdress']
-                u=User.objects._create_user(email=email,password=password,first_name=fn,last_name=ln,gender=gender,address=addr,phone_number=phno,zip_code="500076",contract_name=con_u ,last_login=timezone.now())
                 
-                # u.last_login=timezone.now()
+                u=User.objects._create_user(email=email,password=password,first_name=fn,last_name=ln,gender=gender,address=addr,phone_number=phno,zip_code="500076",contract_name=con_u ,last_login=datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p"))
+                print("User created")
+                u = User.objects.get(email=email)
+                print("got user and changing")
+                qr = pyqrcode.create(json.dumps({"email":u.email,"first_name":u.first_name,"last_name":u.last_name,"gender":u.gender,"contract_name":u.contract_name.contract_name,"contract_address":u.contract_name.contract_address}))
+                dta = "data:image/png;base64," + qr.png_as_base64_str()
+                u.qr_code_data = bytes(dta,'utf-8')
+                u.save()
+                from user.models import Notifications
+                noti = Notifications(type_msg = "notify",email = u,sent_from = "Wasche",title = "Welcome!",msg = "Welcome "+u.first_name + ". We are happy to see you here. We hope you like our service. If you have any issues please send us a contact mail we will verify your response. Thank you.",seen = False)
+                noti.save()
+                # u.last_login=datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
                 # u.save()
             # response.delete_cookie("vote")
             # max_age = 24*60*365 # two weeks
@@ -221,10 +270,12 @@ def register(request):
                 
                 data['g']=True
                 response=HttpResponse(json.dumps(data))
+
                 response.set_cookie('wasche', {"e":email,"fn":fn,"ln":ln,"gender":gender},6307200)
                 return response
-            except:
-                print("Reg Error")
+            except Exception as exp:
+                print("Reg Error  ",exp)
+
                 data['c']=False
         
             
@@ -321,7 +372,7 @@ def check_resend_password(request):
                     data['e'] = up.first_name +" " + up.last_name
                     print(up.first_name +" " + up.last_name,data['e'])
 
-                    dif =  str(timezone.now() - i.date_sent)
+                    dif =  str(datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p") - i.date_sent)
                     print(dif)
                     dif = dif.split(":")
                     if not (int(dif[0]) >= 1 and int(dif[0])>0):
@@ -357,7 +408,7 @@ def confirm_reset_pswd(request):
                 for i in pr:
                     print(i)
                     print(i.email)
-                    dif =  str(timezone.now() - i.date_sent)
+                    dif =  str(datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p") - i.date_sent)
                     dif = dif.split(":")
                     if not (int(dif[0]) >= 1 and int(dif[0])>0):
                         print("still there")
@@ -392,7 +443,7 @@ import uuid
 def set_reset_pswd(request):
     email = request.POST['clientEmail']
     print(email)
-    d_s = timezone.now()
+    d_s = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
     import json
     data = {"c":True,"g":True,"s":False,"ef":False,"inem":False}
     
@@ -426,7 +477,7 @@ def set_reset_pswd(request):
             pr = Password_Reset(email=up,uuid_id=encoded_text)
             pr.save() 
                 # for i in pr:
-                #     dif =  str(timezone.now() - i.date_sent)
+                #     dif =  str(datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p") - i.date_sent)
                 #     dif = dif.split(":")
                 #     if int(dif[0]) >= 1 and int(dif[0])>0:
                 #         print("exceeded") 

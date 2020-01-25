@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["localhost","wasche-services.herokuapp.com"]
 INSTALLED_APPS = [
     # 'custom_user',
     # 'user.apps.UserConfig',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +45,8 @@ INSTALLED_APPS = [
     'user',
     'contracts',
     'dashboard',
+    'tracking_system',
+    'transactions',
 ]
 
 AUTH_USER_MODEL = "user.User"
@@ -84,8 +87,15 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'wasche.wsgi.application'
-
-
+ASGI_APPLICATION = 'wasche.routing.application_r'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('redis://:IeM7xj51r6twJkXjwhGpNoOuulqvyYH4@redis-15089.c9.us-east-1-2.ec2.cloud.redislabs.com:15089/0')],
+        },
+    },
+}
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -141,7 +151,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_PORT = 465
@@ -159,6 +169,9 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR,"assets")
 # STATICFILES_STORAGE = 'whitenoise.django.CompressedManifestStaticFilesStorage'
+# TIME_ZONE =  'Asia/Kolkata'
+# USE_I18N = True
 
+# USE_L10N = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

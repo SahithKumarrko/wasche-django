@@ -1,8 +1,11 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager ## A new class is imported. ##
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.utils import timezone
+# from django.utils import timezone
+from wasche.custom_settings import settings
 from contracts.models import Contracts
+from datetime import datetime
+import base64
 class UserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
 
@@ -48,12 +51,24 @@ class User(AbstractUser):
     gender     = models.CharField(max_length=8, blank=False)
     subscription_plan = models.CharField(max_length=4,default='off')
     news_letter_subscription = models.CharField(max_length=4,default='off')
-    profile_image = models.ImageField(upload_to='pics',blank=True)
+    # profile_image = models.ImageField(upload_to='pics',blank=True)
+    profile_image = models.CharField(max_length=254,default="No")
     USERNAME_FIELD = 'email'
+    qr_code_data = models.BinaryField()
+    
+    # def set_data(self,data):
+    #     self._qr_code_data = data
+    # def get_data(self,data):
+    #     return self._qr_code_data
+    # qr_code_data = property(get_data,set_data)
+
     REQUIRED_FIELDS = ['first_name', 'address', 'phone_number', 'zip_code','gender']
     
     objects = UserManager()
     
+    def __str__(self):
+        return self.email
+
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
@@ -62,7 +77,7 @@ class User(AbstractUser):
         return reverse('user_detail', kwargs={'pk': self.pk})
     # def get_full_name(self):
     # def save(self, *args, **kwargs):
-    #     # date = timezone.now()
+    #     # date = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
     #     # ood = Overflown_Orders_Data(email=self.email,overflown_data=self.ordered_dates)
     #     # ood.save()
     #     from dashboard.models import Order_DashBoard
@@ -93,21 +108,63 @@ class Password_Reset(models.Model):
     email       = models.ForeignKey(User,default=1, on_delete=models.CASCADE)
     uuid_id  = models.CharField(max_length=200,default="")
     date_sent = models.DateTimeField(editable=False)
-    
+    def __str__(self):
+        return self.email.email
+
     class Meta:
         verbose_name_plural = "Password Resets"
     def save(self, *args, **kwargs):
         if not self.id:
-            self.date_sent = timezone.now()
+            self.date_sent = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
         return super(Password_Reset,self).save(*args,**kwargs)
 
 class Removed_Users(models.Model):
     email       = models.EmailField()
     date_removed = models.DateTimeField(editable=False)
-    
+    def __str__(self):
+        return self.email
+
     class Meta:
         verbose_name_plural = "Removed Users"
     def save(self, *args, **kwargs):
         if not self.id:
-            self.date_removed = timezone.now()
+            self.date_removed = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
         return super(Removed_Users,self).save(*args,**kwargs)
+
+class OneSignal(models.Model):
+    email       = models.ForeignKey(User,default="wasche.services@gmail.com",on_delete=models.CASCADE)
+    pid = models.CharField(max_length=254,default="")
+    enabled = models.BooleanField(default=True)
+    type_os = models.CharField(max_length=254,default="")
+    date_created = models.DateTimeField(editable=False)
+    def __str__(self):
+        return self.email.email
+
+    class Meta:
+        verbose_name_plural = "Onesignal Data"
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.date_created = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
+        return super(OneSignal,self).save(*args,**kwargs)
+
+class Notifications(models.Model):
+    type_msg = models.CharField(max_length=254,default="notify")
+    email       = models.ForeignKey(User,default="wasche.services@gmail.com",on_delete=models.CASCADE)
+    sent_from = models.CharField(max_length=254,default="")
+    title = models.CharField(max_length=254,default="")
+    msg = models.CharField(max_length=1000,default="")
+    seen = models.BooleanField(default=False)
+   
+   
+    date_created = models.DateTimeField(editable=False)
+    # REQUIRED_FIELDS = ["email","sent_from","title","msg","seen"]
+    def __str__(self):
+        return "From : " + self.sent_from + " , to  :  " + self.email.email
+
+    class Meta:
+        verbose_name_plural = "Notifications"
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.date_created = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
+        return super(Notifications,self).save(*args,**kwargs)
+

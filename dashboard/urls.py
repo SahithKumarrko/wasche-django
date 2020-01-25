@@ -4,4 +4,6 @@ from dashboard import views
 urlpatterns = [
     path("",views.open_dashboard_page,name="dashboard"),
     path("ajax/get_data/",views.getdata,name="getdata"),
+    path("update/",views.update_data,name="getdata"),
+
 ]

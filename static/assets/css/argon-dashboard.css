@@ -3572,7 +3572,7 @@ input[type="button"].btn-block {
   background-clip: padding-box;
   border: 0 solid rgba(0, 0, 0, 0.15);
   border-radius: 0.4375rem;
-  box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1), 0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 50px 100px rgba(50, 50, 93, 0.2), 0 15px 35px rgba(50, 50, 93, 0.4), 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown-menu-right {
@@ -10685,6 +10685,8 @@ button.bg-darker:focus {
     padding-top: 1.5rem !important;
   }
 
+  
+
   .pr-md-4,
   .px-md-4 {
     padding-right: 1.5rem !important;
@@ -17234,6 +17236,7 @@ textarea[resize="horizontal"] {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
     padding-left: 1.5rem;
+    padding-top:5rem !important;
     padding-right: 1.5rem;
   }
 
@@ -17594,7 +17597,7 @@ textarea[resize="horizontal"] {
   }
 
   .navbar .dropdown-menu-right:before {
-    right: 20px;
+    right: 28px;
     left: auto;
   }
 

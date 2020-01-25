@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
 
-from .models import User,Password_Reset,Removed_Users
+from .models import User,Password_Reset,Removed_Users,OneSignal,Notifications
 
 @admin.register(User)
 class UserAdmin(DjangoUserAdmin):
@@ -30,3 +30,6 @@ class UserAdmin(DjangoUserAdmin):
 admin.site.register(Password_Reset)
 
 admin.site.register(Removed_Users)
+
+admin.site.register(OneSignal)
+admin.site.register(Notifications)

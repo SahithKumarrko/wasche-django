@@ -1,7 +1,9 @@
 from django.db import models
 from user.models import User
-from django.utils import timezone
+# from django.utils import timezone
 import json
+from datetime import datetime
+from wasche.custom_settings import settings
 # Create your models here.
 
 # class Overflown_Orders_Data(models.Model):
@@ -13,7 +15,7 @@ import json
 #         verbose_name_plural = "Overflown Orders Data"
 #     def save(self, *args, **kwargs):
 #         if not self.id:
-#             self.date_created = timezone.now()
+#             self.date_created = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
 #         return super(Overflown_Orders_Data,self).save(*args,**kwargs)
 
 
@@ -22,11 +24,14 @@ class Old_Orders(models.Model):
     data = models.CharField(max_length = 20100,default="")
     date_created = models.DateTimeField(editable=False)
     # years = models.CharField(max_length=20,default="")
+    def __str__(self):
+        return self.email.email
+
     class Meta:
         verbose_name_plural = "Old data of orders"
     def save(self, *args, **kwargs):
         if not self.id:
-            self.date_created = timezone.now()
+            self.date_created = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
         return super(Old_Orders,self).save(*args,**kwargs)
 
 class Order_DashBoard(models.Model):
@@ -35,7 +40,7 @@ class Order_DashBoard(models.Model):
     # monthly = models.CharField(max_length=254,default="")
     # current_month = models.CharField(max_length=254,default="")
     # month_weekly = models.CharField(max_length=1000,default="")
-    
+    total_orders = models.CharField(max_length=254,default="0")
     ordered_dates = models.CharField(max_length=20000,default="")
     # overflown_ordered_dates = models.CharField(max_length=21000,default="")
     overflown = models.BooleanField(default=False)
@@ -43,10 +48,13 @@ class Order_DashBoard(models.Model):
     years = models.CharField(max_length=150,default="")
     date_created = models.DateTimeField(editable = False)
     
+    def __str__(self):
+        return self.email.email
+
     class Meta:
         verbose_name_plural = "Order DashBoards"
     def save(self, *args, **kwargs):
-        date = timezone.now()
+        date = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
         # ood = Overflown_Orders_Data(email=self.email,overflown_data=self.ordered_dates)
         # ood.save()
             
@@ -65,13 +73,16 @@ class Order_DashBoard(models.Model):
             print("From order_dashboard in models : Initializing ordered_dates")
             y_m = str(date).split()[0].split("-")
             self.years = json.dumps([y_m[0]])
-            self.ordered_dates = json.dumps({y_m[0]:{y_m[1]:{}}})
+            if y_m[1][0]=='0':
+                y_m[1] = "".join(list(y_m[1])[1:])
+            self.ordered_dates = json.dumps({y_m[0]:{y_m[1][0]:{}}})
         
         return super(Order_DashBoard,self).save(*args,**kwargs)
     
     def process_ordered_dates(self,clothes_ordered,new_order=False,old_order=False):
-        date = timezone.now()
+        date = datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
         # from calendar import monthrange
+        d_t = date
         date_order = str(date).split()[1].split(".")[0]
         date = str(date).split()[0].split("-")
         cur = self.get_ordered_date()
@@ -79,7 +90,12 @@ class Order_DashBoard(models.Model):
         # if len(cur[ly].keys)==0:
         #     cur[ly]
         # noo = {}
-
+        self.total_orders = str( int(self.total_orders) + 1 )
+        if date[1][0]=='0':
+            date[1] = "".join(list(date[1])[1:])
+        if date[2][0]=='0':
+            date[2] = "".join(list(date[2])[1:])
+            
         if (int(date[0]) > int(ly)):
             print("year ended")
             old_data = Old_Orders(email=self.email,data=json.dumps(cur))
@@ -88,7 +104,7 @@ class Order_DashBoard(models.Model):
             a = a.append(date[0])
             self.years = json.dumps(a)
             del cur[ly]
-
+            
             cur[date[0]] = {date[1] : { date[2] : { date_order : clothes_ordered } } }
             # cur[date[0]][date[1]] = 
         elif len(cur[ly].keys())==0:
@@ -129,8 +145,26 @@ class Order_DashBoard(models.Model):
             self.ordered_dates=json.dumps({date[0]:{date[1]:{}}})
             self.overflown = True
             print("overflown")
-        
+        self.save()
+        return {"date":str(d_t).split()[0],"time":str(d_t).split()[1].split(".")[0]}
         # return {"year":ly,"orders":cur}
+    def update_dashboard(self,date,time,update_data):
+        date_order = time
+        date = date.split("-")
+        cur = self.get_ordered_date()
+        ly = list(cur.keys())[0]
+        lm = list(cur[ly].keys())[-1]
+        if date[2] in list(cur[ly][lm].keys()):
+            print("date found")
+            # if new_order:
+            #     cur[ly][lm][date[2]] = clothes_ordered
+            # if old_order:
+            cur[ly][lm][date[2]][date_order] = update_data
+            return "Modified"
+            self.ordered_dates = json.dumps(cur)
+            self.save()
+        else:
+            return "Problem Modifying data"
         # if len(cur[ly])==12:
         #     if len(cur)==31:
         #         print("year ended")
@@ -213,8 +247,9 @@ class Order_DashBoard(models.Model):
         # data["success"] = list(map(lambda x:x["success"],list(cur_data.values())
         # data["failed"] = list(map(lambda x:x["failed"],list(cur_data.values())
         data["success"] = []
+        data["order_data"] = cur_data
         data["failed"] = []
-        data["dates"].sort()
+        data["dates"].sort(reverse=True)
         for i in data["dates"]:
             d = cur_data[str(i)]
             if len(d)>1:

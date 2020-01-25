@@ -29995,7 +29995,7 @@ function MailingModuleInitialize() {
                         $form.find('button:submit').find('i').fadeIn();
                         $.ajax({
                             type: 'POST',
-                            url: './ajax/subscribe/',
+                            url: '/ajax/subscribe/',
                             data: $form.serialize(),
                             success: function(respondedMessage) {
                                 // var respondedMessage = tryParseJSON(respondedMessage);

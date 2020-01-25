@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from user.models import User
+from user.models import User,OneSignal,Notifications
 
 def send_mail_to_client(email,subject,text_msg,html_message):
     # from smtplib import SMTPException
@@ -29,12 +29,23 @@ def check_cookie(req):
             
             pi = User.objects.get(email=data['e'])
             try:
-                data['profile_image'] = pi.profile_image.url
+                data['profile_image'] = ""
+                if pi.profile_image!="No":
+                    data['profile_image'] = pi.profile_image
             # data=["ddd"]
             except:
                 print("no image")
                 data['profile_image'] = ""
             # data = json.dumps(data)
+            try:
+                data["pid"] = []
+                o = OneSignal.objects.filter(email = pi)
+                print(o)
+                for i in o:
+                    if i.enabled:
+                        data['pid'].append(i.type)
+            except:
+                print("no data")
             print(data)
             return json.dumps(data)
     except Exception as e:
@@ -48,8 +59,26 @@ def home(request):
     #     User.objects.filter(email="t@gmail.com").delete()
     # co = Contracts(contract_name="No College",contract_address="",contract_phone_number="",contract_zip_code="",contract_country="",contract_state="")
     # co.save()
-    print("GET\n",request.GET,"\n","POST\n",request.POST)
+    # try:
+    #     print("GET")
+    #     r = request.GET
+    #     for i in r:
+    #         print(i)
+    #     print("Post")
+        
+    #     r = request.POST
+    #     for i in r:
+    #         print(i)
+    #     print(len(request.GET))
+    #     print(request.POST["data"])
+    #     # print("requestGET : ",request.GET["got"])
+    #     # print("request POST : ",request.POST["got"])
+    # except Exception as e:
+    #     print("nothing : ",e)
+    # print(request)
+    # print("GET\n",request.GET,"\n","POST\n",request.POST)
     data=check_cookie(request)
+    
 
     if data==None:
         return render(request,"temp_index.html",{"data":False})
@@ -164,6 +193,7 @@ def contact_mail(request):
     except:
         data['sent']=False
     return HttpResponse(json.dumps(data))
+
 def onsignal(request):
     import requests
     import json
@@ -171,8 +201,8 @@ def onsignal(request):
     header = {"Content-Type": "application/json; charset=utf-8"}
 
     payload = {"app_id": "df0790ca-561e-44c3-8cb2-9d1b78bf0bab",
-            "include_player_ids": ["4ecbbf86-2427-467a-9d0b-b488c5d4e828"],
-            "contents": {"en": "working"},"headings":{"en":"Wasche"},"data":{"got":"soomething"},"content_available":True,"url":"localhost:8000"}
+            "include_player_ids": ["3cd0f7d8-08a5-4b95-ad85-5d4d60338da1"],
+            "contents": {"en": "working"},"headings":{"en":"Wasche"},"data":{"got":"soomething"},"url":"localhost:8000"}
     
     req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
     
@@ -192,3 +222,224 @@ def logout(request):
     response = HttpResponseRedirect("/u/")
     response.delete_cookie("wasche")
     return response
+
+def update_notification_setting(request):
+    import json
+    data = check_cookie(request)
+    res = {"s":True,"sd":False}
+    if data==None:
+        res["s"]=False
+        res["sd"]=True
+    else:
+        data = json.loads(data)
+        print(data,type(data))
+        u=None
+        i=""
+        no=None
+        try:
+            if request.POST["type"]=="0":
+                try:
+                    i = request.POST["pid"]
+                except:
+                    res["nf"] = True
+                    res["s"]=False
+                    return HttpResponse(json.dumps(res))
+                try:
+                    u = User.objects.get(email=data["e"])
+                except:
+                    res["ne"] = True
+                    res["s"]=False
+                    return HttpResponse(json.dumps(res))
+                try:
+                    o = OneSignal.objects.get(email=u,pid=i)
+                except:
+                    res["no"] = True
+                    res["s"]=False
+                    return HttpResponse(json.dumps(res))
+                try:
+                    o.enabled = False if o.enabled else True
+                    o.save()
+                except:
+                    res["f"] = True
+                    res["s"]=False
+                    return HttpResponse(json.dumps(res))
+            if request.POST["type"]=="2":
+                try:
+                    u = User.objects.get(email=data["e"])
+                except:
+                    res["ne"] = True
+                    res["s"]=False
+                    return HttpResponse(json.dumps(res))
+                try:
+                    o = OneSignal.objects.filter(email=u,pid=request.POST["pid"])
+                    if len(o)==0:
+                        o = OneSignal(email=u,pid=request.POST["pid"],type_os=request.POST["agent-type"])
+                        o.save()
+                    else:
+                        fou = False
+                        for i in o:
+                            if i.type == request.POST["agent-type"]:
+                                i.enabled = True
+                                fou = True
+                                i.save()
+                                
+                        if fou==False:
+                            o = OneSignal(email=u,pid=request.POST["pid"],type=request.POST["agent-type"])
+                            o.save()
+                            
+                except Exception as e:
+                    print(e)
+                    res["f"] = True
+                    res["s"]=False
+                    return HttpResponse(json.dumps(res))
+            if request.POST["type"]=="3":
+                try:
+                    i = request.POST["pid"]
+                except:
+                    res["nf"] = True
+                    res["s"]=False
+                    return HttpResponse(json.dumps(res))
+                try:
+                    u = User.objects.get(email=data["e"])
+                except:
+                    res["ne"] = True
+                    res["s"]=False
+                    return HttpResponse(json.dumps(res))
+                try:
+                    o = OneSignal.objects.get(email=u,pid=i)
+                except:
+                    res["no"] = True
+                    res["s"]=False
+                    return HttpResponse(json.dumps(res))
+                try:
+                    o.enabled = False
+                    o.save()
+                except:
+                    res["f"] = True
+                    res["s"]=False
+                    return HttpResponse(json.dumps(res))
+
+    
+            
+        except:
+            res["s"]=False
+            res["sp"]=False
+        return HttpResponse(json.dumps(res))
+
+def offline(request):
+    return render(request,"offline.html")
+
+def get_notifications(request):
+    import json
+    data = check_cookie(request)
+    
+    res = {"s":True}
+    if(data==None):
+        res["s"] = False
+        return HttpResponse(json.dumps(res))
+    else:
+        data = json.loads(data)
+        e = data["e"]
+        u=None
+        noti = None
+        try:
+            u = User.objects.get(email=e)
+        except:
+            res["s"] = False
+            res["e"] = True
+            return HttpResponse(json.dumps(res))
+        try:
+            # n = int(request.POST["n"])
+            n=10
+            f = int(request.POST["f"])
+            c = 1
+            res["data"] = []
+            noti = Notifications.objects.filter(email=u).order_by("-date_created")
+            print(noti)
+            for i in noti:
+                print(i.date_created)
+                if (c>=f and c<=n):
+                    print("addding")
+                    res["data"].append({"id":i.id,"type":i.type_msg,"from":i.sent_from,"title":i.title,"msg":i.msg,"date":str(i.date_created.strftime("%Y-%m-%d %H:%M:%S %p")),"seen":i.seen,"img_url":i.image_url})
+                else:
+                    break
+                c = c+1
+            return HttpResponse(json.dumps(res))
+        except:
+            res["s"] = False
+            res["err"] = True
+    return HttpResponse(json.dumps(res))
+
+
+def get_new_notifications(request):
+    import json
+    data = check_cookie(request)
+    data = json.loads(data)
+    res = {"s":True}
+    if(data==None):
+        res["s"] = False
+        return HttpResponse(json.dumps(res))
+    else:
+        e = data["e"]
+        u=None
+        noti = None
+        try:
+            u = User.objects.get(email=e)
+        except:
+            res["s"] = False
+            res["e"] = True
+            return HttpResponse(json.dumps(res))
+        try:
+            d = request.POST["date"]
+            res["data"] = []
+            c=0
+            noti = Notifications.objects.filter(email=u).order_by("-date_created")
+            for i,j in enumerate(noti):
+                k = str(j.date_created.strftime("%Y-%m-%d %H:%M:%S %p"))
+                print(d)
+                if k != d and c==i:
+                    res["data"].append({"id":i.id,"type":i.type_msg,"from":j.sent_from,"title":j.title,"msg":j.msg,"date":str(j.date_created.strftime("%Y-%m-%d %H:%M:%S %p")),"seen":j.seen,"img_url":j.image_url})
+                else:
+                    break
+            return HttpResponse(json.dumps(res))
+        except Exception as e:
+            print(e)
+            res["s"] = False
+            res["err"] = True
+    return HttpResponse(json.dumps(res))
+
+
+def update_notifications(request):
+    import json
+    data = check_cookie(request)
+    data = json.loads(data)
+    res = {"s":True}
+    if(data==None):
+        res["s"] = False
+        return HttpResponse(json.dumps(res))
+    else:
+        e = request.POST["id"]
+        noti = None
+        try:
+            noti = Notifications.objects.filter(id=int(e))
+            if len(noti)==1:
+                for i in noti:
+                    if i.seen==False:
+                        i.seen=True
+                        i.save()
+            elif len(noti)>1:
+                res["mn"]=True
+                res["s"]=False
+            else:
+                res["nf"]=True
+                res["s"]=False
+                    
+        except Exception as e:
+            print(e)
+            res["s"] = False
+            res["err"] = True
+    return HttpResponse(json.dumps(res))
+
+
+
+

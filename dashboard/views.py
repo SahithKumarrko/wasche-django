@@ -3,21 +3,24 @@ from application.views import check_cookie
 # Create your views here.
 from user.models import User
 from dashboard.models import Old_Orders
-from django.utils import timezone
+# from django.utils import timezone
 from django.http import HttpResponse
+from wasche.custom_settings import settings
 import json
+from datetime import datetime
 
-import json
 def open_dashboard_page(request):
+    print(request.POST)
     data = check_cookie(request)
     print("dash",data)
     if data==None:
         return redirect("/u/")
     else:
         # try:
+        from application.models import Plans
         data = json.loads(data)
         print(type(data))
-        u = User.objects.get(email="s@g.com")
+        u = User.objects.get(email=data["e"])
         # print("got and saving")
     # u.order_dashboard.process_ordered_dates({"shirts":3,"pants":4,"s":3,"c":4,"f":1,"t":3})
     # u.order_dashboard.save()
@@ -25,7 +28,7 @@ def open_dashboard_page(request):
         year = u.order_dashboard.get_years()
 
         month = u.order_dashboard.get_starting_month()
-        d = str(timezone.now())
+        d = str(datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p"))
         y = d.split()[0].split("-")[0]
         d = d.split()[0].split("-")[1]
         month = [ month, int(d) ]
@@ -59,7 +62,40 @@ def open_dashboard_page(request):
     # da = {"data":{"months":months,"years":years,"month_data":orders_month,"completion_data":orders_completion}}
     # print(da)
     # da = json.dumps(da)
-        return render(request,"dash.html",{"data":json.dumps(data),"ud":json.dumps({"y":year,"m":month})})
+        pdata = {"notify":False,"cavailable":False}
+        try:
+            
+            p = Plans.objects.get(user=u)
+            print(datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p"))
+            diff = p.end_date - datetime.strptime(datetime.now(tz=settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
+            pdata["diff"] = str(diff)
+            pdata["cavailable"] = True
+            pdata["c"] = p.extra_amount
+            if diff.seconds==0:
+                pdata["over"] = True
+                
+            else:
+                # if diff.hours>=12:
+                #     pdata["diff"] = pdata["diff"] + " PM"
+                # else:
+                #     pdata["diff"] = pdata["diff"] + " AM"
+
+                pdata["over"] = False
+                
+            if p.notified==True:
+                pdata["notify"] = True
+                p.notified = False
+                p.save()
+            print("over")
+        except:
+            pdata["over"] = True
+        if pdata["over"]==True:
+            pdata["plans"] = []
+            from wasche.custom_settings import settings as sett
+            for i in sett.plan.keys():
+                pdata["plans"].append((i,sett.plan[i]))
+        print(pdata)
+        return render(request,"dash.html",{"data":json.dumps(data),"ud":json.dumps({"y":year,"m":month}),"pdata":pdata})
     
 
 
@@ -78,3 +114,47 @@ def getdata(request):
         print(e)
         return HttpResponse(json.dumps({"s":False}))
     return HttpResponse(json.dumps(data))
+
+from django.views.decorators.csrf import csrf_exempt
+import requests
+from user.models import Notifications
+
+def onsignal(msg,u):
+    from user.models import OneSignal
+    ons = OneSignal.objects.filter(email = u)
+    pid = []
+    for i in ons:
+        pid.append(i.pid)
+    
+    header = {"Content-Type": "application/json; charset=utf-8"}
+
+    payload = {"app_id": "df0790ca-561e-44c3-8cb2-9d1b78bf0bab",
+            "include_player_ids": pid,
+            "contents": {"en": msg},"headings":{"en":"Wasche"},"data":{"got":"soomething"},"url":"localhost:8000"}
+    
+    req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
+    
+    print(req.status_code, req.reason)
+    print(req)
+    return "Complete"
+
+@csrf_exempt
+def update_data(request):
+    data = request.POST["data"]
+    user = request.POST["cred"]
+    u = User.objects.get(email=user["email"])
+    if data["p"]==True:
+        dd = u.order_dashboard.process_ordered_dates(data)
+        
+        noti = Notifications(type_msg = "tracking",email = u,sent_from = "Admin",title = "Recieve of order",msg="Your order has been recieved at our warehouse. You can track the order details in tracking page.",seen=False)
+        noti.save()
+        onsignal("Your order has been recieved at our warehouse. You can track the order details in tracking page.",u)
+        return HttpResponse(json.dumps(dd))
+    else:
+        dd = u.order_dashboard.update_dashboard(request.POST["date"],request.POST["time"],data)
+        noti = Notifications(type_msg = "tracking",email = u,sent_from = "Admin",title = "Completed Processing Your Order",msg="Your order has been processed. You can track the order details in tracking page.",seen=False)
+        
+        onsignal("Your order has been completed processing. You can track the order details in tracking page.",u)
+        
+        return "Success"
+    return "Error"

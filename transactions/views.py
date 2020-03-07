@@ -47,7 +47,8 @@ def check_transaction(request):
             p.notified = True
             p.date_created = datetime.strptime(datetime.now(tz=cust_set.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
             p.end_date = p.date_created + timedelta(minutes=+44640)
-
+            p.regular_count = 0
+            p.other_count = 0
             p.current_order_id = postData["oid"]
             p.save()
             print(p.date_created,p.end_date)
@@ -142,7 +143,7 @@ def start_transaction(request):
             "nurl":"http://localhost:8000/b/check_status/"
             
         }
-        # print(postData)
+        print(postData)
         # sortedKeys = sorted(postData.keys())
         # print(sortedKeys)
         # signatureData = ""

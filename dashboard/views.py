@@ -9,6 +9,7 @@ from wasche.custom_settings import settings
 import json
 from datetime import datetime
 
+
 def open_dashboard_page(request):
     print(request.POST)
     data = check_cookie(request)
@@ -62,6 +63,7 @@ def open_dashboard_page(request):
     # da = {"data":{"months":months,"years":years,"month_data":orders_month,"completion_data":orders_completion}}
     # print(da)
     # da = json.dumps(da)
+
         pdata = {"notify":False,"cavailable":False}
         try:
             
@@ -71,9 +73,10 @@ def open_dashboard_page(request):
             pdata["diff"] = str(diff)
             pdata["cavailable"] = True
             pdata["c"] = p.extra_amount
-            if diff.seconds==0:
+            if diff.seconds==0 or diff.days<0:
                 pdata["over"] = True
-                
+                p.plan = "None"
+                p.save()
             else:
                 # if diff.hours>=12:
                 #     pdata["diff"] = pdata["diff"] + " PM"
@@ -95,7 +98,10 @@ def open_dashboard_page(request):
             for i in sett.plan.keys():
                 pdata["plans"].append((i,sett.plan[i]))
         print(pdata)
-        return render(request,"dash.html",{"data":json.dumps(data),"ud":json.dumps({"y":year,"m":month}),"pdata":pdata})
+        rtc = 0
+        if u.plans.plan!="None":
+            rtc = settings.regular_count[u.plans.plan]
+        return render(request,"dash.html",{"data":json.dumps(data),"ud":json.dumps({"y":year,"m":month}),"pdata":pdata,"rcount":u.plans.regular_count,"ocount":u.plans.other_count,"rtcount":rtc,"otcount":settings.other_count})
     
 
 
@@ -108,7 +114,18 @@ def getdata(request):
         u = User.objects.get(email = email)
         d = {}
         d = u.order_dashboard.get_month_data(m,y)
-        print(d)
+        try:
+            if "order_data" in d:
+                xx = d["order_data"]
+                for i in xx.keys():
+
+                    x = xx[i]
+                    x = {k: v for k, v in sorted(x.items(), key=lambda item: item[0],reverse=True)}
+                    print("\n\nNew : \n\n",x)
+                    d["order_data"][i] = x
+        except:
+            print("error")
+               
         data["data"] = d
     except Exception as e:
         print(e)
@@ -140,21 +157,68 @@ def onsignal(msg,u):
 
 @csrf_exempt
 def update_data(request):
-    data = request.POST["data"]
-    user = request.POST["cred"]
+    print(request.POST)
+    ddd = json.loads(request.POST["user"])
+    print(ddd)
+    data = ddd["data"]
+    user = ddd["cred"]
     u = User.objects.get(email=user["email"])
-    if data["p"]==True:
-        dd = u.order_dashboard.process_ordered_dates(data)
+    from tracking_system.models import Tracker
+    try:
+        u.order_dashboard.update_dashboard(ddd["date"],ddd["time"],data)
+        t = Tracker.objects.filter(track_id = u,date = ddd["date"],time=ddd["time"])
+        dat = {}
+        dat["data"] = data
+        dat["type"] = ddd["type"]
+        print(len(t))
+        for ii in t:
+            ii.update_operation(dat)
+            ii.save()
+        noti = Notifications(type_msg = "tracking",email = u,sent_from = "Admin",title = ddd["title"],msg=ddd["msg"],seen=False)
+        noti.save()
+        # onsignal("Your order has been recieved at our warehouse. You can track the order details in tracking page.",u)
+        onsignal(ddd["msg"],u)
+        return HttpResponse("Success")
+    except Exception as exp:
+        print(exp)
         
+        # dd = u.order_dashboard.update_dashboard(request.POST["date"],request.POST["time"],data)
+        # noti = Notifications(type_msg = "tracking",email = u,sent_from = "Admin",title = "Completed Processing Your Order",msg="Your order has been processed. You can track the order details in tracking page.",seen=False)
+        # noti.save()
+        # onsignal("Your order has been completed processing. You can track the order details in tracking page.",u)
+        
+        # return "Success"
+    return HttpResponse("Error")
+
+@csrf_exempt
+def update_data_new(request):
+    print(request.POST)
+    ddd = json.loads(request.POST["user"])
+    print(ddd)
+    data = ddd["data"]
+    user = ddd["cred"]
+    u = User.objects.get(email=user["email"])
+    from tracking_system.models import Tracker
+    try:
+        dd = u.order_dashboard.process_ordered_dates(data)
+        print(dd)
+        # t = Tracker(track_id = u,date = dd["date"],time=dd["time"])
+        # dat = data
+        # dat["type"] = request.POST["type"]
+        # t.update_operation(dat)
+        # t.save()
         noti = Notifications(type_msg = "tracking",email = u,sent_from = "Admin",title = "Recieve of order",msg="Your order has been recieved at our warehouse. You can track the order details in tracking page.",seen=False)
         noti.save()
+        # onsignal("Your order has been recieved at our warehouse. You can track the order details in tracking page.",u)
         onsignal("Your order has been recieved at our warehouse. You can track the order details in tracking page.",u)
         return HttpResponse(json.dumps(dd))
-    else:
-        dd = u.order_dashboard.update_dashboard(request.POST["date"],request.POST["time"],data)
-        noti = Notifications(type_msg = "tracking",email = u,sent_from = "Admin",title = "Completed Processing Your Order",msg="Your order has been processed. You can track the order details in tracking page.",seen=False)
+    except Exception as exp:
+        print(exp)
         
-        onsignal("Your order has been completed processing. You can track the order details in tracking page.",u)
+        # dd = u.order_dashboard.update_dashboard(request.POST["date"],request.POST["time"],data)
+        # noti = Notifications(type_msg = "tracking",email = u,sent_from = "Admin",title = "Completed Processing Your Order",msg="Your order has been processed. You can track the order details in tracking page.",seen=False)
+        # noti.save()
+        # onsignal("Your order has been completed processing. You can track the order details in tracking page.",u)
         
-        return "Success"
-    return "Error"
+        # return "Success"
+    return HttpResponse("Error")

@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detector</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        form{
+            width: 100%;
+            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 30px;
+        }
+        div{
+            display: block;
+            width: 350px;
+            margin:auto;
+            margin-top:40px;
+        }
+        #image{
+            display: none;
+        }
+        input[type=submit]{
+            background: #00B6FF;
+            outline: none;
+            border: 1px solid #00B6FF;
+            border-radius: 5px;
+            box-shadow: 0 5px 14px rgba(0,0,255,0.3);
+            padding: 15px;
+            font-family: cursive;
+            font-size: 22px;
+            display: block;
+            cursor: pointer;
+
+        }
+        #output{
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 40px;
+            display: none;
+        }
+        #output span{
+            color:#00B6FF;
+        }
+    </style>
+</head>
+<body>
+    <form id="image_upload" method="post" enctype="multipart/form-data" novalidate="">
+        {% csrf_token %}
+        <input type="file" name="image" id="image">
+        <input type="submit" value="Detect">
+    </form>
+    <div class="img-show">
+        <img style="width:350px;" src="">
+    </div>
+    <h2 id="output">sdsdsd - <span>23.23%</span></h2>
+    <script src="/static/assets/js/plugins/jquery/dist/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#image_upload").on("submit",function(e){
+                e.preventDefault();
+                $("input[type=submit]").prop("disabled",true);
+                $("#image").trigger("click");
+                
+            });
+        $("#image").on("change",function(e){
+            console.log($("#image").val());
+            if($("#image").val()!=""){
+                var fn = $("#image").val();
+                fn = fn.toLowerCase();
+                if(fn.endsWith("png") || fn.endsWith("jpg") || fn.endsWith("jpeg")){
+                    $("input[type=submit]").val("Detecting...");
+                    get_result();
+                }
+                else{
+                    $("input[type=submit]").prop("disabled",false);
+
+                    alert("Invalid File\nPlease upload only images.");
+                }
+            }
+        });
+        function get_result(){
+            var fd = new FormData($("#image_upload").get(0));
+            //fd.append("csrfmiddlewaretoken",$("input[name=csrfmiddlewaretoken]").val());
+            $.ajax({
+                type: "POST",
+                url: 'http://localhost:8000/upload_detect/',
+                data: fd,
+                async: true,
+                contentType: false,
+                cache:false,
+                enctype: 'multipart/form-data',
+                processData: false,
+                success: function( response ) {
+                    console.log(response);
+                    var response = $.parseJSON(response);
+                    $("#output").show();
+                    $(".img-show img").attr("src","/media/"+response.path);
+                    if(response.c == "Not Detected"){
+                        $("#output").html(response.c);
+                    }else{
+                        $("#output").html(response.c + "  -  <span>" + response.a + "</span>");
+                    }
+                    $("input[type=submit]").val("Detect");                    
+                    $("input[type=submit]").prop("disabled",false);
+                    
+                },
+                error:function (jqXHR, exception) {
+                            var msg = '';
+                            if (jqXHR.status === 0) {
+                                msg = 'Not connected.\n Verify Network.';
+                            } else if (jqXHR.status == 404) {
+                                msg = 'Requested page not found. [404]';
+                            } else if (jqXHR.status == 500) {
+                                msg = 'Internal Server Error [500].';
+                            } else if (exception === 'parsererror') {
+                                msg = 'Requested JSON parse failed.';
+                            } else if (exception === 'timeout') {
+                                msg = 'Time out error.';
+                            } else if (exception === 'abort') {
+                                msg = 'Ajax request aborted.';
+                            } else {
+                                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                            }
+                            console.log(msg);
+                       alert(msg);
+                    $("input[type=submit]").val("Detect");
+
+                    $("input[type=submit]").prop("disabled",false);
+
+                }
+                    
+            });
+        }
+        });
+    </script>
+</body>
+</html>

@@ -1,8 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html dir="ltr" lang="en" class=" inside_page inside_page_header_design s_layout1">
-<!-- Mirrored from 5d9844d886969.site123.me/about by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Oct 2019 11:39:03 GMT -->
-<!-- Added by HTTrack -->
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head><meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +28,7 @@
 		<!-- bootstrap.min css -->
         <!-- <link rel="stylesheet" href="{% static 'plugins/bootstrap/dist/css/bootstrap.min.css' %}"> -->
 		<!-- Animate.css' %} -->
-		<script data-ad-client="ca-pub-1884752906231318" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- <script data-ad-client="ca-pub-1884752906231318" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
 
 		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 	
@@ -410,7 +409,7 @@ body {
 <p class="mob-email" style="margin: auto;width: 100%;overflow: hidden;color:#737f8a;font-size: 18px;display: block;white-space: nowrap;text-overflow: ellipsis;padding: 0;"></p>
 </div>
 <ul class="mob-menu-ul" style="list-style: none;display: flex;flex-wrap: wrap;justify-content: center;align-items: center;">
-<li style="width: 100%;text-align: center;margin-top: 5px;"><a style="font-size: 18px !important;color:#353b43 !important" href="#" onclick="window.location.href='/profile';return false;">Profile</a></li>
+<li style="width: 100%;text-align: center;margin-top: 5px;"><a style="font-size: 18px !important;color:#353b43 !important" href="#" onclick="window.location.href='/u/profile';return false;">Profile</a></li>
 <li style="width: 100%;text-align: center;"><a style="font-size: 18px !important;color:#353b43 !important" href="#" onclick="window.location.href='/dashboard';return false;">My Dashboard</a></li>
 <li style="width: 100%;text-align: center;"><a style="font-size: 18px !important;color:#353b43 !important" class="top-logout-btn" href="#" onclick="return false;">Logout</a></li>
 </ul>
@@ -505,7 +504,7 @@ body {
 <p class="mob-email" style="margin: auto;width: 100%;overflow: hidden;color:#737f8a;font-size: 18px;display: block;white-space: nowrap;text-overflow: ellipsis;padding: 0;"></p>
 </div>
 <ul class="mob-menu-ul" style="list-style: none;display: flex;flex-wrap: wrap;justify-content: center;align-items: center;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
-<li style="width: 100%;text-align: center;margin-top: 5px;"><a style="font-size: 18px !important;color:#353b43 !important" href="/profile">Profile</a></li>
+<li style="width: 100%;text-align: center;margin-top: 5px;"><a style="font-size: 18px !important;color:#353b43 !important" href="/u/profile">Profile</a></li>
 <li style="width: 100%;text-align: center;"><a style="font-size: 18px !important;color:#353b43 !important" href="/dashboard">My Dashboard</a></li>
 <li style="width: 100%;text-align: center;"><a style="font-size: 18px !important;color:#353b43 !important" class="top-logout-btn" href="#" onclick="return false;">Logout</a></li>
 </ul>
@@ -585,65 +584,35 @@ body {
 					
 					<div style="display:flex;align-items:center;justify-content:space-evenly;flex-wrap:wrap;">
 					<!-- single pricing table -->
+					{% for i in pdata.plans %}
 					<div style="box-shadow: 0 10px 20px rgba(0,0,0,0.5);width:294px !important;margin-bottom:20px;" class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="400ms">
 						<div class="price-item">
 						
 							<!-- plan name & value -->
 							<div class="price-title">
-								<h3>Silver</h3>
-								<p><strong class="value">Rs.849</strong/>/ month</p>
+								<h3>{{i.0}}</h3>
+								<p><strong class="value">Rs.{{i.1.cost}}</strong/>/ month</p>
 							</div>
 							<!-- /plan name & value -->
 							
 							<!-- plan description -->
 							<ul>
-								<li>dsadsadsad</li>
-								<li>-----</li>
-								<li>-----</li>
-								<li>-----</li>
-								<li>-----</li>
-								<li>------t</li>
+								{% for j in i.1.details %}
+								<li>{{j}}</li>
+								{% endfor %}
 							</ul>
 							<!-- /plan description -->
 							
 							<!-- signup button -->
-							<a  style="padding-right: 22px;padding-left: 22px;box-shadow: 0 5px 12px rgba(0,0,0,0.4);" class="btn btn-transparent" href="#">Signup</a>
+							<a  style="padding-right: 22px;padding-left: 22px;box-shadow: 0 5px 12px rgba(0,0,0,0.4);" class="btn btn-transparent" href="/u/">Signup</a>
 							<!-- /signup button -->
 							
 						</div>
 					</div>
+					{% endfor %}
 					<!-- end single pricing table -->
 					
-					<!-- single pricing table -->
-					<div style="box-shadow: 0 10px 20px rgba(0,0,0,0.5);width:294px !important;margin-bottom:20px;" class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="600ms">
-						<div class="price-item">
-							
-							<!-- plan name & value -->
-							<div class="price-title">
-								<h3>Gold</h3>
-								<p><strong class="value">Rs.1200</strong/>/ month</p>
-							</div>
-							<!-- /plan name & value -->
-							
-							<!-- plan description -->
-							<ul>
-								<li>-----</li>
-								<li>-----</li>
-								<li>-----</li>
-								<li>-------</li>
-								<li>------</li>
-								<li>------</li>
-							</ul>
-							<!-- /plan description -->
-							
-							<!-- signup button -->
-							<a style="padding-right: 22px;padding-left: 22px;box-shadow: 0 5px 12px rgba(0,0,0,0.4);" class="btn btn-transparent" href="#">Signup</a>
-							<!-- /signup button -->
-							
-						</div>
-					</div>
-					<!-- end single pricing table -->
-					
+
 					<!-- single pricing table -->
 					<!-- <div style="box-shadow: 0 10px 20px rgba(0,0,0,0.5);width:294px !important;margin-bottom:20px;" class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="750ms">
 						<div class="price-item">
@@ -774,8 +743,7 @@ body {
 			
 			<!-- Contact Details -->
 			<div class="contact-info col-md-6 wow fadeInUp" data-wow-duration="500ms">
-				<h3>Contact Details</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, vero, provident, eum eligendi blanditiis ex explicabo vitae nostrum facilis asperiores dolorem illo officiis ratione vel fugiat dicta laboriosam labore adipisci.</p>
+				<h3 style="padding-bottom:20px;">Contact Details</h3>
 				<div class="contact-details">
 					<div class="con-info clearfix">
 						<i class="tf-map-pin"></i>
@@ -1063,5 +1031,4 @@ body {
 		
 
 </body>
-<!-- Mirrored from 5d9844d886969.site123.me/about by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Oct 2019 11:39:03 GMT -->
 </html>

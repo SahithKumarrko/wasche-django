@@ -47,6 +47,8 @@ class Plans(models.Model):
     eligibility = models.CharField(max_length = 400,default = "")
     notified = models.BooleanField(default = False)
     current_order_id = models.CharField(max_length=254,default="")
+    regular_count = models.IntegerField(default=0)
+    other_count = models.IntegerField(default=0)
     class Meta:
         verbose_name_plural = "Plans"
     def __str__(self):

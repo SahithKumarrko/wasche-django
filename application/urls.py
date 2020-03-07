@@ -22,4 +22,5 @@ urlpatterns = [
     path("ajax/send_contact_mail/",views.contact_mail,name="contact_mail"),
     path("contact/",views.contact,name="contact"),
     path("ajax/logout/",views.logout,name="logout"),
+    path("api/notify_initial/",views.notify_user,name="notify_user"),
 ]

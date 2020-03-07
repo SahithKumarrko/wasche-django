@@ -123,6 +123,8 @@ def profile(request):
         ud["fn"] = u.first_name
         ud["ln"] = u.last_name
         ud["pav"] = True
+        ud["phno"] = u.phone_number
+        ud["gender"] = u.gender
         ud["pp"] = u.profile_image
         if ud["pp"]=="No":
             ud["pav"] = False

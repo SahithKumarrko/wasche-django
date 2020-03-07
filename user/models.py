@@ -155,7 +155,7 @@ class Notifications(models.Model):
     msg = models.CharField(max_length=1000,default="")
     seen = models.BooleanField(default=False)
    
-   
+    image_url = models.CharField(max_length=254,default="No")
     date_created = models.DateTimeField(editable=False)
     # REQUIRED_FIELDS = ["email","sent_from","title","msg","seen"]
     def __str__(self):

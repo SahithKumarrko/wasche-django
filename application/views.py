@@ -78,12 +78,15 @@ def home(request):
     # print(request)
     # print("GET\n",request.GET,"\n","POST\n",request.POST)
     data=check_cookie(request)
-    
-
+    pdata= {"plans":[]}
+    from wasche.custom_settings import settings as sett
+    for i in sett.plan.keys():
+        pdata["plans"].append((i,sett.plan[i]))
+    # print(pdata)
     if data==None:
-        return render(request,"temp_index.html",{"data":False})
+        return render(request,"temp_index.html",{"data":False,"pdata":pdata})
     else:
-        return render(request,"temp_index.html",{"data":data})
+        return render(request,"temp_index.html",{"data":data,"pdata":pdata})
     
     # return render(request,"temp_index.html")
 
@@ -98,10 +101,15 @@ def about(request):
 
 def services(request):
     data=check_cookie(request)
+    pdata= {"plans":[]}
+    from wasche.custom_settings import settings as sett
+    for i in sett.plan.keys():
+        pdata["plans"].append((i,sett.plan[i]))
+    # print(pdata)
     if data==None:
-        return render(request,"temp_service.html",{"data":False})
+        return render(request,"temp_service.html",{"data":False,"pdata":pdata})
     else:
-        return render(request,"temp_service.html",{"data":data})
+        return render(request,"temp_service.html",{"data":data,"pdata":pdata})
     
     # return render(request,"temp_service.html")
 
@@ -365,7 +373,8 @@ def get_notifications(request):
                     break
                 c = c+1
             return HttpResponse(json.dumps(res))
-        except:
+        except Exception as exp:
+            print(exp)
             res["s"] = False
             res["err"] = True
     return HttpResponse(json.dumps(res))
@@ -440,6 +449,56 @@ def update_notifications(request):
             res["err"] = True
     return HttpResponse(json.dumps(res))
 
+
+from user.models import Notifications
+from dashboard.views import onsignal
+from delivery_executives.models import Deliver_Executive,ongoing_delivery
+from django.views.decorators.csrf import csrf_exempt
+import threading
+import json
+
+def thread_task(data):
+    print(data)
+    # data = data[0]
+    try:
+        for i in data["u"]:
+            if i.plans.plan != "None":
+                noti = Notifications(type_msg = "notify",email = i,sent_from = "Admin",title = data["title"],msg=data["msg"],seen=False)
+                noti.save()
+                onsignal(data["msg"],i)
+        return HttpResponse("Success")
+    except Exception as exp:
+        print(exp)
+
+
+@csrf_exempt
+def notify_user(request):
+    print(request.POST)
+    ddd = json.loads(request.POST["data"])
+    data = ddd
+    print(ddd)
+    try:
+        de = Deliver_Executive.objects.get(id=int(data["id"]),name = data["name"])
+        cn = de.contract_name
+        print(cn)
+        u = User.objects.filter(contract_name = cn)
+        print(u)
+        if data["type"] == "initial":
+            o = ongoing_delivery(name = de,on_going = "initialized")
+            o.save()
+        if data["type"] == "finish":
+            o = ongoing_delivery.objects.get(name = de)
+            o.on_going = "delivering"
+            o.save()
+        
+        data["u"] = u
+        t = threading.Thread(target=thread_task,args=[data])
+        t.setDaemon(True)
+        t.start()
+    except Exception as exp:
+        print(exp)
+        return HttpResponse("Error")
+    return HttpResponse("Success")
 
 
 

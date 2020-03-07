@@ -44,10 +44,11 @@ class Order_DashBoard(models.Model):
     ordered_dates = models.CharField(max_length=20000,default="")
     # overflown_ordered_dates = models.CharField(max_length=21000,default="")
     overflown = models.BooleanField(default=False)
+    recent_date = models.CharField(max_length=24,default="")
+    recent_time = models.CharField(max_length=24,default="")
     # current_date = models.DateTimeField()
     years = models.CharField(max_length=150,default="")
     date_created = models.DateTimeField(editable = False)
-    
     def __str__(self):
         return self.email.email
 
@@ -145,8 +146,15 @@ class Order_DashBoard(models.Model):
             self.ordered_dates=json.dumps({date[0]:{date[1]:{}}})
             self.overflown = True
             print("overflown")
+        
+        dat = {"date":str(d_t).split()[0],"time":str(d_t).split()[1].split(".")[0]}
+        self.recent_date = dat["date"]
+        self.recent_time = dat["time"]
         self.save()
-        return {"date":str(d_t).split()[0],"time":str(d_t).split()[1].split(".")[0]}
+        from tracking_system.models import Tracker
+        t = Tracker(track_id = self.email,date = self.recent_date,time = self.recent_time,created_date = d_t)
+        t.save()
+        return dat
         # return {"year":ly,"orders":cur}
     def update_dashboard(self,date,time,update_data):
         date_order = time
@@ -156,13 +164,34 @@ class Order_DashBoard(models.Model):
         lm = list(cur[ly].keys())[-1]
         if date[2] in list(cur[ly][lm].keys()):
             print("date found")
+            # from application.models import Plans
             # if new_order:
             #     cur[ly][lm][date[2]] = clothes_ordered
             # if old_order:
+            categ = ["Inner Wear","Upper Wear","Lower Wear","Other"]
             cur[ly][lm][date[2]][date_order] = update_data
-            return "Modified"
+            tot = 0
+            for i in update_data.keys():
+                if i in categ:
+                    tot = tot + int(update_data[i])
+            if self.email.plans.plan != "None":
+                
+                rem = settings.regular_count[self.email.plans.plan] - (self.email.plans.regular_count + tot)
+                print(tot,rem)
+                if rem<0:
+                    tot = tot - abs(rem)
+                    self.email.plans.other_count = self.email.plans.other_count + rem
+
+                self.email.plans.regular_count = self.email.plans.regular_count + tot
+                self.email.plans.save()
+            else:
+                self.email.plans.other_count = self.email.plans.other_count + tot
+                self.email.plans.save()
+
             self.ordered_dates = json.dumps(cur)
+
             self.save()
+            return "Modified"
         else:
             return "Problem Modifying data"
         # if len(cur[ly])==12:
@@ -248,8 +277,10 @@ class Order_DashBoard(models.Model):
         # data["failed"] = list(map(lambda x:x["failed"],list(cur_data.values())
         data["success"] = []
         data["order_data"] = cur_data
+        print(data["dates"])
         data["failed"] = []
         data["dates"].sort(reverse=True)
+        
         for i in data["dates"]:
             d = cur_data[str(i)]
             if len(d)>1:

@@ -1,0 +1,846 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        .process{
+            width:100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #process11{
+            position:relative;
+            width: 100%;
+            height: 100%;
+        }
+        #gate{
+            width:5px;
+            height: 100px;
+            background-color: rgba(0,0,0,0.8);
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 45%;
+        }
+        #gate::after{
+            content: '';
+            width: 40px;
+            height: 5px;
+            background-color: rgba(0,0,0,0.8);
+            position: absolute;
+            bottom: 0;
+            left: -18px;
+        }
+        .container.vanish{
+            transition: all 2s;
+            opacity: 0 !important;
+        }
+        .container.vanish2{
+            transition: all 2s !important;
+            transform: translateX(200%) !important;
+        }
+        .container.vanish .person_left{
+            display:none;
+        }
+        .screen{
+            width: 100px;
+            height: 110px;
+            display: block;
+            position: absolute;
+            top:40%;
+            left:45%;
+            border: 2px solid rgba(0,0,0,0.9);
+        }
+        .person_left{
+            height: 420px;
+            position: absolute;
+            top: 20%;
+            transition: all 0.5s;
+            left: 110%;
+            
+        }
+        #process1.start .person_left{
+            animation: walk_left 10s linear forwards;
+            animation-delay: 1s;
+        }
+        .person_left.completed{
+            left:43%;
+            animation: walk_left_rem 10s linear forwards !important;
+            animation-delay: 0s !important;
+        }
+        @keyframes walk_left{
+            to{
+                left:43%;
+            }
+        }
+        @keyframes walk_left_rem{
+            to{
+                left:-100%;
+            }
+        }
+        .screen img{
+            width:100px;
+            display: none;
+        }
+        .container.enter{
+            transition: all 2s;
+            transition-delay: 1s;
+            transform: translateX(0) !important;
+        }
+        
+        #mobile{
+            position: absolute;
+            width:50px;
+            top: 25%;
+            left: 50%;
+        }
+        a#start-btn:hover {
+            box-shadow: 0 10px 18px rgba(0,0,255,0.4) !important;
+        }
+        a#start-btn2:hover {
+            box-shadow: 0 10px 18px rgba(0,0,255,0.4) !important;
+        }
+        #msg-cont h3 {
+            color: rgba(0,0,0,0.7);
+            font-family: cursive;
+        }
+        #msg-cont span {
+            color: rgba(0,0,255,0.7);
+
+        }
+        img.move{
+            animation: move_truck 10s linear forwards;
+            animation-delay: 3s;
+        }
+        img.moveComp{
+            animation: move_truck 10s linear forwards;
+            animation-delay: 3s;
+        }
+        @keyframes move_truck{
+            33.33%{
+                transform: translateX(100%);
+            }
+            66.66%{
+                transform: translateX(100%);
+
+            }
+            100%{
+                transform: translateX(500%);
+
+            }
+        }
+        .p3 .pp1,
+        .p3 .pp2,
+        .p3 .pp3,
+        .p3 .pp4,
+        .p3 .pp5{
+            transition:all 1.2s;
+        }
+        .cloth{
+            width: 40px;
+            position: absolute;
+            top: 64%;
+            left: 20px;
+            transform: rotate(90deg);
+            animation: move_cloth 2s linear forwards;
+        }
+        .cloth.cloth_move_rem{
+            animation: move_cloth_rem 2s linear forwards;
+
+        }
+        .pp_show{
+            animation: pp_show 1.2s linear forwards !important;
+
+        }
+        .container.enter2{
+            transform:translateX(200px);
+        }
+        @keyframes pp_show{
+            to{
+                opacity: 1;
+            }
+        }
+        @keyframes move_cloth{
+            80%{
+                left: 11%;
+            }
+            100%{
+                left:13%;
+                opacity:0;
+            }
+        }
+        
+        @keyframes move_cloth_rem{
+            0%{
+                left: 20%;
+                opacity:1;
+            }
+            90%{
+
+                left: 25%;
+                opacity: 0;
+            }
+            100%{
+                
+                display:none;
+            }
+        }
+
+        
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Process</title>
+    <!-- 057521 -->
+</head>
+<body>
+        <a id="start-btn" href="#" style="
+        font-size: 28px;
+        padding: 10px 18px;
+        font-family: cursive;
+        display: block;
+        width: fit-content;
+        margin: auto;
+        text-decoration: none;
+        color: white;
+        background-color: #00B6FF;
+        margin-top: 50px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 8px 15px rgba(0,0,255,0.4);
+    ">Start</a>
+    <a id="start-btn2" href="#" style="
+        font-size: 28px;
+        padding: 10px 18px;
+        font-family: cursive;
+        display: none;
+        width: fit-content;
+        margin: auto;
+        text-decoration: none;
+        position: absolute;
+        bottom: 30px;
+        z-index: 5;
+        right: 36px;
+        color: white;
+        background-color: #00B6FF;
+        margin-top: 50px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        
+        cursor: pointer;
+        box-shadow: 0 8px 15px rgba(0,0,255,0.4);
+    ">&gt;</a>
+    <!-- <input type="hidden" name="csrf" id="csrf"> -->
+    <div class="container">
+        <div id="process1">
+                <div id="msg-cont" style="
+                padding: 10px;
+                display:none;
+                position: absolute;
+                /* top: 17%; */
+                bottom: 010%;
+                left: 34%;
+                border: 1px solid rgba(0,0,255,0.2);
+                background: white;
+                z-index: 5;
+                box-shadow: 0 6px 14px rgba(0,0,255,0.2);
+            ">
+                <h3 style="
+                margin: 0;
+            ">Name : <span></span></h3>
+                <h3 style="
+                margin: 0;
+                margin-top: 5px;
+            ">Destination : <span></span></h3>
+                
+            </div>
+            <div class="screen">
+                <img src="/static/process_images/qr-crop.gif" alt="Reader">
+                <span id="gate"></span>
+            </div>
+            <img id="mobile" src="/static/process_images/mobile.png" alt="mobile" style="display:none;">
+            <!-- <img id="person_left" src="../static/process_images/left_walk.gif" alt="Person"> -->
+        </div>
+
+    </div>
+
+    <div class="container" style="margin-top:20px;transform: translateX(-110%);">
+        <div class="p2" style="background-color:white;">
+            <img src="/static/process_images/right_truck.gif" style="position: absolute;
+            top: 115px;z-index:5;transform:translateX(-100%);" alt="truck">
+            <img src="/static/process_images/hostel.jpg" style="position: absolute;
+            top: 30%;
+            left: 45%;
+            width: 400px;" alt="hostel">
+        </div>
+    </div>
+
+    <div class="container" style="margin-top:20px;transform: translateX(-110%);">
+            <div class="p3" style="background-color:white;">
+                    <img src="/static/process_images/p3.jpg" style="
+                     position: absolute;
+                     top: -80px;
+                     left: 0;
+                     width: 250px;
+                     " alt="hostel">
+        <img src="/static/arrow.png" style="
+         display: block;
+         width: 80px;
+         z-index: 5;
+         position: absolute;
+         left: 16%;
+         top: 10%;
+         transform: rotate(30deg);
+         opacity:0;
+     " class="pp1">
+     <div id="mycamera" class="pp1" style="
+        z-index:5;
+         position: absolute;
+         top: 44px;
+         left: 22%;
+         width: 350px;
+         height: 240px;
+         opacity:0;
+
+     "></div><div class="pp1" id="user-cont" style="
+         position: absolute;
+         top: 44px;
+         left: 48%;
+         font-family: cursive;
+         padding: 0 15px;
+         border: 1px solid rgba(0,0,255,0.2);
+         box-shadow: 0 5px 12px rgba(0,0,0255,0.2);
+         border-radius: 3px;
+         opacity:0;
+
+     ">
+         <h3>Searching for user<span style="
+         color: rgba(0,0,255,0.7);
+     "></span></h3>
+     </div>
+     <img class="pp2" src="/static/arrow.png" style="
+         display: block;
+         width: 80px;
+         z-index: 5;
+         position: absolute;
+         opacity:0;
+
+         left: 17%;
+         top: 42%;
+         transform: rotate(126deg);
+     ">
+     <div id="cloth_proc_cont" style="
+         padding-top: 230px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+     ">
+     
+         
+         <img class="pp2" src="/static/process_images/c3.png" style="width: 400px;opacity:0;">
+         <div class="pp2" id="detected-msg" style="position: absolute;left: 12%;opacity:0;top: 84%;border: 1px solid rgba(0,0,255,0.2);font-family: cursive;padding: 0 10px;box-shadow: 0 5px 12px rgba(0,0,255,0.4);border-radius: 3px;">
+         <h3>Detecting</h3>
+     </div>
+     <img class="pp3" src="/static/arrow.png" style="
+         width: 80px;
+         z-index: 5;
+         opacity:0;
+         padding: 0 40px;
+     "><img class="pp3" src="/static/process_images/w1.gif" style="width: 120px;opacity:0;">
+     <img class="pp4" src="/static/arrow.png" style="
+         width: 80px;
+         opacity:0;
+         z-index: 5;
+         padding: 0 15px;
+     "><img class="pp4" src="/static/process_images/iron.gif" style="width: 200px;opacity:0;/* position: absolute; *//* top: 200px; */">
+     <img class="pp5" src="/static/arrow.png" style="
+         width: 80px;
+         opacity:0;
+         z-index: 5;
+         padding: 0 15px;
+     ">
+     <img class="pp5" src="/static/process_images/checklist.gif" style="width: 200px;opacity:0;/* position: absolute; *//* top: 150px; *//* right: 20px; */">
+     </div>
+                 </div>
+        </div>
+    <div class="container" style="margin-top:20px;transform: translateX(2000px);position:absolute;top:110px;">
+        <div class="p4" style="background-color:white;">
+            <img src="/static/process_images/shipping.gif" alt="shipping">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Base64/1.1.0/base64.js"></script>   -->
+    <!-- Webcam.min.js -->
+      
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>
+
+    <script>
+        var anim=false;
+        var step=1;
+        var typeanim=1;
+        var proccount = 3;
+        var img_arr = ["1.jpg","2.jpg","3.jpg"];
+        var take_sna = undefined;
+        var qr_imgs = ["qr-images/qr.png","qr-images/qr2.png"];
+        var cstart=0,cur_pos=0,clen_arr=[],initial_l=true,user_list=[];
+        //qr_imgs = [];
+        var user = {"cred":{"email":""},"data":{}};
+        $(document).ready(function(){
+            $("#start-btn2").on("click",function(){
+                set_completion();
+                $(".container").eq(2).addClass("vanish");
+                setTimeout(function(){
+                    $(".container").eq(3).addClass("enter");
+
+                },1500);
+                $("#start-btn2").hide();
+                setTimeout(function(){
+                    $(".container").eq(3).addClass("vanish");
+                
+                    $(".container").eq(1).addClass("enter");
+                        
+                    setTimeout(function(){
+                        $(".container").eq(1).find("img").eq(0).addClass("moveComp");
+                    },2000);
+                },10000);
+            });
+            $("#start-btn").on("click",function(){
+                console.log(step);
+                if(step==1){
+                    $("#process1").addClass("start");
+                    create_new();
+                }
+                if(step==3){
+                    step=4;
+                    $("#user-cont h3").html("Searching for user<span style='color:#00B6FF;'></span>");
+                    $("#start-btn").html("Stop Recording");
+                    $("#start-btn").css("background-color","rgba(255,0,0,0.4)");
+                    startcam();
+                }
+                else if(step==4){
+                    step = 3;
+                    Webcam.reset();
+                    $("#user-cont h3").html("Camera Stopped");
+                    $("#start-btn").html("Start");
+                    $("#start-btn").css("background-color","#00B6FF");
+                }
+            });
+            var pcount=0;
+            function create_new(){
+                if(step==1){
+                    console.log(pcount);
+                    $("#msg-cont").hide();
+                    if(pcount<qr_imgs.length){
+                        anim = true;
+                        $("#process1").append("<img src='/static/process_images/left_walk.gif' class='person_left'>");
+                    }else{
+                        $("#msg-cont").html("<h3 style='margin:0;'>Finished</h3>");
+                        $("#msg-cont").show();
+                        $("#msg-cont").css("left","45%");
+                        setTimeout(function(){
+                            $(".container").eq(0).addClass("vanish");
+                            $(".container").eq(1).addClass("enter");
+                            step=2;
+                            create_new();
+                            //location.href = "/process2/";
+                        },7000);
+                        
+                    }
+                }
+                else{
+                    $(".p2 img").eq(0).addClass("move");
+                    
+                }
+                
+            }
+            
+            $("#process1").on("animationend",'.person_left',function(){
+                console.log("compled");
+                if(anim){
+                    $(".person_left").attr("src","/static/2.gif");
+                    $("#mobile").show();
+                    setTimeout(function(){
+                        $(".screen img").show();
+                        process_qr();
+                    },1500);
+                }
+            });
+            $("#process1").on("webkitAnimationEnd",'.person_left',function(){
+                console.log("compled");
+                if(anim){
+                    $(".person_left").attr("src","/static/2.gif");
+                    $("#mobile").show();
+                    setTimeout(function(){
+                        $(".screen img").show();
+                        process_qr();
+                    },1500);
+                }
+                
+            }); 
+            var p2=true;
+
+            function set_completion(){
+                $.ajax({
+                    type: "POST",
+                    url: 'http://localhost:8000/complete/',
+                    data: "user="+JSON.stringify(user_list),
+                    success: function( response ) {
+                        console.log(response);
+                    },
+                    error:function (jqXHR, exception) {
+                                var msg = '';
+                                if (jqXHR.status === 0) {
+                                    msg = 'Not connect.\n Verify Network.';
+                                } else if (jqXHR.status == 404) {
+                                    msg = 'Requested page not found. [404]';
+                                } else if (jqXHR.status == 500) {
+                                    msg = 'Internal Server Error [500].';
+                                } else if (exception === 'parsererror') {
+                                    msg = 'Requested JSON parse failed.';
+                                } else if (exception === 'timeout') {
+                                    msg = 'Time out error.';
+                                } else if (exception === 'abort') {
+                                    msg = 'Ajax request aborted.';
+                                } else {
+                                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                                }
+                                console.log(msg);
+                           alert(msg);
+                    }
+                        
+                });
+     
+            }
+
+            $(".p2 img").on("animationend",function(){
+                console.log("compled 2");
+                if(p2){
+                    p2=false;
+                    $(".container").eq(1).addClass("vanish2");
+                    $(".container").eq(1).removeClass("enter");
+                    $(".container").eq(2).addClass("enter");
+                    setTimeout(function(){
+                        $(".container").eq(1).removeClass("vanish2");
+                        $(".container").eq(1).find("img").eq(0).removeClass("move");
+                        
+                    },10000);
+                    $("#start-btn2").show();
+                    step=3;
+                }
+            });
+            $(".p2 img").on("webkitAnimationEnd",function(){
+                console.log("compled 2");
+                
+                if(p2){
+                    step=3;
+                    p2=false;
+                    $(".container").eq(1).addClass("vanish2");
+                    $(".container").eq(1).removeClass("enter");
+                    $(".container").eq(2).addClass("enter");
+                    $("#start-btn2").show();
+                    setTimeout(function(){
+                        $(".container").eq(1).removeClass("vanish2");
+                        $(".container").eq(1).find("img").eq(0).removeClass("move");
+                        
+                    },10000);
+               }
+            });
+
+            function randomNumberFromRange(min,max)
+            {
+                return Math.floor(Math.random()*(max-min+1)+min);
+            }
+            function move_clothes(){
+                typeanim=1;
+
+                $("#detected-msg h3").html("Detecting");
+                        
+                if(cur_pos<cstart && cur_pos<img_arr.length){
+                    typeanim=1;
+                    $("#cloth_proc_cont").prepend("<img class='pp2 cloth' src='/static/clothes/"+ img_arr[cur_pos] +"'>")
+                }
+                else{
+                    $("#detected-msg h3").html("Completed");
+                }
+            }
+
+            $("#cloth_proc_cont").on("animationend",'.cloth',function(){
+                console.log("compled cloth");
+                if(typeanim==1){
+                    run_detector();
+                }
+                
+            });
+            $("#cloth_proc_cont").on("webkitAnimationEnd",'.cloth',function(){
+                console.log("compled cloth");
+                if(typeanim==1){
+                    run_detector();
+                }
+            });
+
+            $("#cloth_proc_cont").on("animationend",'.cloth_move_rem',function(){
+                console.log("compledremaining cloth");
+                if(cur_pos==0 && typeanim==2){
+                    $(".pp3").addClass("pp_show");
+                }
+                if(typeanim==2){
+                    $(".cloth").eq(0).hide();
+                    cur_pos = cur_pos + 1;  
+                    move_clothes();
+                }
+                
+            });
+            $("#cloth_proc_cont").on("webkitAnimationEnd",'.cloth_move_rem',function(){
+                console.log("compled remaonong cloth");
+                
+                if(cur_pos==0 && typeanim==2){
+                    $(".pp3").addClass("pp_show");
+                }
+                if(typeanim==2){
+                    
+                    $(".cloth").eq(0).hide();
+                    cur_pos = cur_pos + 1;
+                    move_clothes();
+                    //setTimeout(,4000);
+                    
+                }
+                
+            });
+
+            $("body").on("animationend",'.pp_show',function(){
+                console.log("compled showing");
+                setTimeout(function(){
+                    $(".pp"+proccount).addClass("pp_show");
+                    if(proccount<=4){
+                        proccount = proccount + 1;
+                    }
+                },5000);
+                
+                
+            });
+            $("body").on("webkitAnimationEnd",'.pp_show',function(){
+                console.log("compled showing");
+                setTimeout(function(){
+                    $(".pp"+proccount).addClass("pp_show");
+                    if(proccount<=4){
+                        proccount = proccount + 1;
+                    }
+                },5000);
+                
+                
+                
+            });
+
+            function run_detector(){
+                $.ajax({
+                    type: "POST",
+                    url: 'http://localhost:8000/detect_cloth/',
+                    data: "path=static/clothes/"+img_arr[cur_pos]+"&user="+JSON.stringify(user),
+                    success: function( response ) {
+                        console.log(response);
+                        response = $.parseJSON(response);
+                        user = response["user"]
+                        user_list[user_list.length - 1] = user;
+                        console.log(user)
+                        $("#detected-msg h3").html(response["res"]);
+                        typeanim=2;
+                        $(".cloth:not(.cloth_move_rem)").addClass("cloth_move_rem");
+
+                    },
+                    error:function (jqXHR, exception) {
+                                var msg = '';
+                                if (jqXHR.status === 0) {
+                                    msg = 'Not connect.\n Verify Network.';
+                                } else if (jqXHR.status == 404) {
+                                    msg = 'Requested page not found. [404]';
+                                } else if (jqXHR.status == 500) {
+                                    msg = 'Internal Server Error [500].';
+                                } else if (exception === 'parsererror') {
+                                    msg = 'Requested JSON parse failed.';
+                                } else if (exception === 'timeout') {
+                                    msg = 'Time out error.';
+                                } else if (exception === 'abort') {
+                                    msg = 'Ajax request aborted.';
+                                } else {
+                                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                                }
+                                console.log(msg);
+                           alert(msg);
+                    }
+                        
+                });
+     
+            }
+
+            function take_snapshot() {
+ 
+                // take snapshot and get image data
+                Webcam.snap( function(data_uri) {
+                    var c = JSON.stringify({"img":data_uri.replace("data:image/png;base64,","")});
+                    $.ajax({
+                        type: "POST",
+                        url: 'http://localhost:8000/search_user/',
+                        data: "user="+ JSON.stringify(user)+"&data="+c,
+                        success: function( response ) {
+                           // console.log(response);
+                            if(response!="no"){
+                                res = $.parseJSON(response);
+                                $("#user-cont span").html(response);
+                                if(cur_pos>=cstart){
+                                    if(user["cred"]["email"]=="" || user["cred"]["email"]!=res["user"]["cred"]["email"]){
+                                        user = res["user"];
+                                        user_list.push(res["user"]);
+                                            console.log("Found  :  "+user["cred"]["email"]);
+                                    $("#user-cont").html("<h3>Detected  :  <span style='color:#00B6FF;'>" + user["cred"]["email"] + "</span></h3>");
+                                        $("#user-cont").css("background-color","white");
+                                        
+                                        clen_arr.push(randomNumberFromRange(cur_pos+1,8));
+                                        cstart = clen_arr[clen_arr.length - 1];
+                                        if(cur_pos==0){
+                                            $(".pp2").css("opacity","1");
+                                        }
+                                        setTimeout(function(){
+                                            move_clothes();
+                                            },5000);
+                                        
+                                    }
+                                }
+                                else{
+                                    //$("#user-cont h3").html("Searching for user<span style='color:#00B6FF;'></span>");
+                                    $("#user-cont").prepend("<h4 style='margin-top:0;margin-bottom:2px;'>Still Processing</h4>");
+                                    $("#user-cont").css("background-color","rgba(255,0,0,0.4)");
+                                    
+                                }
+                                
+                            }
+                            
+
+                            setTimeout(function(){
+                                if(Webcam.loaded){
+                                    take_snapshot();
+                                }
+                                
+                            },1000);
+                            
+                            
+                        },
+                        error:function (jqXHR, exception) {
+                                    var msg = '';
+                                    if (jqXHR.status === 0) {
+                                        msg = 'Not connect.\n Verify Network.';
+                                    } else if (jqXHR.status == 404) {
+                                        msg = 'Requested page not found. [404]';
+                                    } else if (jqXHR.status == 500) {
+                                        msg = 'Internal Server Error [500].';
+                                    } else if (exception === 'parsererror') {
+                                        msg = 'Requested JSON parse failed.';
+                                    } else if (exception === 'timeout') {
+                                        msg = 'Time out error.';
+                                    } else if (exception === 'abort') {
+                                        msg = 'Ajax request aborted.';
+                                    } else {
+                                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                                    }
+                                    console.log(msg);
+                               alert(msg);
+                        }
+                            
+                    });
+                 } );
+               }
+               
+            function startcam(){
+                Webcam.set({
+                    width: 350,
+                    height: 240,
+                    image_format: 'png',
+                    png_quality: 90
+                   });
+                   Webcam.attach( '#mycamera' );
+                $(".p3 .pp1").css("opacity","1");
+                console.log("starting cam");
+                var t = setInterval(function(){
+                    if(Webcam.loaded){
+                        clearInterval(t);
+                        setTimeout(take_snapshot(),1500);
+                    }
+                    
+                },2000);
+            }
+            function process_qr(){
+                
+                if (anim){
+                    $.ajax({
+                        type: "POST",
+                        url: 'http://localhost:8000/process1/',
+                        data: "path="+qr_imgs[pcount],
+                        success: function( response ) {
+                            console.log(response);
+                            $("#msg-cont").html("<h3 style='margin:0;'>Name : <span></span></h3><h3 style='margin:0;margin-top:5px;'>Destination : <span></span></h3>");
+                            $("#msg-cont").css("background","white");
+                            $("#msg-cont").show();
+                            if(response=="Not Found"){
+                                $("#msg-cont span").html("Not found");
+                            }
+                            else if(response.indexOf("There was an error please contact the technical department.")!=-1){
+                                $("#msg-cont").html(response);
+                                $("#msg-cont").css("background","rgba(255,0,0,0.3)");
+                            }
+                            else{
+                                response = $.parseJSON(response);
+                                $("#msg-cont span").eq(0).html(response.name);
+                                $("#msg-cont span").eq(1).html(response.dest);
+                            }
+                            setTimeout(function(){
+                                $(".person_left:not(.completed)").addClass("completed");
+                                pcount = pcount+1;
+                                $(".person_left.completed").attr("src","/static/process_images/left_walk.gif");
+                                $("#mobile").hide();
+                                $(".screen img").hide();
+                                create_new();
+                            },5000);
+                            
+                        },
+                        error:function (jqXHR, exception) {
+                                    var msg = '';
+                                    if (jqXHR.status === 0) {
+                                        msg = 'Not connect.\n Verify Network.';
+                                    } else if (jqXHR.status == 404) {
+                                        msg = 'Requested page not found. [404]';
+                                    } else if (jqXHR.status == 500) {
+                                        msg = 'Internal Server Error [500].';
+                                    } else if (exception === 'parsererror') {
+                                        msg = 'Requested JSON parse failed.';
+                                    } else if (exception === 'timeout') {
+                                        msg = 'Time out error.';
+                                    } else if (exception === 'abort') {
+                                        msg = 'Ajax request aborted.';
+                                    } else {
+                                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                                    }
+                                    console.log(msg);
+                               alert(msg);
+                        }
+                            
+                    });
+                    anim = false;
+                }
+                
+            }
+        });
+    </script>
+  
+</body>
+
+</html>

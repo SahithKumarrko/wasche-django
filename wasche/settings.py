@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'gi68(1k7x@brmw8d+qzz^wevn90p*urqx50td-7dha_9pq=78m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["localhost","wasche-services.herokuapp.com"]
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'dashboard',
     'tracking_system',
     'transactions',
+    "delivery_executives",
 ]
 
 AUTH_USER_MODEL = "user.User"
@@ -99,27 +100,27 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': "wdjango",
-#         'USER':'root',
-#         'PASSWORD':'19101972',
-#         'HOST':'localhost',
-#         'PORT':'3306',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': "dDI6RYQRW2",
-        'USER':'dDI6RYQRW2',
-        'PASSWORD':'YxixdpCWQH',
-        'HOST':'remotemysql.com',
+        'NAME': "wdjango",
+        'USER':'root',
+        'PASSWORD':'19101972',
+        'HOST':'localhost',
         'PORT':'3306',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': "dDI6RYQRW2",
+#         'USER':'dDI6RYQRW2',
+#         'PASSWORD':'YxixdpCWQH',
+#         'HOST':'remotemysql.com',
+#         'PORT':'3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

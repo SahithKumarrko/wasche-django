@@ -231,8 +231,57 @@ def logout(request):
     response.delete_cookie("wasche")
     return response
 
+	
+
+def check_noti_setting(request):
+    import json
+    data = check_cookie(request)
+    res = {"s":True,"sd":False}
+    if data==None:
+        res["s"]=True
+        res["sd"]=True
+    else:
+        data = json.loads(data)
+        print(data,type(data))
+        u=None
+        i=""
+        no=None
+        try:
+            try:
+                i = request.GET["pid"]
+                print(i)
+            except:
+                res["nf"] = True
+                res["s"]=False
+                return HttpResponse(json.dumps(res))
+            try:
+                u = User.objects.get(email=data["e"])
+            except:
+                res["ne"] = True
+                res["s"]=False
+                return HttpResponse(json.dumps(res))
+            try:
+                o = OneSignal.objects.get(email=u,type_os=i)
+            except Exception as exp:
+                print("Errrorororo : ",exp)
+                res["s"]=False
+                return HttpResponse(json.dumps(res))    
+            try:
+                if o.enabled==True:
+                    res["en"]=True
+                else:
+                    res["en"]=False
+            except Exception as exp:
+                print("Errrorororo : ",exp)
+                res["s"]=False
+                return HttpResponse(json.dumps(res))
+        except:
+            res["s"]=False
+            res["sp"]=False
+        return HttpResponse(json.dumps(res))
 def update_notification_setting(request):
     import json
+    print("\n\nGot Type : ",request.POST["type"],"\n\n")
     data = check_cookie(request)
     res = {"s":True,"sd":False}
     if data==None:
@@ -286,17 +335,17 @@ def update_notification_setting(request):
                     else:
                         fou = False
                         for i in o:
-                            if i.type == request.POST["agent-type"]:
+                            if i.type_os == request.POST["agent-type"]:
                                 i.enabled = True
                                 fou = True
                                 i.save()
                                 
                         if fou==False:
-                            o = OneSignal(email=u,pid=request.POST["pid"],type=request.POST["agent-type"])
+                            o = OneSignal(email=u,pid=request.POST["pid"],type_os=request.POST["agent-type"])
                             o.save()
                             
                 except Exception as e:
-                    print(e)
+                    print("Found Error  :  ",e)
                     res["f"] = True
                     res["s"]=False
                     return HttpResponse(json.dumps(res))

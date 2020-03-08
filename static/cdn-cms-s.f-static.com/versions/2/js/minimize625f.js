@@ -30633,7 +30633,15 @@ $('.top-logout-btn').on('click',function(){
     // $clientZoneLink.prepend("<a class='client-zone-link' data-close-location='right' href='#'><i class='fa fa-user' aria-hidden='true'></i></a>");
 // location.reload();
     // ClientZone.updateClientIcon();
-    location.href = "/ajax/logout/";
+    var onesignal = OneSignal || [];
+    if(onesignal!=[]){
+        onesignal.setSubscription(false);
+        console.log("changed");
+    }
+    setTimeout(function(){
+
+        location.href = "/ajax/logout/";
+    },3000);
     //  $.ajax({
     //         type: "POST",
     //         url: '/ajax/logout/',

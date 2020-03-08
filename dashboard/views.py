@@ -77,7 +77,7 @@ def open_dashboard_page(request):
                 pdata["over"] = True
                 p.plan = "None"
                 p.save()
-            elif diff.days==0 and diff.seconds==0:
+            elif diff.days==0:
                 pdata["over"] = True
                 p.plan = "None"
                 p.save()

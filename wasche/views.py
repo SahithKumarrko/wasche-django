@@ -293,9 +293,9 @@ def detect_user(img,user):
         diff = p.end_date - datetime.strptime(datetime.now(tz=cust_settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
         
         if diff.days<0:
-          return {"res":True,"p":False}
-        elif diff.days==0 and diff.seconds==0:
-          return {"res":True,"p":False}
+          return {"res":False,"p":False}
+        elif diff.days==0:
+          return {"res":False,"p":False}
         else:
           # if dd["email"] != user["cred"]["email"]:
             # if user["cred"]["email"]!="":

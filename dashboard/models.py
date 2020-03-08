@@ -159,9 +159,13 @@ class Order_DashBoard(models.Model):
     def update_dashboard(self,date,time,update_data):
         date_order = time
         date = date.split("-")
+        date[1] = str(int(date[1]))
+        date[2] = str(int(date[2]))
+        
+        print("Date  :  ",date)
         cur = self.get_ordered_date()
-        ly = list(cur.keys())[0]
-        lm = list(cur[ly].keys())[-1]
+        ly = date[0]
+        lm = date[1]
         if date[2] in list(cur[ly][lm].keys()):
             print("date found")
             # from application.models import Plans
@@ -170,6 +174,7 @@ class Order_DashBoard(models.Model):
             # if old_order:
             categ = ["Inner Wear","Upper Wear","Lower Wear","Other"]
             cur[ly][lm][date[2]][date_order] = update_data
+            # print("\n\n\nModified  Cur  : ",cur,"\n\n")
             tot = 0
             for i in update_data.keys():
                 if i in categ:
@@ -189,8 +194,8 @@ class Order_DashBoard(models.Model):
                 self.email.plans.save()
 
             self.ordered_dates = json.dumps(cur)
-
             self.save()
+            # print("\n\nupdated data   :  ",self.ordered_dates)
             return "Modified"
         else:
             return "Problem Modifying data"

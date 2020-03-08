@@ -23,4 +23,12 @@ class DeliveryAdmin(admin.ModelAdmin):
         )
     account_actions.short_description = 'Account Actions'
     account_actions.allow_tags = True
-admin.site.register(ongoing_delivery)
+@admin.register(ongoing_delivery)
+class OnGoingDelivery(admin.ModelAdmin):
+    list_display = (
+        
+        'name',
+        'on_going',
+        'date_started',
+    )
+    

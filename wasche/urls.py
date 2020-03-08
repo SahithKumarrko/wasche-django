@@ -17,6 +17,7 @@ urlpatterns = [
     path("search_user/",views.search_user,name="su"),
     path("detect_cloth/",views.detect_cloth,name="dc"),
     path("complete/",views.complete_order,name="dc"),
+    path("update_tracker/",views.update_tracker,name="ut"),
     path("upload_detect/",views.upload_detect,name="udc"),
     path("detect_file/",views.detect_file_url,name="udc"),
     path('admin/', admin.site.urls),

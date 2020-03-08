@@ -73,7 +73,11 @@ def open_dashboard_page(request):
             pdata["diff"] = str(diff)
             pdata["cavailable"] = True
             pdata["c"] = p.extra_amount
-            if diff.seconds==0 or diff.days<0:
+            if diff.days<0:
+                pdata["over"] = True
+                p.plan = "None"
+                p.save()
+            elif diff.days==0 and diff.seconds==0:
                 pdata["over"] = True
                 p.plan = "None"
                 p.save()
@@ -165,7 +169,9 @@ def update_data(request):
     u = User.objects.get(email=user["email"])
     from tracking_system.models import Tracker
     try:
-        u.order_dashboard.update_dashboard(ddd["date"],ddd["time"],data)
+        rrr = u.order_dashboard.update_dashboard(ddd["date"],ddd["time"],data)
+        print("Updated Dashboard   ",rrr)
+        u.save()
         t = Tracker.objects.filter(track_id = u,date = ddd["date"],time=ddd["time"])
         dat = {}
         dat["data"] = data

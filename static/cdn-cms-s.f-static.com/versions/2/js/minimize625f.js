@@ -32830,21 +32830,24 @@ custmodulem.eq(1).parent().attr('href','/billing');
 $('.loginbt').css('display','none');
 custmodulem.eq(0).parent().attr("onclick","");
 custmodulem.eq(1).parent().attr("onclick","");
-
+custmodulem.eq(0).parent().hide();
+custmodulem.eq(1).parent().hide();
 $('.signup').css('display','none');
 custmodulem=$('.lm1 .moduleMenu .txt-container');
 custmodulem.eq(0).html('Dashboard');
 custmodulem.eq(1).html('Billing');
 custmodulem.eq(0).parent().attr("onclick","");
 custmodulem.eq(1).parent().attr("onclick","");
-
+custmodulem.eq(0).parent().hide();
+custmodulem.eq(1).parent().hide();
 custmodulem.eq(0).parent().attr('href','/dashboard');
 custmodulem.eq(1).parent().attr('href','/billing');
 custmodulem=$('.lf1 .moduleMenu .txt-container');
 custmodulem.eq(0).html('Dashboard');
 custmodulem.eq(0).parent().attr("onclick","");
 custmodulem.eq(1).parent().attr("onclick","");
-
+custmodulem.eq(0).parent().hide();
+custmodulem.eq(1).parent().hide();
 custmodulem.eq(1).html('Billing');
 custmodulem.eq(0).parent().attr('href','/dashboard');
 custmodulem.eq(1).parent().attr('href','/billing');

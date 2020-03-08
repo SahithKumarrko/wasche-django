@@ -271,7 +271,11 @@ def process_image(user,filename):
       user["data"][result[0]] = user["data"][result[0]] + 1
       return result
   return ""
-  
+
+from application.models import Plans
+from user.models import User
+from datetime import datetime
+from wasche.custom_settings import settings as cust_settings
 def detect_user(img,user):
   decoded = pyzbar.decode(img)
   print("calling")
@@ -283,21 +287,31 @@ def detect_user(img,user):
     if "email" in dd:
       dd = json.loads(dd)
       try:
-        if dd["email"] != user["cred"]["email"]:
-          if user["cred"]["email"]!="":
-            user["type"] = "po"
-            user["data"]["p"] = True
-            user["data"]["t"] = user["data"]["t"] + 1
-            user["msg"] = "Your order has been processed."
-            user["data"]["start"] = False
-            user["title"] = "Order Details"
-            req = requests.post(root_url+"/dashboard/update/",data={"user":json.dumps(user)})
+        u = User.objects.get(email=dd["email"])
+        p = Plans.objects.get(user=u)
+        print(datetime.strptime(datetime.now(tz=cust_settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p"))
+        diff = p.end_date - datetime.strptime(datetime.now(tz=cust_settings.ist_info).strftime("%Y-%m-%d %H:%M:%S %p"),"%Y-%m-%d %H:%M:%S %p")
+        
+        if diff.days<0:
+          return {"res":True,"p":False}
+        elif diff.days==0 and diff.seconds==0:
+          return {"res":True,"p":False}
+        else:
+          # if dd["email"] != user["cred"]["email"]:
+            # if user["cred"]["email"]!="":
+            #   user["type"] = "po"
+            #   user["data"]["p"] = True
+            #   user["data"]["t"] = user["data"]["t"] + 1
+            #   user["msg"] = "Your order has been processed."
+            #   user["data"]["start"] = False
+            #   user["title"] = "Order Details"
+            #   req = requests.post(root_url+"/dashboard/update/",data={"user":json.dumps(user)})
 
-            # print(req)
-						
-						# print_image("qrcode.png")
-    
-          user["data"] = {"Upper Wear":0,"Lower Wear":0,"Inner Wear":0,"Other":0,"Full Wear":0}
+              # print(req)
+              
+              # print_image("qrcode.png")
+      
+          user["data"] = {"Upper Wear":0,"Lower Wear":0,"Inner Wear":0,"Other":0}
           user["cred"]["email"] = dd["email"]
           user["cred"]["contract_name"] = dd["contract_name"]
           user["cred"]["contract_address"] = dd["contract_address"]
@@ -321,10 +335,11 @@ def detect_user(img,user):
           req = req.json()
           user["date"] = req["date"]
           user["time"] = req["time"]
-          return True
+          return {"res":True,"p":True}
       except Exception as exp:
-        return "Error while finding data : " + exp 
-  return False
+        print("Error while finding data : " , exp)
+
+  return {"res":False,"p":False}
 
 
 @csrf_exempt
@@ -339,8 +354,8 @@ def search_user(request):
     arr = np.array(im)[:,:]
     print(arr.shape)
     u = detect_user(arr,user)
-    if u==True:
-        return HttpResponse(json.dumps({"user":user}))
+    if u["res"]==True:
+        return HttpResponse(json.dumps({"user":user,"res":u}))
     return HttpResponse("no")
 
 @csrf_exempt
@@ -355,25 +370,124 @@ def detect_cloth(request):
         res = "{}  -  {:.2f}%".format(result[0],result[1])
         # res = result[0] + "  -  " + str(result[1])
     return HttpResponse(json.dumps({"user":user,"res":res}))
-    
+
+from delivery_executives.models import Deliver_Executive,ongoing_delivery
+
 @csrf_exempt
 def complete_order(request):
     users = json.loads(request.POST["user"])
     for user in users:
         try:
             user["type"] = "pd"
+
             user["data"]["p"] = False
             user["data"]["s"] = user["data"]["t"]
             user["data"]["c"] = 1
             user["msg"] = "Your order has completed. It may reach you in another 2 hours."
             user["data"]["start"] = False
             user["title"] = "Order Details"
-            req = requests.post(root_url+"/dashboard/update/",data={"user":json.dumps(user)})
+            # print("\n\nSaving : ",user,"\n\n")
+            req = requests.post(root_url+"/dashboard/update_data/",data={"user":json.dumps(user)})
         except Exception as exp:
             print("Error :  ",exp)
 
     return HttpResponse("complete")
 
+from dashboard.views import onsignal
+from user.models import Notifications
+from tracking_system.models import Tracker
+@csrf_exempt
+def update_tracker(request):
+    user = json.loads(request.POST["user"])
+    print("Type   :  ",request.POST["type"])
+    if request.POST["type"] == "po":
+      try:
+        
+        ded = Deliver_Executive.objects.filter(contract_name = user["cred"]["contract_name"])
+        for dedd in ded:
+          deod = ongoing_delivery.objects.filter(name=dedd)
+          for deodd in deod:
+            if deodd.on_going=="initialized":
+              deodd.on_going = "Processing Order"
+              deodd.save()
+          user["type"] = "po"
+          user["data"]["p"] = False
+          user["data"]["s"] = user["data"]["t"]
+          user["data"]["c"] = 1
+          user["msg"] = "Your order has been processed."
+          user["data"]["start"] = False
+          user["title"] = "Order Details"
+          # print("\n\nSaving : ",user,"\n\n")
+          req = requests.post(root_url+"/dashboard/update_data/",data={"user":json.dumps(user)})
+      except Exception as exp:
+          print("Error :  ",exp)
+    elif request.POST["type"] == "di":
+      try:
+        ded = Deliver_Executive.objects.filter(contract_name = user["cred"]["contract_name"])
+        for dedd in ded:
+          deod = ongoing_delivery.objects.filter(name=dedd)
+          for deodd in deod:
+            if deodd.on_going=="Processing Order":
+              deodd.on_going = "Started Delivery"
+              deodd.save()
+        u = User.objects.get(email=user["cred"]["email"])
+        t = Tracker.objects.filter(track_id = u,date = user["date"],time=user["time"])
+        dat = {}
+        
+        print(len(t))
+        for ii in t:
+            ii.update_operation({"type":"di"})
+            ii.save()
+        noti = Notifications(type_msg = "tracking",email = u,sent_from = "Admin",title = "Order Information",msg="Your order has completed. It may reach you in another 2 hours.",seen=False)
+        noti.save()
+        # onsignal("Your order has been recieved at our warehouse. You can track the order details in tracking page.",u)
+        onsignal("Your order has completed. It may reach you in another 2 hours.",u)
+      except Exception as exp:
+        print("Error  :  ",exp)
+    elif request.POST["type"] == "pd":
+      try:
+        
+        ded = Deliver_Executive.objects.filter(contract_name = user["cred"]["contract_name"])
+        for dedd in ded:
+          deod = ongoing_delivery.objects.filter(name=dedd)
+          for deodd in deod:
+            if deodd.on_going=="Started Delivery":
+              deodd.on_going = "Completed Delivery"
+              deodd.save()
+        u = User.objects.get(email=user["cred"]["email"])
+        t = Tracker.objects.filter(track_id = u,date = user["date"],time=user["time"])
+        dat = {}
+        
+        print(len(t))
+        for ii in t:
+            ii.update_operation({"type":"pd"})
+            ii.save()
+        noti = Notifications(type_msg = "tracking",email = u,sent_from = "Admin",title = "Order Conpletion",msg="Hey, your order has arrived.",seen=False)
+        noti.save()
+        # onsignal("Your order has been recieved at our warehouse. You can track the order details in tracking page.",u)
+        onsignal("Hey, your order has arrived.",u)
+      except Exception as exp:
+        print("Error  :  ",exp)
+    elif request.POST["type"] == "qc":
+      try:
+        u = User.objects.get(email=user["cred"]["email"])
+        t = Tracker.objects.filter(track_id = u,date = user["date"],time=user["time"])
+        dat = {}
+        
+        print(len(t))
+        for ii in t:
+            ii.update_operation({"type":"qc"})
+            ii.save()
+        # noti = Notifications(type_msg = "tracking",email = u,sent_from = "Admin",title = "Order Conpletion",msg="Hey, your order has arrived.",seen=False)
+        # noti.save()
+        # onsignal("Your order has been recieved at our warehouse. You can track the order details in tracking page.",u)
+        # onsignal("Hey, your order has arrived.",u)
+      except Exception as exp:
+        print("Error  :  ",exp)
+    return HttpResponse("complete")
+
+
+    return HttpResponse("complete")
 
 
 

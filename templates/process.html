@@ -203,6 +203,24 @@
     <!-- 057521 -->
 </head>
 <body>
+        <div id="completed_noti_msg" style="
+        position: absolute;
+        display:none;
+        top: 50%;
+        font-family: cursive;
+        font-size: 1.1rem;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 10px 2rem;
+        background: white;
+        z-index: 2;
+        border: 1px solid #00B6FF;
+        box-shadow: 0 5px 12px rgba(0,0,255,0.4);
+    ">
+        <h3 style="text-align: center;">Completed<br><span style="
+        color: #00B6FF;
+    ">sadsadsa</span></h3>
+    </div>
         <a id="start-btn" href="#" style="
         font-size: 28px;
         padding: 10px 18px;
@@ -388,7 +406,7 @@
     <script>
         var anim=false;
         var step=1;
-        var typeanim=1;
+        var typeanim=1,c_odcomp=false;
         var proccount = 3;
         var img_arr = ["1.jpg","2.jpg","3.jpg"];
         var take_sna = undefined;
@@ -398,19 +416,23 @@
         var user = {"cred":{"email":""},"data":{}};
         $(document).ready(function(){
             $("#start-btn2").on("click",function(){
-                set_completion();
+                //set_completion();
                 $(".container").eq(2).addClass("vanish");
                 setTimeout(function(){
                     $(".container").eq(3).addClass("enter");
 
                 },1500);
                 $("#start-btn2").hide();
+                update_tracker(user_list[user_list.length - 1],"di");
+                
                 setTimeout(function(){
                     $(".container").eq(3).addClass("vanish");
-                
                     $(".container").eq(1).addClass("enter");
                         
                     setTimeout(function(){
+                        c_odcomp=true;
+                update_tracker(user_list[user_list.length - 1],"pd");
+
                         $(".container").eq(1).find("img").eq(0).addClass("moveComp");
                     },2000);
                 },10000);
@@ -431,7 +453,7 @@
                 else if(step==4){
                     step = 3;
                     Webcam.reset();
-                    $("#user-cont h3").html("Camera Stopped");
+                    $("#user-cont").html("<h3>Camera Stopped<span></span></h3>");
                     $("#start-btn").html("Start");
                     $("#start-btn").css("background-color","#00B6FF");
                 }
@@ -522,6 +544,39 @@
                 });
      
             }
+            function update_tracker(user_to_upd,pr_typ){
+                console.log("UT  :  "+user_to_upd);
+                $.ajax({
+                    type: "POST",
+                    url: 'http://localhost:8000/update_tracker/',
+                    data: "user="+JSON.stringify(user_to_upd)+"&type="+pr_typ,
+                    success: function( response ) {
+                        console.log(response);
+                    },
+                    error:function (jqXHR, exception) {
+                                var msg = '';
+                                if (jqXHR.status === 0) {
+                                    msg = 'Not connect.\n Verify Network.';
+                                } else if (jqXHR.status == 404) {
+                                    msg = 'Requested page not found. [404]';
+                                } else if (jqXHR.status == 500) {
+                                    msg = 'Internal Server Error [500].';
+                                } else if (exception === 'parsererror') {
+                                    msg = 'Requested JSON parse failed.';
+                                } else if (exception === 'timeout') {
+                                    msg = 'Time out error.';
+                                } else if (exception === 'abort') {
+                                    msg = 'Ajax request aborted.';
+                                } else {
+                                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                                }
+                                console.log(msg);
+                           alert(msg);
+                    }
+                        
+                });
+     
+            }
 
             $(".p2 img").on("animationend",function(){
                 console.log("compled 2");
@@ -571,6 +626,8 @@
                     $("#cloth_proc_cont").prepend("<img class='pp2 cloth' src='/static/clothes/"+ img_arr[cur_pos] +"'>")
                 }
                 else{
+                  $(".pp3").addClass("pp_show");
+
                     $("#detected-msg h3").html("Completed");
                 }
             }
@@ -591,9 +648,9 @@
 
             $("#cloth_proc_cont").on("animationend",'.cloth_move_rem',function(){
                 console.log("compledremaining cloth");
-                if(cur_pos==0 && typeanim==2){
-                    $(".pp3").addClass("pp_show");
-                }
+                //if(cur_pos==0 && typeanim==2){
+                  //  $(".pp3").addClass("pp_show");
+               // }
                 if(typeanim==2){
                     $(".cloth").eq(0).hide();
                     cur_pos = cur_pos + 1;  
@@ -604,9 +661,9 @@
             $("#cloth_proc_cont").on("webkitAnimationEnd",'.cloth_move_rem',function(){
                 console.log("compled remaonong cloth");
                 
-                if(cur_pos==0 && typeanim==2){
-                    $(".pp3").addClass("pp_show");
-                }
+                //if(cur_pos==0 && typeanim==2){
+                  //  $(".pp3").addClass("pp_show");
+               // }
                 if(typeanim==2){
                     
                     $(".cloth").eq(0).hide();
@@ -617,26 +674,88 @@
                 }
                 
             });
-
+c_odcomp=true;
             $("body").on("animationend",'.pp_show',function(){
-                console.log("compled showing");
+                console.log("compled showing " + proccount);
                 setTimeout(function(){
                     $(".pp"+proccount).addClass("pp_show");
-                    if(proccount<=4){
+                    //if(proccount==3){
+                      //  update_tracker(user_list[user_list.length - 1],"po");
+                   // }
+                    
+                   if(proccount==4 && c_odcomp==true){
+                    console.log("Completed Processing");
+                    update_tracker(user_list[user_list.length - 1],"po");
+                    c_odcomp=false;    
+                }                    
+                    
+                    if(proccount==5 && c_odcomp==true){
+                        update_tracker(user_list[user_list.length - 1],"qc");
+c_odcomp=false;
+                        console.log("Completed quality check "+proccount);
+                        setTimeout(function(){
+                            setTimeout(function(){
+                                $("#completed_noti_msg").show();
+                                setTimeout(function(){
+                                    $("#completed_noti_msg").hide();
+        
+                                    },4000);
+                            },2000);
+                            $(".pp2").removeClass("pp_show");
+                            $(".pp3").removeClass("pp_show");
+                            $(".pp4").removeClass("pp_show");
+                            $(".pp5").removeClass("pp_show");
+
+                            
+                            
+                        },10000);
+                        
+
+                    }
+                    if(proccount<=5){
+                        c_odcomp=true;
                         proccount = proccount + 1;
                     }
-                },5000);
+                },8000);
                 
                 
             });
             $("body").on("webkitAnimationEnd",'.pp_show',function(){
-                console.log("compled showing");
+                console.log("compled showing 22 "+proccount);
                 setTimeout(function(){
                     $(".pp"+proccount).addClass("pp_show");
+                    //if(proccount==4){
+                      //  update_tracker(user_list[user_list.length - 1],"po");
+                    //}
+                    if(proccount==4 && c_odcomp==true){
+                        update_tracker(user_list[user_list.length - 1],"po");
+                        c_odcomp=false;    
+                    }
+                    
+                    if(proccount==5 && c_odcomp==true){
+                        update_tracker(user_list[user_list.length - 1],"qc");
+                        c_odcomp=false;
+                        console.log("Completed quality check "+proccount);
+                        setTimeout(function(){
+                            setTimeout(function(){
+                                $("#completed_noti_msg").show();
+                                setTimeout(function(){
+                                    $("#completed_noti_msg").hide();
+        
+                                    },4000);
+                            },2000);
+                            $(".pp2").removeClass("pp_show");
+                            $(".pp3").removeClass("pp_show");
+                            $(".pp4").removeClass("pp_show");
+                            $(".pp5").removeClass("pp_show");
+
+                            },12000);
+                    }
                     if(proccount<=4){
+                        c_odcomp=true;
                         proccount = proccount + 1;
                     }
-                },5000);
+                },8000);
                 
                 
                 
@@ -650,9 +769,9 @@
                     success: function( response ) {
                         console.log(response);
                         response = $.parseJSON(response);
-                        user = response["user"]
+                        user = response["user"];
                         user_list[user_list.length - 1] = user;
-                        console.log(user)
+                        console.log(user);
                         $("#detected-msg h3").html(response["res"]);
                         typeanim=2;
                         $(".cloth:not(.cloth_move_rem)").addClass("cloth_move_rem");
@@ -696,11 +815,15 @@
                            // console.log(response);
                             if(response!="no"){
                                 res = $.parseJSON(response);
-                                $("#user-cont span").html(response);
+                                $("#user-cont span").html(res["user"]["cred"]["email"]);
                                 if(cur_pos>=cstart){
                                     if(user["cred"]["email"]=="" || user["cred"]["email"]!=res["user"]["cred"]["email"]){
                                         user = res["user"];
-                                        user_list.push(res["user"]);
+                                        $("#completed_noti_msg span").html(user["cred"]["email"]);
+                                        console.log(res);
+                                        if(res["res"]["res"]==true){
+                                            user_list.push(res["user"]);
+                                            proccount = 3;
                                             console.log("Found  :  "+user["cred"]["email"]);
                                     $("#user-cont").html("<h3>Detected  :  <span style='color:#00B6FF;'>" + user["cred"]["email"] + "</span></h3>");
                                         $("#user-cont").css("background-color","white");
@@ -713,6 +836,12 @@
                                         setTimeout(function(){
                                             move_clothes();
                                             },5000);
+                                        
+                                        }else{
+                                            $("#user-cont").html("<h3 style='margin-bottom:8px;text-align:center;'>Plan Expired</h3><h3>Detected  :  <span style='color:#00B6FF;'>" + user["cred"]["email"] + "</span></h3>");
+                                        $("#user-cont").css("background-color","rgba(255,0,0,0.3)");
+                                        
+                                        }
                                         
                                     }
                                 }
@@ -790,6 +919,8 @@
                             $("#msg-cont").html("<h3 style='margin:0;'>Name : <span></span></h3><h3 style='margin:0;margin-top:5px;'>Destination : <span></span></h3>");
                             $("#msg-cont").css("background","white");
                             $("#msg-cont").show();
+                            
+
                             if(response=="Not Found"){
                                 $("#msg-cont span").html("Not found");
                             }

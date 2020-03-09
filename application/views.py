@@ -43,7 +43,7 @@ def check_cookie(req):
                 print(o)
                 for i in o:
                     if i.enabled:
-                        data['pid'].append(i.type)
+                        data['pid'].append(i.type_os)
             except:
                 print("no data")
             print(data)
@@ -246,9 +246,11 @@ def check_noti_setting(request):
         u=None
         i=""
         no=None
+        pid=""
         try:
             try:
-                i = request.GET["pid"]
+                pid = request.GET["pid"]
+                i = request.GET["os"]
                 print(i)
             except:
                 res["nf"] = True
@@ -261,7 +263,7 @@ def check_noti_setting(request):
                 res["s"]=False
                 return HttpResponse(json.dumps(res))
             try:
-                o = OneSignal.objects.get(email=u,type_os=i)
+                o = OneSignal.objects.get(email=u,pid=pid,type_os=i)
             except Exception as exp:
                 print("Errrorororo : ",exp)
                 res["s"]=False
@@ -283,7 +285,7 @@ def update_notification_setting(request):
     import json
     print("\n\nGot Type : ",request.POST["type"],"\n\n")
     data = check_cookie(request)
-    res = {"s":True,"sd":False}
+    res = {"s":True,"sd":False,"no":False}
     if data==None:
         res["s"]=False
         res["sd"]=True
@@ -310,11 +312,12 @@ def update_notification_setting(request):
                 try:
                     o = OneSignal.objects.get(email=u,pid=i)
                 except:
-                    res["no"] = True
+                    res["no"]=True
                     res["s"]=False
                     return HttpResponse(json.dumps(res))
                 try:
                     o.enabled = False if o.enabled else True
+                    
                     o.save()
                 except:
                     res["f"] = True

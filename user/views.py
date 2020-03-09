@@ -142,6 +142,7 @@ def profile(request):
         print(ud)
         ud["tot"] = u.order_dashboard.total_orders
         qr = u.qr_code_data
+		print(qr)
         return render(request,"profile.html",{"data":data,"ud":ud,"qr_code":qr.decode('utf-8')})
 
 

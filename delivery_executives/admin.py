@@ -17,9 +17,15 @@ class DeliveryAdmin(admin.ModelAdmin):
     def account_actions(self, obj):
         # print(dir(obj))
         # print(obj.pk)
-        qrcd = obj.qr_code_data
-        qrcd = obj.tobytes()
-        text_html = '<a class="button" download="{}-Qr-Code.png" href="{}">Download Qr Code</a>'.format(obj.name,qrcd.decode('utf-8'))
+        text_html = "<a>DDDD</a>"
+        try:
+            qrcd = obj.qr_code_data
+            qrcd = obj.tobytes()
+            print("QR DAta  :  ",qrcd)
+            text_html = '<a class="button" download="{}-Qr-Code.png" href="{}">Download Qr Code</a>'.format(obj.name,qrcd.decode('utf-8'))
+            print("Text : ",text_html)
+        except Exception as exp:
+            print("Error at admin  :  ",exp)
         return format_html(
             text_html
         )

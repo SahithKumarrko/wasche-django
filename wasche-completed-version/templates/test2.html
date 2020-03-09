@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form id="asd">
+        {% csrf_token %}
+        <input type="email" name="clientEmail">
+        <input type="password" name="clientPassword">
+        <button type="submit" value="submit">submit</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+           
+            $('#asd').submit(function(e){
+                e.preventDefault();
+                console.log("submitting");
+                $.ajax({
+                    type: "POST",
+                    url: './ajax/login/',
+                    data: $('#asd').serialize(),
+                    success: function( response ) {
+                        // get response
+                       // $('#clientPassword').val('');
+                        console.log(response);
+                    }
+                });
+            });
+                
+        });
+    </script>
+</body>
+</html>

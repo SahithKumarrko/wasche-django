@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Initializing ... </title>
+    <!-- <script src="https://www.cashfree.com/assets/cashfree.sdk.v1.2.js" type="text/javascript"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  
+</head>
+<body>
+    <!-- <form id="card_payment">
+       <input name="paymentOption" value="card"/>
+       <input name="card_number" value="4444333322221111"/>
+       <input name="card_holder" value="John Doe"/>
+       <input name="card_expiryMonth" value="09"/>
+       <input name="card_expiryYear" value="2020"/>
+       <input name="card_cvv" value="123"/>
+      </form>
+
+      <form id="net_banking">
+        <input name="paymentOption" value="nb"/>
+        <input name="paymentCode" value="3333"/>
+       
+      </form>
+      <form>
+        <input name="paymentOption" value="wallet"/>
+        <input name="paymentCode" value="4001"/>
+       </form> -->
+       <!-- <p>{{data}}</p> -->
+{% if data.status is True %}
+
+       <form id="paymentForm" method="post" action="https://test.cashfree.com/billpay/checkout/post/submit">
+        <input type="hidden" name="appId" value="{{ data.aid }}"/>
+        <input type="hidden" name="orderId" value="{{ data.oid }}"/>
+        <input type="hidden" name="orderAmount" value="{{ data.oa }}"/>
+        <input type="hidden" name="orderCurrency" value="{{ data.oc }}"/>
+        <input type="hidden" name="orderNote" value="{{ data.on }}"/>
+        <input type="hidden" name="customerName" value="{{ data.cn }}"/>
+        <input type="hidden" name="customerEmail" value="{{ data.ce }}"/>
+        <input type="hidden" name="customerPhone" value="{{ data.cp }}"/>
+        <input type="hidden" name="returnUrl" value="{{ data.rurl }}"/>
+        <input type="hidden" name="notifyUrl" value="{{ data.nurl }}"/>
+        <input type="hidden" name="signature" value="{{ data.sig }}"/>
+      </form>
+      <script>document.getElementById("paymentForm").submit();</script>
+{% else %}
+<div>
+  <h3>{{ data.err }}</h3>
+  <h5>Redirecting you...<span id="timer"></span></h5>
+  <script>
+    document.getElementsByTagName("title").innerHTML = "Error";
+    var c=10;
+   var t= setInterval(function(){
+     if(c<=1){
+       document.location.href = "/billing";
+       clearInterval(t);
+     }else{
+       document.getElementById("timer").innerHTML = c +" sec";
+     }
+     c = c - 1;
+    },1100);
+  </script>
+</div>
+{% endif %}      
+</body>
+</html>

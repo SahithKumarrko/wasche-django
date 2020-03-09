@@ -1,0 +1,5 @@
+PAssword : IeM7xj51r6twJkXjwhGpNoOuulqvyYH4
+Data Eviction Policy : volatile-lru
+Redis Version  : 5.0.4
+database name  : wasche
+Endpoint :  redis-15089.c9.us-east-1-2.ec2.cloud.redislabs.com:15089

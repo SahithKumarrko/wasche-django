@@ -1,0 +1,3017 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="ltr" lang="en" class=" inside_page inside_page_header_design s_layout1">
+<!-- Mirrored from 5d9844d886969.site123.me/about by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 05 Oct 2019 11:39:03 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head><meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    {% if data is False %}
+		<meta id="user-log" data-name="no">
+		{% else %}
+		<meta id="user-log" data-name="{{ data }}">
+    {% endif %}
+    <!-- <script data-ad-client="ca-pub-1884752906231318" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  
+    <!-- <script data-ad-client="ca-pub-1884752906231318" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> -->
+  
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'cdn-cms-s.f-static.com/manager/site123_website/files/logos/brand_files/logo-top.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'cdn-cms-s.f-static.com/manager/site123_website/files/logos/brand_files/logo-top.png' %}" type="image/x-icon">
+    <!-- <link rel="manifest" href="http://cdn-cms-s.f-static.com/versions/2/css/manifest.js' %}on?w=&amp;orderScreen=&amp;websiteID=2630165&amp;onlyContent=&amp;tranW=&amp;v=n5670_11928280&amp;wd=5d9844d886969.site123.me"> -->
+    <!-- Status Bar -->
+    <meta id="user-data" data-name="{{ ud }}">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- 152px icon -->
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'cdn-cms.f-static.com/ready_uploads/pwaScreenLogo/152_152_000000_ffffff_W-v22.png' %}">
+    <!-- 180px icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'cdn-cms.f-static.com/ready_uploads/pwaScreenLogo/180_180_000000_ffffff_W-v22.png' %}">
+    <!-- 167px icon -->
+    <link rel="apple-touch-icon" sizes="167x167" href="{% static 'cdn-cms.f-static.com/ready_uploads/pwaScreenLogo/167_167_000000_ffffff_W-v22.png' %}">
+    <!-- Mobile Browser Address Bar Color -->
+    <!-- <link rel="stylesheet" href="{% static 'plugins/themefisher-font/style.css' %}"> -->
+    <!-- <link rel="stylesheet" href="{% static 'simple-sidebar.css' %}"> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!-- Icons -->
+  <link href="{% static 'assets/js/plugins/nucleo/css/nucleo.css' %}" rel="stylesheet" />
+  <link href="{% static 'assets/js/plugins/@fortawesome/fontawesome-free/css/all.min.css' %}" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="{% static 'assets/css/argon-dashboard.css' %}" rel="stylesheet" />
+	
+    <meta name="theme-color" content="#019875">
+    <!-- Regular Meta Info -->
+    <title class="s123-js-pjax">Dashboard - Wasche</title>
+    <meta name="description" content="Laundry Service with best features" class="s123-js-pjax">
+    <meta name="keywords" content="washing, ironing, pickup and delivery" class="s123-js-pjax">
+    <link rel="canonical" href="/" class="s123-js-pjax" />
+    <!-- Global site tag (gtag.js' %}) - Google Analytics -->
+    <!-- Facebook Meta Info -->
+    <!-- <meta property="og:url" content="https://5d9844d886969.site123.me/" class="s123-js-pjax">  -->
+    <meta property="og:image" content="{% static 'cdn-cms.f-static.com/ready_uploads/media/49023/2000_5ce2c023e1e45.jpg' %}" class="s123-js-pjax">
+    <meta property="og:description" content="Laundry Service with best features" class="s123-js-pjax">
+    <meta property="og:title" content="Wasche" class="s123-js-pjax">
+    <meta property="og:site_name" content="Wasche" class="s123-js-pjax">
+    <!-- <meta property="og:see_also" content="https://5d9844d886969.site123.me" class="s123-js-pjax">  -->
+    <!-- Google+ Meta Info -->
+    <meta itemprop="name" content="Wasche" class="s123-js-pjax">
+    <meta itemprop="description" content="Laundry Service with best features" class="s123-js-pjax">
+    <meta itemprop="image" content="{% static 'cdn-cms.f-static.com/ready_uploads/media/49023/2000_5ce2c023e1e45.jpg' %}" class="s123-js-pjax">
+    <!-- Twitter Meta Info -->
+    <meta name="twitter:card" content="summary" class="s123-js-pjax">
+    <meta name="twitter:title" content="Wasche" class="s123-js-pjax">
+    <meta name="twitter:description" content="Laundry Service with best features" class="s123-js-pjax">
+    <meta name="twitter:image" content="{% static 'cdn-cms.f-static.com/ready_uploads/media/49023/2000_5ce2c023e1e45.jpg' %}" class="s123-js-pjax">
+ 
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function() {
+      OneSignal.init({
+        appId: "df0790ca-561e-44c3-8cb2-9d1b78bf0bab",
+        notifyButton: {
+          enable: false,
+        },
+        allowLocalhostAsSecureOrigin: true,
+       // welcomeNotification: {
+         // "title": "Welcome",
+          //"message": "Thanks for subscribing!",
+          // "url": "" /* Leave commented for the notification to not open a window on Chrome and Firefox (on Safari, it opens to your webpage) */
+        //},
+      });
+    });
+  </script>
+    
+
+    
+    
+            
+
+    
+
+    <!-- Website CSS variables --> <style> 
+ 
+
+        .ic-Super-toggle__label {
+          box-sizing: border-box;
+          margin: 0;
+          -webkit-user-select: none;
+             -moz-user-select: none;
+              -ms-user-select: none;
+                  user-select: none;
+        }
+        .ic-Form-group.ic-Form-group--horizontal .ic-Super-toggle__label {
+          display: inline-flex;
+          align-items: center;
+        }
+        
+        .ic-Super-toggle__input {
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        .ic-Super-toggle-switch{
+          cursor:pointer;
+        }
+        .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-switch:after {
+          -webkit-transform: translate3d(100%, 0, 0);
+                  transform: translate3d(100%, 0, 0);
+        }
+        .ic-Super-toggle__input:checked ~ label .ic-Super-toggle__disabled-msg:before {
+          content: attr(data-checked);
+        }
+        .ic-Super-toggle__input[disabled] ~ label .ic-Super-toggle__disabled-msg {
+          display: none;
+        }
+        .ic-Super-toggle__input[disabled] ~ label .ic-Super-toggle-switch,
+        .ic-Super-toggle__input[disabled] ~ label [class^="ic-Super-toggle-option-"] {
+          display: inline-block;
+        }
+        
+        .ic-Super-toggle-switch {
+          transition: background 0.1s, border-color 0.1s;
+          display: inline-block;
+          position: relative;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          background-clip: padding-box;
+        }
+        .ic-Super-toggle-switch::after {
+          transition: all 0.1s ease-in-out;
+          content: "";
+          position: absolute;
+          top: -3px;
+          left: -2px;
+          -webkit-transform: translate3d(0, 0, 0);
+                  transform: translate3d(0, 0, 0);
+          border-radius: 100%;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+          background-image: url("https://cl.ly/320m31452k2X/handle.svg");
+          background-position: 50% 50%;
+          background-repeat: no-repeat;
+          background-size: 20px;
+        }
+        
+        .ic-Super-toggle__disabled-msg {
+          display: none;
+        }
+        .ic-Super-toggle__disabled-msg:before {
+          content: attr(data-unchecked);
+          font-style: italic;
+          opacity: 0.8;
+        }
+        
+        [class^="ic-Super-toggle-option-"] {
+          transition: opacity 0.2s, -webkit-transform 0.2s;
+          transition: opacity 0.2s, transform 0.2s;
+          transition: opacity 0.2s, transform 0.2s, -webkit-transform 0.2s;
+          flex: 0 0 50%;
+          text-align: center;
+          position: relative;
+          z-index: 1;
+          text-transform: uppercase;
+          font-weight: bold;
+          line-height: 1;
+          speak: none;
+          box-sizing: border-box;
+        }
+        
+        .ic-Super-toggle__screenreader {
+          border: 0;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+        }
+        
+        .ic-Super-toggle--on-off {
+          display: none;
+          vertical-align: middle;
+          position: relative;
+          transform:translateX(6.5rem);
+
+        }
+
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:focus ~ label .ic-Super-toggle-switch::after {
+          box-shadow: inset 0 0 0 1px white, inset 0 0 0 3px #333, 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-switch {
+          background: #009b16;
+          border-color: #009b16;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT {
+          color: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT .ic-Super-toggle__svg > * {
+          fill: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT {
+          color: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT .ic-Super-toggle__svg > * {
+          fill: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked:focus ~ label .ic-Super-toggle-switch::after {
+          box-shadow: inset 0 0 0 1px white, inset 0 0 0 3px #009b16, 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-switch {
+          width: 40px;
+          height: 20px;
+          background: #333;
+          border: 2px solid #333;
+          border-radius: 18.5px;
+        }
+        .ic-Form-group.ic-Form-group--horizontal .ic-Super-toggle--on-off .ic-Super-toggle-switch {
+          flex: 0 0 66px;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-switch:after {
+          background-color: white;
+          width: 21px;
+          height: 21px;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-LEFT {
+          color: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-LEFT .ic-Super-toggle__svg > * {
+          fill: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-RIGHT {
+          color: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-RIGHT .ic-Super-toggle__svg > * {
+          fill: white;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__svg {
+          max-width: 10.5px;
+          max-height: 12.5px;
+          margin-top:-3px;
+        }
+        .ic-Super-toggle--on-off [class^="ic-Super-toggle-option-"] {
+          transition-delay: 0.1s;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-LEFT {
+          opacity: 0;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle-option-RIGHT {
+          opacity: 1;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT {
+          opacity: 1;
+        }
+        .ic-Super-toggle--on-off .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT {
+          opacity: 0;
+        }
+        
+        .ic-Super-toggle--ui-switch {
+          display: inline-block;
+          vertical-align: middle;
+          position: relative;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:focus ~ label .ic-Super-toggle-switch::after {
+          box-shadow: inset 0 0 0 1px white, inset 0 0 0 3px #333, 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-switch {
+          background: #333;
+          border-color: #333;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT {
+          color: #253138;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT .ic-Super-toggle__svg > * {
+          fill: #253138;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT {
+          color: #00ac19;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT .ic-Super-toggle__svg > * {
+          fill: #00ac19;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked:focus ~ label .ic-Super-toggle-switch::after {
+          box-shadow: inset 0 0 0 1px white, inset 0 0 0 3px #333, 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-switch {
+          width: 66px;
+          height: 33px;
+          background: #333;
+          border: 2px solid #333;
+          border-radius: 18.5px;
+        }
+        .ic-Form-group.ic-Form-group--horizontal .ic-Super-toggle--ui-switch .ic-Super-toggle-switch {
+          flex: 0 0 66px;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-switch:after {
+          background-color: white;
+          width: 33px;
+          height: 33px;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-LEFT {
+          color: #da062a;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-LEFT .ic-Super-toggle__svg > * {
+          fill: #da062a;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-RIGHT {
+          color: #253138;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-RIGHT .ic-Super-toggle__svg > * {
+          fill: #253138;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__svg {
+          max-width: 16.5px;
+          max-height: 16.5px;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__label {
+          display: inline-flex;
+          align-items: center;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-switch {
+          display: block;
+        }
+        .ic-Super-toggle--ui-switch [class^="ic-Super-toggle-option-"] {
+          flex: none;
+          min-width: 24px;
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-LEFT {
+          text-align: left;
+          -webkit-transform: scale(1.1);
+                  transform: scale(1.1);
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle-option-RIGHT {
+          text-align: right;
+          -webkit-transform: scale(0.9);
+                  transform: scale(0.9);
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-LEFT {
+          -webkit-transform: scale(0.9);
+                  transform: scale(0.9);
+        }
+        .ic-Super-toggle--ui-switch .ic-Super-toggle__input:checked ~ label .ic-Super-toggle-option-RIGHT {
+          -webkit-transform: scale(1.1);
+                  transform: scale(1.1);
+        }
+        
+ .dropdown-menu{
+   width:20rem;
+ }
+        .frame {
+          position: relative;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          border-radius: 2px;
+          color: #fff;
+          transform:translate(-50%,-50%);
+          
+        }
+        
+        .frame .center {
+          position: absolute;
+          width: 220px;
+          height: 220px;
+          top: 47%;
+          left: 50%;
+          transform:translate(-50%,-50%);
+          
+        }
+        i#prev-order-list.full{
+          color:rgba(0,0,0,0.35);
+        }
+        i#next-order-list.full{
+          color:rgba(0,0,0,0.35);
+        }
+        i#prev-order-list.full:after {
+          content: '';
+          width: 20.81px;
+          height: 20px;
+          /* padding: 4px; */
+          border-radius: 2px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          cursor: not-allowed;
+          background: rgba(0,0,0,0.2);
+      }
+      i#next-order-list.full:after {
+        content: '';
+        width: 20.81px;
+        height: 20px;
+        /* padding: 4px; */
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        cursor: not-allowed;
+        background: rgba(0,0,0,0.2);
+    }
+        
+        .dot-1 {
+          position: absolute;
+          z-index: 3;
+          width: 30px;
+          height: 30px;
+          top: 95px;
+          left: 95px;
+          background: #4973ff;
+          border-radius: 50%;
+          -webkit-animation-fill-mode: both;
+                  animation-fill-mode: both;
+          -webkit-animation: jump-jump-1 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+                  animation: jump-jump-1 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+        }
+        
+        .dot-2 {
+          position: absolute;
+          z-index: 2;
+          width: 60px;
+          height: 60px;
+          top: 80px;
+          left: 80px;
+          background: #fff;
+          border-radius: 50%;
+          -webkit-animation-fill-mode: both;
+                  animation-fill-mode: both;
+          -webkit-animation: jump-jump-2 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+                  animation: jump-jump-2 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+        }
+        
+        .dot-3 {
+          position: absolute;
+          z-index: 1;
+          width: 90px;
+          height: 90px;
+          top: 65px;
+          left: 65px;
+          background: #5e72e4;
+          border-radius: 50%;
+          -webkit-animation-fill-mode: both;
+                  animation-fill-mode: both;
+          -webkit-animation: jump-jump-3 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+                  animation: jump-jump-3 2s cubic-bezier(0.21, 0.98, 0.6, 0.99) infinite alternate;
+        }
+        
+
+
+        .gegga {
+          width: 0;
+        }
+        .snurra {
+          filter: url(#gegga);
+        }
+        .stopp1 {
+          stop-color: #f700a8;
+          stop-color : #3090e2;
+        }
+        .stopp2 {
+          stop-color: #ff8000;
+          stop-color:#b43ed2;
+        }
+        .halvan {
+          animation: Snurra1 10s infinite linear;
+          stroke-dasharray: 180 800;
+          fill: none;
+          stroke: url(#gradient);
+          stroke-width: 23;
+          stroke-linecap: round;
+        }
+        .strecken {
+          animation: Snurra1 3s infinite linear;
+          stroke-dasharray: 26 54;
+          fill: none;
+          stroke: url(#gradient);
+          stroke-width: 23;
+          stroke-linecap: round;
+        }
+        .skugga {
+          filter: blur(5px);
+          opacity: 0.3;
+          position: absolute;
+          transform: translate(3px, 3px);
+        }
+        @keyframes Snurra1 {
+          0% {
+            stroke-dashoffset: 0;
+          }
+          100% {
+            stroke-dashoffset: -403px;
+          }
+        }
+        
+        @-webkit-keyframes jump-jump-1 {
+          0%, 70% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        
+        @keyframes jump-jump-1 {
+          0%, 70% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        @-webkit-keyframes jump-jump-2 {
+          0%, 40% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        @keyframes jump-jump-2 {
+          0%, 40% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        @-webkit-keyframes jump-jump-3 {
+          0%, 10% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        @keyframes jump-jump-3 {
+          0%, 10% {
+            box-shadow: 2px 2px 3px 2px rgba(0, 0, 0, 0.2);
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+          }
+          100% {
+            box-shadow: 10px 10px 15px 0 rgba(0, 0, 0, 0.3);
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+          }
+        }
+        
+                  
+@-webkit-keyframes enter-load {
+  0%, 10% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes enter-load {
+  0%, 10% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes exit-load {
+  0%, 10% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+@keyframes exit-load {
+  0%, 10% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+@media (min-width:768px){
+  .prc111{
+    margin-top:42px !important;
+    margin-left:-2.5rem !important;
+  }
+}
+
+.full-msg-div{
+  
+  background: #fff;
+  width:100%;
+  box-shadow: 0 0 2.5rem 0 rgba(10, 10, 10, 0.65), inset 0 0 5px 0 rgba(0,0,0,0.5);
+  border-radius: 3px;
+  z-index: 6;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: scale(0);
+  transition: all 0.5s;
+  transform-origin: top center;
+  padding: 16px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom:16px;
+
+}
+
+.full-msg-div-header{
+  display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.mnoti-small{
+  cursor:pointer;
+}
+.full-msg-div-header-details{
+  
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+@keyframes enter-text{
+  0%{
+      opacity:0;
+      transform:scale(0);
+  }
+  100%{
+      opacity:1;
+      transform:scale(1);
+  }
+}
+
+@keyframes exit-text{
+  0%{
+      opacity:1;
+      transform:scale(1);
+  }
+  100%{
+      opacity:0;
+      transform:scale(0);
+  }
+}
+
+.full-msg-div.exit {
+  animation: exit-text 0.4s linear forwards !important;
+}
+.full-msg-div.enter{
+  animation: enter-text 0.6s cubic-bezier(0,0.38,0.48,1.17) forwards;
+}
+::-webkit-scrollbar {
+    width: 9px;
+    height: 7px;
+    background-color: #F5F5F5;
+} 
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.5);
+  border-radius:5px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+.filter-cont{
+  transform: scale(0);
+
+}
+  
+.filter-cont.open{
+  display: flex !important;
+  animation: enter-load 1s forwards;
+}
+
+
+.filter-cont.close{
+  animation: exit-load 1s forwards;
+}
+.filter-cont2{
+  transform: scale(0);
+
+}
+  
+.filter-cont2.open{
+  display: flex !important;
+  animation: enter-load 1s forwards;
+}
+
+
+.filter-cont2.close{
+  animation: exit-load 1s forwards;
+}
+.o-day{
+  font-size:0.9rem !important;
+}
+.o-time{
+  display:block;
+  font-size:0.75rem !important;
+}
+.mnoti-text{
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.15rem;
+  word-break:break-all;
+  letter-spacing: 0.5px;
+  max-height: 3rem;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  
+}
+
+.mnoti-cont.not-seen-msg::before{
+  content: '';
+    position: absolute;
+    left: 4px;
+    top: 21%;
+    width: 10px;
+    height: 10px;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+    background: rgb(105, 109, 226);
+    border-radius: 100%;
+}
+.notification-alert-msg{
+  
+  width: 14rem;
+  padding: 8px 12px;
+  text-align: center;
+  /* margin: auto; */
+  position: fixed;
+  top: 4px;
+  z-index: 2000;
+  /* transform-origin: 50% 50%; */
+  left: 50%;
+  transform: translate(-50%,-250px);
+  font-size: 0.875rem;
+  color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 5px 5px 14px rgba(0,0,0,0.3);
+  transition: all 0.6s cubic-bezier(0, 0.38, 0.48, 1.17);
+  box-shadow: 0 50px 100px rgba(50, 50, 93, 0.2), 0 15px 35px rgba(50, 50, 93, 0.4), 0 5px 15px rgba(0, 0, 0, 0.2);
+
+}
+.notification-alert-msg.noti-msg-success{
+  
+  background-color: #4fd69c;
+  border-color: #4fd69c;
+}
+
+.notification-alert-msg.noti-msg-danger{
+  background-color: #f75676;
+    border-color: #f75676;
+}
+.notification-alert-msg.noti-msg-show{
+  transform: translate(-50%,0%) !important;
+}
+.mnoti-cont{
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 20px;
+  padding-bottom:0;
+  position:relative;
+}
+.mnoti-time{
+  width: 100%;
+  display: block;
+  margin:0;
+  padding:0;
+  border-bottom:1px solid #e9ecef;
+}
+.mnoti img{
+  width:35px;
+  margin-right:13px;
+}
+
+.mnoti-title{
+  margin: 0;
+  width: 100%;
+  font-weight: 600;
+  line-height: 1.2rem;
+  max-height: 1.3rem !important;
+  overflow: hidden;
+  word-break:break-all;
+  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+.mnoti-title.mnoti-heading{
+  margin:6px 0;
+}
+.big-noti-msg.show{
+  transform:scale(1) !important;
+}
+#desk-noti-options-div li div:before{
+  content:'';
+  position:absolute;
+  top:50%;
+  width:90%;
+  height:1px;
+  border:1px solid #eee;
+  z-index:-1;
+  left:0;
+}
+#desk-noti-options-div #no-deci{
+  list-style-type: none;
+  text-align: -webkit-center;
+  text-align: center;
+}
+#desk-noti-options-div li div h3{
+  background:#f75676;
+  border-color:#f75676;
+  z-index:2;
+  display:inline;
+}
+.notification-all-cont{
+  position: fixed;
+  top: 0;
+  padding: 16px;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transform:scale(0);
+  background: rgba(0,0,0,0.3);
+
+}
+.notification-all-cont.enter{
+  animation: enter-text 0.6s cubic-bezier(0,0.38,0.48,1.17) forwards !important;
+
+}
+
+.notification-all-cont.exit{
+  animation: exit-text 0.4s linear forwards !important;
+
+}
+.full-msg-div i{
+  font-size: 25px;
+  border: 0.5px solid rgba(0,0,0,0.6);
+  border-radius: 2px;
+}
+.mnoti.add-noti-shadow{
+
+ padding: 5px 0 !important;
+  border-radius: 3px !important;
+  
+  position: relative !important;
+
+}
+.mnoti.mnoti-click{
+  cursor:pointer !important;
+}
+
+.mnoti.mnoti-click:hover{
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  
+}
+.full-msg-div .f-msg-title{
+  margin: 0;
+    display: inline-block;
+}
+.remove-full-msg{
+  cursor:pointer;
+}
+#remove-view-all-notif{
+  cursor:pointer;
+}
+.full-msg-div img{
+  margin-top:5px;
+}
+.full-msg-div p{
+  margin:0;
+  word-spacing:2px;
+}
+.cont-all-noti{
+  background: #fff;
+    position: relative;
+    box-shadow: 0 0 2.5rem 0 rgba(10, 10, 10, 0.65), inset 0 0 5px 0 rgba(0,0,0,0.5);
+    border-radius: 3px;
+    z-index: 6;
+    padding: 16px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+@media (min-width:768px){
+  .navbar-top{
+    
+    border-radius: 5px;
+    position: fixed !important;
+    width: calc(100% - 250px) !important;
+    margin-left: 250px;
+    /* right: 0; */
+    z-index: 2 !important;
+    background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+    box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.55) !important;
+
+  }
+}
+.marker {
+  position: absolute;
+    top: 3px;
+    right: 6px;
+    height: 10px;
+    width: 10px;
+    border-radius: 70px;
+    background: #ff5e00;
+    display:none;
+    color: #f00;
+}
+.pulse {
+  position: absolute;
+    right: 1px;
+    height: 20px;
+    width: 20px;
+    top: -2px;
+    z-index: 10;
+    border: 5px solid #ff5e00;
+    border-radius: 70px;
+    display:none;
+    animation: pulse-noti 1s ease-out infinite;
+  }
+  @media (min-width : 768px){
+    .main-side-brand-logo{
+      display:block !important;
+    }
+.navbar.navbar-vertical{
+  display:none !important;
+}
+
+  }
+  .navbar-vertical.navbar-expand-md.fixed-left+.main-content{
+    margin-left : 0 !important;
+  }
+@keyframes pulse-noti{
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+}
+
+25% {
+    -webkit-transform: scale(0.1);
+    opacity: 0.1;
+}
+50% {
+    -webkit-transform: scale(0.5);
+    opacity: 0.3;
+}
+75% {
+    -webkit-transform: scale(0.8);
+    opacity: 0.5;
+}
+100% {
+    -webkit-transform: scale(1);
+    opacity: 0;
+}
+}
+#err-msg-btn:hover{
+  transform:scale(1.02);
+  box-shadow:0px 10px 15px rgba(0,0,0,0.35);
+}
+
+#div__payment{
+  position: absolute;
+  z-index: 15;
+  width: 100%;
+  /* color: #fff; */
+  background: #fff;
+  border-radius: 5px;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  align-items: center;
+  transition: all 0.6s cubic-bezier(0, 0.38, 0.48, 1.17);
+  box-shadow: 0 50px 100px rgba(50, 50, 93, 0.2), 0 15px 35px rgba(50, 50, 93, 0.4), 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  transform: translateY(-150%);
+  flex-wrap:wrap;
+
+}
+div#div__payment.payment__show {
+  transform: translateY(0) !important;
+}
+
+form.billing-form-input {
+    padding: 16px 2rem;
+    min-height: 400px;
+    max-height: 500px;
+    /* display: flex; */
+    position:relative;
+    text-align: center;
+    /* height: 300px; */
+    padding-bottom: 0px;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(236,239,241,0.07);
+    margin-bottom: 1rem;
+    width: 294px;
+    box-shadow: 0px 5px 0px rgb(94, 114, 228), 0px -5px 0px rgb(94,114,228), 0 20px 50px rgba(0,0,0,0.5);
+    transition: all 0.4s cubic-bezier(0, 0.38, 0.48, 1.17);
+}
+.billing-form-input .show-message-conf{
+
+  transition: all 0.4s cubic-bezier(0, 0.38, 0.48, 1.17);
+
+}
+.billing-form-input-plan {
+  margin: 0;
+  padding: 10px 0 10px;
+}
+.billing-form-input-plan h1 {
+  text-align: center;
+  margin: 0;
+}
+.billing-form-input-plan p {
+  margin: 0;
+}
+
+.billing-form-input-plan strong {
+  color: #57cbcc !important;
+  font-size: 30px;
+  font-weight: bold;
+}
+form.billing-form-input .form-group {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+#renew-subscription.clickable{
+  cursor:pointer;
+}
+
+#div__payment i{
+  cursor:pointer;
+}
+form.billing-form-input.move-right {
+  position: absolute;
+  transform: translateX(150%);
+}
+form.billing-form-input.move-left {
+  position: absolute;
+  transform: translateX(150%);
+}
+    </style> <!-- Custom CSS --> <!-- Minimize CSS files -->
+    <!-- End Cookie Consent plugin --> <!-- Froala Editor CSS --> 
+    </head>
+    <body class="">
+        <div class="notification-all-cont">
+            <div class="cont-all-noti col">
+                <div style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: fixed;
+                z-index: 2010;
+                width: calc(100% - 74px);
+                background: #fff;
+                margin-top: -13.5px;
+                padding: 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius:3px;
+            ">
+                    <h3 style="margin:0;display:inline-block;
+                ">All Notifications</h3><i id="remove-view-all-notif" class="ni ni-fat-remove" style="
+                font-size: 25px;
+                border: 0.5px solid rgba(0,0,0,0.6);
+                border-radius: 2px;  
+            "></i>
+            </div><div class="dropdown-divider"></div>
+            <div style="padding-top:34px;" class="all-noti-cont-msg none-noti"></div>
+            <!-- <div class="full-msg-div">
+            <div class="full-msg-div-header">
+            <div class="full-msg-div-header-details">
+            <img src="/static/male-avatar.svg">
+                <div>
+            
+            <h3 class="f-msg-title">dsadsadsadsa</h3>
+            <h5>05-04-08 08:88:55 PM</h5>
+            </div>
+            </div>
+                <i class="ni ni-fat-remove" class="remove-full-msg"></i>
+            </div>
+            <div>
+                <h3></h3>
+                <p>
+                </p>
+                  
+                </p>
+              </div>
+            </div> -->
+            
+            <div id="load-more-noti">
+                <h4 id="h4-load-more-noti" style="
+                display: none;
+                text-align: center;
+            ">No more notifications to load.</h4>
+                    <div class="prcnoti" style="display: flex;margin: auto;justify-content: center;align-items: center;">
+                                    <img style="width: 40px;" src="/static/pulse.svg">&nbsp;<h4 style="
+                margin: 0;
+            ">Loading More ...</h4></div>
+                </div>
+            
+            <!-- <div class="dropdown-divider"></div> -->
+            
+            </div>
+            </div>
+            
+      {% if pdata.over is True %}
+      
+      <div id="div__payment">
+          <div style="
+          position: absolute;
+          right: 10px;
+          top: 5px;
+      ">
+              <i class="close-payment-div ni ni-fat-remove" style="
+          font-size: 25px;
+          border: 1px solid #5e72e4;
+      "></i>
+          </div>
+          
+      {% for i in pdata.plans %}
+        
+        <form class="billing-form-input {{ i.0 }}" >
+            
+          <div class="billing-form-input-plan">
+        <h1 class="planName">{{ i.0 }}</h1>
+        <p>
+            <strong>Rs.<strong class="planAmount">{{ i.1.cost }}</strong></strong>/ month
+        </p>
+    </div>
+            <div class="dropdown-divider"></div>
+            {% for j in i.1.details %}
+            <p class="planDet">{{ j }}</p>
+            {% endfor %}
+            <div class="dropdown-divider"></div>
+
+            <div class="form-group">
+    <button class="btn btn-primary" type="submit"><i class="ace-icon fa fa-spinner fa-spin blue fa-1x" style="display: none;"></i><span>Renew</span></button>
+  </div>
+          
+    </form>
+    {% endfor %}
+  
+  </div>
+      {% endif %}
+        <div class="big-noti-msg" style="
+        position: fixed;
+        z-index: 2000;
+        width: 100%;
+        height: 100%;
+        transition: all 0.6s cubic-bezier(0, 0.38, 0.48, 1.17);
+        transform: scale(0);
+        background: rgba(0,0,0,0.3);
+        /* top: 50%; */
+        /* left: 50%; */
+        /* transform: translate(-50%,-50%); */
+    "><div style="
+        position: absolute;
+        top: 50%;
+        /* width: 100%; */
+        /* height: 100%; */
+        background-color: #f75676;
+        border-color: #f75676;
+        color: #fff;
+        left: 50%;
+        border-radius: 5px;
+        box-shadow: 0 50px 100px rgba(50, 50, 93, 0.2), 0 15px 35px rgba(50, 50, 93, 0.4), 0 5px 15px rgba(0, 0, 0, 0.2);
+        padding: 8px 16px;
+        transform: translate(-50%,-50%);
+    "><div style="
+        text-align: center;
+        padding-top: 8px;
+    ">
+        <p>You have blocked the notifications.<br></p>
+    <h3>Revoke Notification Settings</h3><ol id="desk-noti-options-div" style="
+        text-align: initial;
+    "><li>Click on&nbsp;<strong>Lock icon</strong>&nbsp;<img src="{% static 'lock.png' %}" style="width:25px;">&nbsp;on the top of page.
+        
+        </li>
+        <li>Choose&nbsp;<strong>Allow</strong>&nbsp;from&nbsp;<strong>Notifications options</strong>&nbsp;if shown.</li>
+        <li id="no-deci">
+            <div style="
+        position: relative;
+    ">
+                <h3 style="
+        color: #eee;
+        z-index: 2;
+        display: inline;
+        background: #f75676;
+    ">OR</h3>
+            </div>
+        </li>
+        <li value="3">
+            Click on&nbsp;<strong>Site Settings</strong>&nbsp;and choose&nbsp;<strong>Allow</strong>&nbsp;from&nbsp;<strong>Notifications options</strong>
+        </li>
+        </ol><ol id="mobile-noti-options-div" style="
+        text-align: initial;
+    ">
+            <li>
+                To the right of the address bar, tap More&nbsp;<img src="{% static 'dot-menu.jpg' %}" style="width:25px;">&nbsp;<img src="{% static 'arrow.png' %}" style="width:25px;">&nbsp;<strong>Settings</strong>.
+    
+            </li>
+            <li>
+                Tap&nbsp;<strong>Site Settings</strong>&nbsp;<img src="{% static 'arrow.png' %}" style="width:25px;">&nbsp;<strong>Notifications</strong>
+            </li>
+            <li>
+                Choose&nbsp;<strong>Allow</strong>&nbsp;or&nbsp;<strong>Block</strong>.
+            </li>
+        </ol>
+        
+    
+    <div style="
+        width: 80px;
+        margin: auto;
+        margin-bottom: 15px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 24px rgba(0,0,0,0.5), inset 0 0 10px rgba(0,0,0,0.2);
+        cursor: pointer;
+        border-radius: 3px;
+        transition: all 0.3s;
+    " id="err-noti-btn"><span>Ok</span></div></div>
+        </div>
+        </div>
+      <div class="notification-alert-msg"></div>
+      <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main" style="position:fixed;width:100%;z-index:2;">
+        <div class="container-fluid">
+          <!-- Toggler -->
+          <!-- <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button> -->
+          <!-- Brand -->
+          <!-- <a class="navbar-brand pt-0" href="{% static 'index.html">
+            <img src="{% static 'assets/img/brand/blue.png' %}" class="navbar-brand-img" alt="...">
+          </a> -->
+    <a class="navbar-brand page-unique logo_name  weight700 top" style="width:fit-content;height:fit-content;padding: 20px;overflow:hidden;z-index: 1;position:relative;border-radius:10px;" href="/"> 
+                            <span class="website-name" style="color:white;z-index: 10;/* display: flex; */position: relative;">Wasche</span> 
+                            <div class="liquid" style="
+                                                        box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+                                                        padding: 0;
+                                                        margin: 0;
+                                                        width: 0;
+                                                        position: absolute;
+                                                        height: 0;
+                                                        left: 0;
+                                                        top: -90px;
+                                                        width: 200px;
+                                                        height: 200px;
+                                                        background: #4973ff;
+                                                        transition: 0.5s;
+                                                    "></div>
+                  </a>
+          <!-- User -->
+          <ul class="nav align-items-center d-md-none">
+            <li class="nav-item dropdown">
+              <a style="width:100%;" class="nav-link nav-link-icon notifications" href="#" role="button"  aria-haspopup="true" aria-expanded="false">
+                <i class="ni ni-bell-55"></i>
+                <div class="pulse"></div>
+                <div class="marker"></div>
+              </a>
+              <div class="dropdown-menu dropm dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                  <h3 style="
+                  margin: 0;
+                  padding:9px 0px;
+                  padding-left: 16px;
+                  display: inline-block;
+              ">Notifications</h3>  
+              <!-- <div class="prc4" style="display: none;margin-left: 6rem;">
+                  <img style="width: 40px;/* height: 40px; */" src="/static/pulse.svg">
+               </div>
+                <div class="ic-Super-toggle--on-off">
+                      <input type="checkbox" id="demo11" class="ic-Super-toggle__input" checked>
+                      <label class="ic-Super-toggle__label" for="demo11">
+                        <div class="ic-Super-toggle__screenreader">Enable flux capacitor</div>
+                        <div class="ic-Super-toggle__disabled-msg" data-checked="On" data-unchecked="Off" aria-hidden="true"></div>
+                        <div class="ic-Super-toggle-switch" aria-hidden="true">
+                          <div class="ic-Super-toggle-option-LEFT" aria-hidden="true">
+                            <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="548.9" height="548.9" viewBox="0 0 548.9 548.9" xml:space="preserve"><polygon points="449.3 48 195.5 301.8 99.5 205.9 0 305.4 95.9 401.4 195.5 500.9 295 401.4 548.9 147.5 "/></svg>
+                          </div>
+                          <div class="ic-Super-toggle-option-RIGHT" aria-hidden="true">
+                            <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 28 28" xml:space="preserve"><polygon points="28 22.4 19.6 14 28 5.6 22.4 0 14 8.4 5.6 0 0 5.6 8.4 14 0 22.4 5.6 28 14 19.6 22.4 28 " fill="#030104"/></svg>
+                          </div>
+                        </div>
+                      </label>
+                    </div> -->
+                <!-- <a class="dropdown-item" href="#">Action</a> -->
+                <!-- <a class="dropdown-item" href="#">Another action</a> -->
+                
+                <div class="cont-mnoti">
+                    <div class="prc5" style="display: flex;margin: auto;justify-content: center;align-items: center;">
+                        <img style="width: 40px;" src="/static/pulse.svg">&nbsp;<h4 style="
+    margin: 0;
+">Loading ...</h4></div>
+                  </div>
+                  <h4 class="popup-noti-h4" style="
+                        margin: 0;
+                        padding:9px 0px;
+                        padding-left: 16px;
+                        display: inline-block;
+                        font-size: 0.92rem;
+                    ">PopUp Notifications</h4> 
+                    <div class="prc4" style="display: inline;margin-left: 4rem;">
+                        <img style="width: 40px;/* height: 40px; */" src="/static/pulse.svg">
+                     </div> 
+                      <div class="ic-Super-toggle--on-off">
+                            <input type="checkbox" id="demo1" class="ic-Super-toggle__input" checked="">
+                            <label class="ic-Super-toggle__label" for="demo1">
+                              <div class="ic-Super-toggle__screenreader">Enable flux capacitor</div>
+                              <div class="ic-Super-toggle__disabled-msg" data-checked="On" data-unchecked="Off" aria-hidden="true"></div>
+                              <div class="ic-Super-toggle-switch" aria-hidden="true">
+                                <div class="ic-Super-toggle-option-LEFT" aria-hidden="true">
+                                  <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="548.9" height="548.9" viewBox="0 0 548.9 548.9" xml:space="preserve"><polygon points="449.3 48 195.5 301.8 99.5 205.9 0 305.4 95.9 401.4 195.5 500.9 295 401.4 548.9 147.5 "></polygon></svg>
+                                </div>
+                                <div class="ic-Super-toggle-option-RIGHT" aria-hidden="true">
+                                  <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 28 28" xml:space="preserve"><polygon points="28 22.4 19.6 14 28 5.6 22.4 0 14 8.4 5.6 0 0 5.6 8.4 14 0 22.4 5.6 28 14 19.6 22.4 28 " fill="#030104"></polygon></svg>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+<div class="dropdown-divider"></div>
+                <a class="dropdown-item view-all-notif" href="#"><h4 style="margin:0;">View all notications</h4></a>
+                    <!-- <a class="dropdown-item" href="#">Something else here</a> -->
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    
+                  </span>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                <div class=" dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome!</h6>
+                  <h4 class="text-overflow m-0 text-info user-name"></h4>
+                </div>
+                <a class="dropdown-item" href="/dashboard/">
+                   <i class="ni ni-tv-2 text-primary"></i> <span>Dashboard</span>
+                 </a>
+                 
+                <a href="/u/profile" class="dropdown-item">
+                  <i class="ni ni-single-02 text-yellow"></i>
+                  <span>My profile</span>
+                </a>
+                <a class="dropdown-item" href="/t/">
+                  <i class="ni ni-pin-3 text-orange"></i> <span>Track Order</span>
+                </a>
+                
+                <!-- <a href="/" class="dropdown-item">
+                  <i class="ni ni-settings-gear-65"></i>
+                  <span>Settings</span>
+                </a>
+                <a href="/" class="dropdown-item">
+                  <i class="ni ni-calendar-grid-58"></i>
+                  <span>Activity</span>
+                </a> -->
+                <a href="/contact/" class="dropdown-item">
+                  <i class="ni ni-support-16"></i>
+                  <span>Support</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#!" class="dropdown-item top-logout-btn">
+                  <i class="ni ni-user-run"></i>
+                  <span>Logout</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+          <!-- Collapse -->
+          <div class="navbar-collapse collapse" id="sidenav-collapse-main" style="padding-top:1.1rem;position:fixed;">
+            <!-- Collapse header -->
+            <div class="navbar-collapse-header d-md-none">
+              <div class="row">
+                <div class="col-6 collapse-brand">
+                  <a class="navbar-brand page-unique logo_name  weight700" style="width:fit-content;height:fit-content;padding: 10px;overflow:hidden;z-index: 1;position:relative;border-radius:10px;" href="/"> 
+                    <span class="website-name" style="color:white;z-index: 10;/* display: flex; */position: relative;">Wasche</span> 
+                    <div class="liquid" style="
+                                                box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+                                                padding: 0;
+                                                margin: 0;
+                                                width: 0;
+                                                position: absolute;
+                                                height: 0;
+                                                left: 0;
+                                                top: -90px;
+                                                width: 200px;
+                                                height: 200px;
+                                                background: #4973ff;
+                                                transition: 0.5s;
+                                            "></div>
+          </a>
+                </div>
+                <!-- <div class="col-6 collapse-close">
+                  <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                    <span></span>
+                    <span></span>
+                  </button>
+                </div> -->
+              </div>
+            </div>
+            <!-- Form -->
+            <form class="mt-4 mb-3 d-md-none" style="display:none;">
+              <div class="input-group input-group-rounded input-group-merge" style="display:none;">
+                <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <span class="fa fa-search"></span>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!-- Navigation -->
+            <!-- <ul class="navbar-nav">
+              <li class="nav-item"  class="active">
+              <a class=" nav-link active " href="/dashboard/"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link " href="/u/profile">
+                  <i class="ni ni-single-02 text-yellow"></i>Profile</a>
+              </li>
+    <li class="nav-item">
+                <a class="nav-link " href="/t/">
+                  <i class="ni ni-pin-3 text-orange"></i>Track Order</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link " href="{% static 'examples/tables.html">
+                  <i class="ni text-red ni-settings"></i>Billing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% static 'examples/login.html">
+                  <i class="ni ni-badge text-info"></i>Subscription</a>
+              </li>
+    <li class="nav-item">
+                <a class="nav-link" href="{% static 'examples/login.html">
+                  <i class="ni ni-credit-card text-blue"></i>Wallet</a>
+              </li>
+              
+            </ul> -->
+            <!-- Divider -->
+            <!-- <hr class="my-3"> -->
+            <!-- Heading -->
+            
+            <!-- Navigation -->
+            <!-- <ul class="navbar-nav mb-md-3">
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">
+                  <i class="ni ni-spaceship"></i>Contact Us</a>
+              </li>
+              
+              
+            </ul> -->
+          </div>
+        </div>
+      </nav>
+      <div class="main-content" style="padding-bottom: 30px;">
+        <!-- Navbar -->
+        <a class="navbar-brand main-side-brand-logo page-unique logo_name  weight700 top" style="display:none;width:fit-content;height:fit-content;padding: 20px;overflow:hidden;z-index: 5;position: absolute;border-radius:10px;top: 10px;left: 34px;box-shadow: 0 5px 15px rgba(0,0,0,0.4);" href="/"> 
+          <span class="website-name" style="color:white;z-index: 10;/* display: flex; */position: relative;">Wasche</span> 
+          <div class="liquid" style="
+                                      box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+                                      padding: 0;
+                                      margin: 0;
+                                      width: 0;
+                                      position: absolute;
+                                      height: 0;
+                                      left: 0;
+                                      top: -90px;
+                                      width: 200px;
+                                      height: 200px;
+                                      background: #4973ff;
+                                      transition: 0.5s;
+                                  "></div>
+</a>
+        <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main" >
+          <div class="container-fluid">
+            <!-- Brand -->
+            <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/dashboard">Dashboard</a>
+            <!-- Form -->
+            <form style="display:none;"class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+              <div class="form-group mb-0 focused" style="display:none;">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Search" type="text">
+                </div>
+              </div>
+            </form>
+            <!-- User -->
+            <ul class="navbar-nav align-items-center d-none d-md-flex">
+                <li class="nav-item dropdown">
+                    <a class="nav-link nav-link-icon notifications" href="#" role="button"  aria-haspopup="true" aria-expanded="false" style="
+          font-size: 1.22rem;
+          border-radius: 3px;
+          width:100%;
+          box-shadow: 0px 6px 1rem rgba(0,0,0,0.4);
+      ">
+                      <i class="ni ni-bell-55"></i>
+                      <div class="pulse"></div>
+                      <div class="marker"></div>
+                    </a>
+                    <div class="dropdown-menu dropm dropdown-menu-arrow dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1">
+                        <h3 style="
+                        margin: 0;
+                        padding:9px 0px;
+                        padding-left: 16px;
+                        display: inline-block;
+                    ">Notifications</h3> 
+                    <!-- <div class="prc4" style="display: none;margin-left: 6rem;">
+                        <img style="width: 40px;/* height: 40px; */" src="/static/pulse.svg">
+                     </div> 
+                      <div class="ic-Super-toggle--on-off">
+                            <input type="checkbox" id="demo1" class="ic-Super-toggle__input" checked>
+                            <label class="ic-Super-toggle__label" for="demo1">
+                              <div class="ic-Super-toggle__screenreader">Enable flux capacitor</div>
+                              <div class="ic-Super-toggle__disabled-msg" data-checked="On" data-unchecked="Off" aria-hidden="true"></div>
+                              <div class="ic-Super-toggle-switch" aria-hidden="true">
+                                <div class="ic-Super-toggle-option-LEFT" aria-hidden="true">
+                                  <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="548.9" height="548.9" viewBox="0 0 548.9 548.9" xml:space="preserve"><polygon points="449.3 48 195.5 301.8 99.5 205.9 0 305.4 95.9 401.4 195.5 500.9 295 401.4 548.9 147.5 "/></svg>
+                                </div>
+                                <div class="ic-Super-toggle-option-RIGHT" aria-hidden="true">
+                                  <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 28 28" xml:space="preserve"><polygon points="28 22.4 19.6 14 28 5.6 22.4 0 14 8.4 5.6 0 0 5.6 8.4 14 0 22.4 5.6 28 14 19.6 22.4 28 " fill="#030104"/></svg>
+                                </div>
+                              </div>
+                            </label>
+                          </div> -->
+                      <!-- <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a> -->
+                      <!-- <div class="mnoti">
+                          <div class="mnoti-cont">
+                              <img src="/static/male-avatar.svg">
+                              <div>
+                                  <div>
+                      
+                      
+                      
+                      <p class="mnoti-title mnoti-from">sahith asdas asdasd asdsad asdsad asdsa dasdasd asdsad</p>
+                      <h6 class="mnoti-time">31-Jan-2020 09:04:55</h6>
+                      
+                      <p class="mnoti-title mnoti-heading"></p>
+                      </div>
+                          <p class="mnoti-text">Some text here asdsad saddsa asdsad asdsad asdda asddsa asdad asdad sadad asdad asdda</p>
+                        </div>
+                        </div>
+                      </div> -->
+                      <div class="cont-mnoti">
+                          <div class="prc5" style="display: flex;margin: auto;justify-content: center;align-items: center;">
+                              <img style="width: 40px;" src="/static/pulse.svg">&nbsp;<h4 style="
+          margin: 0;
+      ">Loading ...</h4></div>
+                        </div>
+                        <h4 class="popup-noti-h4" style="
+                        margin: 0;
+                        padding:9px 0px;
+                        padding-left: 16px;
+                        display: inline-block;
+                        font-size: 0.92rem;
+                    ">PopUp Notifications</h4> 
+                    <div class="prc4" style="display: inline;margin-left: 4rem;">
+                        <img style="width: 40px;/* height: 40px; */" src="/static/pulse.svg">
+                     </div> 
+                      <div class="ic-Super-toggle--on-off">
+                            <input type="checkbox" id="demo1" class="ic-Super-toggle__input" checked="">
+                            <label class="ic-Super-toggle__label" for="demo1">
+                              <div class="ic-Super-toggle__screenreader">Enable flux capacitor</div>
+                              <div class="ic-Super-toggle__disabled-msg" data-checked="On" data-unchecked="Off" aria-hidden="true"></div>
+                              <div class="ic-Super-toggle-switch" aria-hidden="true">
+                                <div class="ic-Super-toggle-option-LEFT" aria-hidden="true">
+                                  <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="548.9" height="548.9" viewBox="0 0 548.9 548.9" xml:space="preserve"><polygon points="449.3 48 195.5 301.8 99.5 205.9 0 305.4 95.9 401.4 195.5 500.9 295 401.4 548.9 147.5 "></polygon></svg>
+                                </div>
+                                <div class="ic-Super-toggle-option-RIGHT" aria-hidden="true">
+                                  <svg class="ic-Super-toggle__svg" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 28 28" xml:space="preserve"><polygon points="28 22.4 19.6 14 28 5.6 22.4 0 14 8.4 5.6 0 0 5.6 8.4 14 0 22.4 5.6 28 14 19.6 22.4 28 " fill="#030104"></polygon></svg>
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+<div class="dropdown-divider"></div>
+                      <a class="dropdown-item view-all-notif" href="#"><h4 style="margin:0;">View all notications</h4></a>
+                      
+                      <!-- <a class="dropdown-item settings-notif" href="#">Notify Me : </a> -->
+                    </div>
+                  </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="media align-items-center">
+                    <span class="avatar avatar-sm rounded-circle">
+                      
+                    </span>
+                    <div class="media-body ml-2 d-none d-lg-block">
+                      <span class="mb-0 text-sm  font-weight-bold pname"></span>
+                    </div>
+                  </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                  <div class=" dropdown-header noti-title">
+                    <h6 class="text-overflow m-0">Welcome!</h6>
+
+                  </div>
+                  <a class="dropdown-item" href="/dashboard/">
+                    <i class="ni ni-tv-2 text-primary"></i> <span>Dashboard</span>
+                  </a>
+                  
+                 <a href="/u/profile" class="dropdown-item">
+                   <i class="ni ni-single-02 text-yellow"></i>
+                   <span>My profile</span>
+                 </a>
+                 <a class="dropdown-item" href="/t/">
+                   <i class="ni ni-pin-3 text-orange"></i> <span>Track Order</span>
+                 </a>
+                 
+                  <!-- <a href="/" class="dropdown-item">
+                    <i class="ni ni-settings-gear-65"></i>
+                    <span>Settings</span>
+                  </a>
+                  <a href="/" class="dropdown-item">
+                    <i class="ni ni-calendar-grid-58"></i>
+                    <span>Activity</span>
+                  </a> -->
+                  <a href="/contact/" class="dropdown-item">
+                    <i class="ni ni-support-16"></i>
+                    <span>Support</span>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a href="#!" class="dropdown-item top-logout-btn">
+                    <i class="ni ni-user-run"></i>
+                    <span>Logout</span>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- End Navbar -->
+        <!-- Header -->
+        <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8" style="padding-top:128px !important;">
+          <div class="container-fluid">
+            <div class="header-body">
+              <!-- Card stats -->
+              <div class="row">
+                <div class="col-xl-3 col-lg-6">
+                    <input type="hidden" value="{{ pdata.notify }}" id="pdataNotify">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Subscription Status</h5>
+                          {% if pdata.over is True %}
+                            <span class="h2 font-weight-bold mb-0 mt-2" style='display:inline-block;' >Your subscription plan is expired.</span>
+                            <!-- <p class="mt-3 mb-0 text-muted text-sm">
+                        
+                                <span class="text-nowrap">Make your service to come alive by renewing. </span> -->
+                              <div class="text-danger clickable" style="box-shadow:0 2px 8px rgba(255,0,0,0.25);margin-top:1rem;width:120px;text-align:center;padding:6px;border-radius:3px;" id="renew-subscription" >Renew</div>
+                            
+                          {% else %}
+                          
+                            <span class="h2 font-weight-bold mb-0 splan-time">{{ pdata.diff }}</span>
+                            {% endif %}
+                        </div>
+                        {% if pdata.over is False %}
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                            <i class="fas fa-chart-bar"></i>
+                          </div>
+                        </div>
+                        {% endif %}
+                      </div>
+                      <!-- <p class="mt-3 mb-0 text-muted text-sm">
+                        
+                          <span class="text-nowrap">Remaining Days : </span>
+                        <span class="text-success mr-2">3</span>
+                      </p> -->
+                    </div>
+                  </div>
+                </div>
+
+                {% if pdata.cavailable is True %}
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                            <h5 class="card-title text-uppercase text-muted mb-0">Pending Amount.</h5>
+                            <span class="h2 font-weight-bold mb-0">Rs. {{ pdata.c }}</span>
+                          </div>
+                          <div class="col-auto">
+                            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                              <i class="fas fa-percent"></i>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <p class="mt-3 mb-0 text-muted text-sm">
+                          <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                          <span class="text-nowrap">Since last month</span>
+                        </p> -->
+                      </div>
+                    </div>
+                  </div>
+
+{% endif %}
+
+
+<div class="col-xl-3 col-lg-6">
+    <div class="card card-stats mb-4 mb-xl-0">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <h5 class="card-title text-uppercase text-muted mb-0">Regular Clothes</h5>
+            <span class="h2 font-weight-bold mb-0">{{ rcount }} 
+              {% if rtcount is 0 %}
+              </span>
+              {% else %}
+              / {{ rtcount }}</span>
+              {% endif %}
+          </div>
+          <div class="col-auto">
+            <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6">
+      <div class="card card-stats mb-4 mb-xl-0">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Other Clothes</h5>
+              <span class="h2 font-weight-bold mb-0">{{ ocount }}</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                <i class="fas fa-chart-pie"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+                <!-- <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                          <span class="h2 font-weight-bold mb-0">2,356</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                            <i class="fas fa-chart-pie"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="mt-3 mb-0 text-muted text-sm">
+                        <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                        <span class="text-nowrap">Since last week</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                          <span class="h2 font-weight-bold mb-0">924</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                            <i class="fas fa-users"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="mt-3 mb-0 text-muted text-sm">
+                        <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                        <span class="text-nowrap">Since yesterday</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                          <span class="h2 font-weight-bold mb-0">49,65%</span>
+                        </div>
+                        <div class="col-auto">
+                          <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                            <i class="fas fa-percent"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="mt-3 mb-0 text-muted text-sm">
+                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                        <span class="text-nowrap">Since last month</span>
+                      </p>
+                    </div>
+                  </div> 
+                </div>-->
+              </div> 
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid mt--7">
+            <!-- <div class="prog-cont prc1" style="
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /* opacity: 1; */
+            margin-left:-1.3rem;
+            background: transparent;
+            z-index: 100;
+            margin-top:92px;
+            animation: enter-load 2s forwards;
+        ">
+        
+        <div class="frame">
+            <div class="center">
+              <h3 style="margin:0;margin-top:14px;position:relative;text-align:center;">Collecting data</h3>
+               <div class="dot-1" ></div>
+               <div class="dot-2" ></div>
+               <div class="dot-3"></div>
+            </div>
+         </div>     
+            
+        </div> -->
+
+        
+        
+        <!-- Loader -->
+        <div class="prc1" style="display:flex;flex-direction:column;justify-content:center;align-items:center;margin-top:100px;">
+        <h3>Collecting Data</h3>
+          <svg class="gegga" style="display:none;">
+          <defs>
+            <filter id="gegga">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+              <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 20 -10"
+                result="inreGegga"
+              />
+              <feComposite in="SourceGraphic" in2="inreGegga" operator="atop" />
+            </filter>
+          </defs>
+        </svg>
+    <svg class="snurra" width="200" height="200" viewBox="0 0 200 200">
+          <defs>
+            <linearGradient id="linjärGradient">
+              <stop class="stopp1" offset="0" />
+              <stop class="stopp2" offset="1" />
+            </linearGradient>
+            <linearGradient
+              y2="160"
+              x2="160"
+              y1="40"
+              x1="40"
+              gradientUnits="userSpaceOnUse"
+              id="gradient"
+              xlink:href="#linjärGradient"
+            />
+          </defs>
+          <path
+            class="halvan"
+            d="m 164,100 c 0,-35.346224 -28.65378,-64 -64,-64 -35.346224,0 -64,28.653776 -64,64 0,35.34622 28.653776,64 64,64 35.34622,0 64,-26.21502 64,-64 0,-37.784981 -26.92058,-64 -64,-64 -37.079421,0 -65.267479,26.922736 -64,64 1.267479,37.07726 26.703171,65.05317 64,64 37.29683,-1.05317 64,-64 64,-64"
+          />
+          <circle class="strecken" cx="100" cy="100" r="64" />
+        </svg>
+      </div>
+    <!-- <svg class="skugga" width="200" height="200" viewBox="0 0 200 200">
+          <path
+            class="halvan"
+            d="m 164,100 c 0,-35.346224 -28.65378,-64 -64,-64 -35.346224,0 -64,28.653776 -64,64 0,35.34622 28.653776,64 64,64 35.34622,0 64,-26.21502 64,-64 0,-37.784981 -26.92058,-64 -64,-64 -37.079421,0 -65.267479,26.922736 -64,64 1.267479,37.07726 26.703171,65.05317 64,64 37.29683,-1.05317 64,-64 64,-64"
+          />
+          <circle class="strecken" cx="100" cy="100" r="64" />
+        </svg> -->
+
+
+        <form style="display:none;" id="csrf">
+          {% csrf_token %}
+        </form>
+          <div class="row mcont" style="display:none;">
+            <!--start-->
+            <!-- <div class="col-xl-8 mb-5 mb-xl-0">
+              <div class="card bg-gradient-default shadow">
+                <div class="card-header bg-transparent">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
+                      <h2 class="text-white mb-0">Sales value</h2>
+                    </div>
+                    <div class="col">
+                      <ul class="nav nav-pills justify-content-end">
+                        <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update="{&quot;data&quot;:{&quot;datasets&quot;:[{&quot;data&quot;:[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}" data-prefix="$" data-suffix="k">
+                          <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                            <span class="d-none d-md-block">Month</span>
+                            <span class="d-md-none">M</span>
+                          </a>
+                        </li>
+                        <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update="{&quot;data&quot;:{&quot;datasets&quot;:[{&quot;data&quot;:[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}" data-prefix="$" data-suffix="k">
+                          <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                            <span class="d-none d-md-block">Week</span>
+                            <span class="d-md-none">W</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  Chart
+                  <div class="chart"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                    Chart wrapper
+                    <canvas id="chart-sales" class="chart-canvas chartjs-render-monitor" width="621" height="350" style="display: block; width: 621px; height: 350px;"></canvas>
+                  </div>
+                </div> 
+              </div>
+            </div> -->
+            <div class="col mb-5 mb-xl-0">
+                <div class="card shadow-lg">
+                    <div class="card-header border-0">
+                      <div class="row align-items-center">
+                        <div class="col">
+                          <h3 class="mb-0">Orders History</h3>
+                        </div>
+                        <!-- <div class="col text-right">
+                          <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                        </div> -->
+                        <div style="
+                             display: flex;
+                             display: inline-block;
+                             margin: 0;
+                             padding: 0;
+                             position: absolute;
+                             right: 20px;
+                             ">
+                             <div class="prc3" style="position: absolute; width: 100%; height: 100%; display: none;top:-50%; align-items: center; justify-content: center;right:120%">
+                              <img style="width:60px;" src="/static/pulse.svg">
+                           </div>
+                             <a href="#!" class="btn btn-sm btn-primary open-filterto2" style="
+                                display: inline-block;
+                                ">Filter</a>
+                          </div>
+    
+    
+                          <div style="
+                             display: none;
+                             flex-direction: column;
+                             justify-content: center;
+                             align-items: center;
+                             position: absolute;
+                             padding: 1.375rem;
+                             background: #f8f9fe;
+                             z-index: 1000;
+                             top: -14px;
+                             right: 75px;
+                             border-radius: 0.375rem;
+                             flex-wrap: wrap;
+                             box-shadow: 0 0 3rem rgba(136, 152, 170, 0.75), inset 0 0 0.3rem rgba(136, 152, 170, 0.75) !important;
+                             transform-origin: top right;
+                             " class="shadow-lg filter-cont2">
+                             <div id="loadmonths2" style="position:absolute;width: 100%;height:100%;display: none;align-items:center;justify-content:center;/* margin-left:-15px; */">
+                                <img style="width:75px;" src="/static/pulse.svg">
+                             </div>
+                             <div style="
+                                width: 100%;
+                                margin-bottom: 0;
+                                margin-top: -7px;
+                                padding: 0;
+                                ">
+                                <h4>Sort</h4>
+                                <div style="
+                                  position: absolute;
+                                  width: 22px;
+                                  height: 22px;
+                                  top: 1.15rem;
+                                  right: 1.5rem;
+                                  margin: 0;
+                                  display: flex;
+                                  justify-content: center;
+                                  align-items: center;
+                                  flex-direction: column;
+                                  cursor: pointer;
+                                  " id="fclose2">        
+    
+                                <span style="
+                                   display: block;
+                                   width: 18px;
+                                   height: 2px;
+                                   border-radius: 2px;
+                                   opacity: 1;
+                                   background: #283448;
+                                   transform: rotate(45deg) translateY(50%);
+                                   "></span>
+                                <span style="
+                                   display: block;
+                                   width: 18px;
+                                   height: 2px;
+                                   border-radius: 2px;
+                                   opacity: 1;
+                                   background: #283448;
+                                   transform: rotate(-45deg) translateY(-50%);
+                                   "></span>
+                            </div>
+                             </div>
+                             <div style="
+                                display: flex;
+                                ">
+                                <div style="display: block;">
+                                   <h5>Year</h5>
+                                   <select id="year2" style="outline: none;border: 0;padding: 0 0 6px 0;background: #f8f9fe;border-bottom: 1px solid #525f7f;"></select>
+                                </div>
+                                <div class="monthcont2" style="display: block;margin-left: 26px;">
+                                   <h5>Month</h5>
+                                   <select id="month2" style="outline: none;border: 0;padding: 0 0 6px 0;background: #f8f9fe;border-bottom: 1px solid #525f7f;"></select>
+                                </div>
+                             </div>
+                             <div style="
+                                margin-top: 1.1rem;
+                                ">
+                                <a href="#!" class="btn btn-sm btn-primary filterto2" style="
+                                   display: inline-block;font-size:0.9rem;
+                                   ">Sort</a>
+                             </div>
+                          </div>
+                  
+                      </div>
+                      <div>
+                        <h5 id="date-order"></h5>
+                      <div id="select-range" style="
+        font-size: 0.8rem;
+      display:none;
+    ">
+        <div>
+            <h4 style="
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin: 0;
+    ">Showing  </h4>
+        <div style="
+        display: inline-block;
+        margin-left: 6px;
+    ">
+        <i class="ni ni-bold-left" style="
+        transform: translateY(2px);
+        padding: 3px;
+        cursor:pointer;
+        border: 1px solid rgb(109, 106, 228);
+        border-radius: 2px;" id="prev-order-list"></i>
+        <span>(</span>    
+        <span></span>
+            <span> - </span>
+            <span></span>
+            <span>)</span>
+            <span>/</span>
+            <span></span>
+            <i id="next-order-list" class="ni ni-bold-right" style="
+        transform: translateY(2px);
+        cursor:pointer;
+        border: 1px solid rgb(109, 106, 228);
+        padding: 3px;
+        border-radius: 2px;
+    "></i>
+        </div>
+        </div>
+    </div>
+    </div>
+                    </div>
+                    <div class="table-responsive">
+                      <!-- Projects table -->
+                      <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Day</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Clothes Ordered</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Success</th>
+                            <th scope="col">Failed</th>
+                            <th scope="col">Percentage</th>
+                            <!-- <th scope="col">Bounce rate</th> -->
+                          </tr>
+                        </thead>
+                        <tbody id="order-overview">
+                          <!-- <tr id="order-comp-msg" style="display:none;">
+                            <td>
+                              <h3 style="width:100%;margin:15px 0;text-align:center;"></h3>
+                            </td>
+                          </tr> -->
+                          <!-- <tr>
+    
+                            <th scope="row">
+                             Monday
+                            </th>
+                            <td>
+                              8
+                            </td>
+                            <td>
+                              340
+                            </td>
+                            <td>
+                              <i class="ni ni-check-bold text-success" style="font-size:1.3rem;"></i>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                              Tuesday
+                            </th>
+                            <td>
+                              7
+                            </td>
+                            <td>
+                              319
+                            </td>
+                            <td>
+                              <i class="ni ni-fat-remove text-warning" style="font-size:1.3rem;"></i>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                              Wednesday
+                            </th>
+                            <td>
+                              11
+                            </td>
+                            <td>
+                              294
+                            </td>
+                            <td>
+                              <i class="ni ni-check-bold text-success" style="font-size:1.3rem;"></i>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                              Thursday
+                            </th>
+                            <td>
+                              2
+                            </td>
+                            <td>
+                              147
+                            </td>
+                            <td>
+                              <i class="ni ni-check-bold text-success" style="font-size:1.3rem;"></i>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                              Friday
+                            </th>
+                            <td>
+                             15
+                            </td>
+                            <td>
+                              190
+                            </td>
+                            <td>
+                              <i class="ni ni-fat-remove text-danger" style="font-size:1.3rem;"></i> 
+                            </td>
+                          </tr> -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+            </div>
+            
+          </div>
+
+          <div class="row mcont mt-5 mb-6" style="display:none;">
+            <div class="col">
+
+
+
+                <div class="card shadow-lg">
+                    <div class="prog-cont prc22" style="
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    /* opacity: 1; */
+                    background: rgb(255, 255, 255);
+                    z-index: 100;
+                    border-radius: 0.375rem;
+                    display:none;
+                    padding-top:2rem;
+                    animation: exit-load 2s forwards;
+                ">
+                
+                <div class="frame">
+                    <div class="center">
+                      <h3 style="margin:0;margin-top:14px;position:relative;text-align:center;">Collecting data</h3>
+                       <div class="dot-1" ></div>
+                       <div class="dot-2" ></div>
+                       <div class="dot-3"></div>
+                    </div>
+                 </div>
+                
+                
+                    
+                </div>
+                                  
+                  <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                      
+  
+                      <div class="col">
+                        <div style="
+                           display: inline-block;
+                           ">
+                           <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
+                           <h2 class="mb-0">Total orders</h2>
+                        </div>
+                        <div style="
+                           display: flex;
+                           display: inline-block;
+                           margin: 0;
+                           padding: 0;
+                           position: absolute;
+                           right: 20px;
+                           ">
+                           <div class="prc2" style="position: absolute; width: 100%; height: 100%; display: none;top:-50%; align-items: center; justify-content: center;right:120%">
+                            <img style="width:60px;" src="/static/pulse.svg">
+                         </div>
+                           <a href="#!" class="btn btn-sm btn-primary open-filterto1" style="
+                              display: inline-block;
+                              ">Filter</a>
+                        </div>
+                        <div style="
+                           display: none;
+                           flex-direction: column;
+                           justify-content: center;
+                           align-items: center;
+                           position: absolute;
+                           padding: 1.375rem;
+                           background: #f8f9fe;
+                           z-index: 1000;
+                           top: -14px;
+                           right: 75px;
+                           border-radius: 0.375rem;
+                           flex-wrap: wrap;
+                           box-shadow: 0 0 3rem rgba(136, 152, 170, 0.75), inset 0 0 0.3rem rgba(136, 152, 170, 0.75) !important;
+                           transform-origin: top right;
+                           " class="shadow-lg filter-cont" id="">
+                           <div id="loadmonths1" style="position:absolute;width: 100%;height:100%;display: none;align-items:center;justify-content:center;/* margin-left:-15px; */">
+                              <img style="width:75px;" src="/static/pulse.svg">
+                           </div>
+                           <div style="
+                              width: 100%;
+                              margin-bottom: 0;
+                              margin-top: -7px;
+                              padding: 0;
+                              ">
+                              <h4>Sort</h4>
+                              <div style="
+                                position: absolute;
+                                width: 22px;
+                                height: 22px;
+                                top: 1.15rem;
+                                right: 1.5rem;
+                                margin: 0;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                flex-direction: column;
+                                cursor: pointer;
+                                " id="fclose1">        
+  
+                              <span style="
+                                 display: block;
+                                 width: 18px;
+                                 height: 2px;
+                                 border-radius: 2px;
+                                 opacity: 1;
+                                 background: #283448;
+                                 transform: rotate(45deg) translateY(50%);
+                                 "></span>
+                              <span style="
+                                 display: block;
+                                 width: 18px;
+                                 height: 2px;
+                                 border-radius: 2px;
+                                 opacity: 1;
+                                 background: #283448;
+                                 transform: rotate(-45deg) translateY(-50%);
+                                 "></span>
+                          </div>
+                           </div>
+                           <div style="
+                              display: flex;
+                              ">
+                              <div style="display: block;">
+                                 <h5>Year</h5>
+                                 <select id="year1" style="outline: none;border: 0;padding: 0 0 6px 0;background: #f8f9fe;border-bottom: 1px solid #525f7f;">
+                                    <option value="2019"> 2019</option>
+                                 </select>
+                              </div>
+                              <div class="monthcont" style="display: block;margin-left: 26px;">
+                                 <h5>Month</h5>
+                                 <select id="month1" style="outline: none;border: 0;padding: 0 0 6px 0;background: #f8f9fe;border-bottom: 1px solid #525f7f;">
+                                    <option vlaue="December">December</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div style="
+                              margin-top: 1.1rem;
+                              ">
+                              <a href="#!" class="btn btn-sm btn-primary filterto" style="
+                                 display: inline-block;font-size:0.9rem;
+                                 ">Sort</a>
+                           </div>
+                        </div>
+                     </div>
+  
+                      
+                      
+                      <!-- <div class="col">
+                        <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
+                        <h2 class="mb-0">Total orders</h2>
+                      </div> -->
+                      <!-- <div class="col">
+                        <div id="loadmonths1" style="position:absolute;width: 100%;height:100%;display:none;align-items:center;justify-content:center;margin-left:-15px;">
+                        <img style="width:75px;"src="{% static 'pulse.svg' %}">
+                      </div> -->
+                          <!-- <div class="col" style="
+                          display: flex;
+                          align-items: center;
+                          padding-left: 0;
+                          justify-content: space-between;
+                      ">
+                      <h6 class="text-uppercase text-muted ls-1 mb-1" style="
+                          width: fit-content;
+                      ">Sort</h6>
+                          <a href="#!" class="btn btn-sm btn-primary filterto" style="
+                          display: inline-block;
+                      ">Filter</a> -->
+                      <!-- </div>
+                        <div style="display: inline-block;">
+                          <h5>Year</h5>
+                          <select id="year1" style="outline: none;border: 0;padding: 0 0 6px 0;border-bottom: 1px solid #525f7f;">
+                          </select>
+                        </div>
+                        <div class="monthcont" style="display: inline-block;margin-left: 26px;">
+                          <h5>Month</h5>
+                          <select id="month1"style="outline: none;border: 0;padding: 0 0 6px 0;border-bottom: 1px solid #525f7f;">
+                          </select>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="card-body" style="position: relative;">
+                    <div class="row" id="orders-msg">
+                      <h3 style="width: 100%;text-align:center;"></h3>
+                    </div>
+                    <!-- Chart -->
+                    <progress style="display:none;" id="animationProgress" max="1" value="0" style="width: 100%"></progress>
+                    <!-- <div class="prog-cont prc2" style="
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin-left: -1.5rem;
+      margin-top: -1.5rem;
+      /* opacity: 1; */
+      background: rgb(255, 255, 255);
+      z-index: 100;
+      display:none;
+      animation: enter-load 2s forwards;
+  ">
+  
+  <div class="frame">
+      <div class="center">
+        <h3 style="margin:0;margin-top:14px;position:relative;text-align:center;">Collecting data</h3>
+         <div class="dot-1" ></div>
+         <div class="dot-2" ></div>
+         <div class="dot-3"></div>
+      </div>
+   </div>
+  
+  
+      
+  </div>
+                     -->
+  
+                     
+  
+                    <div style="width:100%;overflow-x:auto;" class="chart chart-order" >
+                      <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                      <canvas id="chart-orders1" class="chart-canvas chartjs-render-monitor" width="700" height="350" style="display: none; width: 700px; height: 350px;"></canvas>
+                      <canvas id="chart-orders2" class="chart-canvas chartjs-render-monitor" width="436" height="350" style="display: none; width: auto; height: 350px;"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+
+              <!-- <div class="card shadow-lg">
+                <div class="card-header border-0">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h3 class="mb-0">Orders History</h3>
+                    </div>
+                    <div class="col text-right">
+                      <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                    </div>
+                    <div style="
+                         display: flex;
+                         display: inline-block;
+                         margin: 0;
+                         padding: 0;
+                         position: absolute;
+                         right: 20px;
+                         ">
+                         <div class="prc3" style="position: absolute; width: 100%; height: 100%; display: none;top:-50%; align-items: center; justify-content: center;right:120%">
+                          <img style="width:60px;" src="/static/pulse.svg">
+                       </div>
+                         <a href="#!" class="btn btn-sm btn-primary open-filterto2" style="
+                            display: inline-block;
+                            ">Filter</a>
+                      </div>
+
+
+                      <div style="
+                         display: none;
+                         flex-direction: column;
+                         justify-content: center;
+                         align-items: center;
+                         position: absolute;
+                         padding: 1.375rem;
+                         background: #f8f9fe;
+                         z-index: 1000;
+                         top: -14px;
+                         right: 75px;
+                         border-radius: 0.375rem;
+                         flex-wrap: wrap;
+                         box-shadow: 0 0 3rem rgba(136, 152, 170, 0.75), inset 0 0 0.3rem rgba(136, 152, 170, 0.75) !important;
+                         transform-origin: top right;
+                         " class="shadow-lg filter-cont2">
+                         <div id="loadmonths2" style="position:absolute;width: 100%;height:100%;display: none;align-items:center;justify-content:center;/* margin-left:-15px; */">
+                            <img style="width:75px;" src="/static/pulse.svg">
+                         </div>
+                         <div style="
+                            width: 100%;
+                            margin-bottom: 0;
+                            margin-top: -7px;
+                            padding: 0;
+                            ">
+                            <h4>Sort</h4>
+                            <div style="
+                              position: absolute;
+                              width: 22px;
+                              height: 22px;
+                              top: 1.15rem;
+                              right: 1.5rem;
+                              margin: 0;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              flex-direction: column;
+                              cursor: pointer;
+                              " id="fclose2">        
+
+                            <span style="
+                               display: block;
+                               width: 18px;
+                               height: 2px;
+                               border-radius: 2px;
+                               opacity: 1;
+                               background: #283448;
+                               transform: rotate(45deg) translateY(50%);
+                               "></span>
+                            <span style="
+                               display: block;
+                               width: 18px;
+                               height: 2px;
+                               border-radius: 2px;
+                               opacity: 1;
+                               background: #283448;
+                               transform: rotate(-45deg) translateY(-50%);
+                               "></span>
+                        </div>
+                         </div>
+                         <div style="
+                            display: flex;
+                            ">
+                            <div style="display: block;">
+                               <h5>Year</h5>
+                               <select id="year2" style="outline: none;border: 0;padding: 0 0 6px 0;background: #f8f9fe;border-bottom: 1px solid #525f7f;"></select>
+                            </div>
+                            <div class="monthcont2" style="display: block;margin-left: 26px;">
+                               <h5>Month</h5>
+                               <select id="month2" style="outline: none;border: 0;padding: 0 0 6px 0;background: #f8f9fe;border-bottom: 1px solid #525f7f;"></select>
+                            </div>
+                         </div>
+                         <div style="
+                            margin-top: 1.1rem;
+                            ">
+                            <a href="#!" class="btn btn-sm btn-primary filterto2" style="
+                               display: inline-block;font-size:0.9rem;
+                               ">Sort</a>
+                         </div>
+                      </div>
+              
+                  </div>
+                  <div>
+                    <h5 id="date-order"></h5>
+                  <div id="select-range" style="
+    font-size: 0.8rem;
+  display:none;
+">
+    <div>
+        <h4 style="
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0;
+">Showing  </h4>
+    <div style="
+    display: inline-block;
+    margin-left: 6px;
+">
+    <i class="ni ni-bold-left" style="
+    transform: translateY(2px);
+    padding: 3px;
+    cursor:pointer;
+    border: 1px solid rgb(109, 106, 228);
+    border-radius: 2px;" id="prev-order-list"></i>
+    <span>(</span>    
+    <span></span>
+        <span> - </span>
+        <span></span>
+        <span>)</span>
+        <span>/</span>
+        <span></span>
+        <i id="next-order-list" class="ni ni-bold-right" style="
+    transform: translateY(2px);
+    cursor:pointer;
+    border: 1px solid rgb(109, 106, 228);
+    padding: 3px;
+    border-radius: 2px;
+"></i>
+    </div>
+    </div>
+</div>
+</div>
+                </div>
+                <div class="table-responsive">
+                  Projects table
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Day</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Clothes Ordered</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Success</th>
+                        <th scope="col">Failed</th>
+                        <th scope="col">Percentage</th>
+                        <th scope="col">Bounce rate</th>
+                      </tr>
+                    </thead>
+                    <tbody id="order-overview">
+                      <tr id="order-comp-msg" style="display:none;">
+                        <td>
+                          <h3 style="width:100%;margin:15px 0;text-align:center;"></h3>
+                        </td>
+                      </tr>
+                      <tr>
+
+                        <th scope="row">
+                         Monday
+                        </th>
+                        <td>
+                          8
+                        </td>
+                        <td>
+                          340
+                        </td>
+                        <td>
+                          <i class="ni ni-check-bold text-success" style="font-size:1.3rem;"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          Tuesday
+                        </th>
+                        <td>
+                          7
+                        </td>
+                        <td>
+                          319
+                        </td>
+                        <td>
+                          <i class="ni ni-fat-remove text-warning" style="font-size:1.3rem;"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          Wednesday
+                        </th>
+                        <td>
+                          11
+                        </td>
+                        <td>
+                          294
+                        </td>
+                        <td>
+                          <i class="ni ni-check-bold text-success" style="font-size:1.3rem;"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          Thursday
+                        </th>
+                        <td>
+                          2
+                        </td>
+                        <td>
+                          147
+                        </td>
+                        <td>
+                          <i class="ni ni-check-bold text-success" style="font-size:1.3rem;"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          Friday
+                        </th>
+                        <td>
+                         15
+                        </td>
+                        <td>
+                          190
+                        </td>
+                        <td>
+                          <i class="ni ni-fat-remove text-danger" style="font-size:1.3rem;"></i> 
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div> -->
+            </div>
+          </div>
+
+
+          <div class="row mt-5" style="display:none;">
+            
+            <div class="col-xl-8 mb-5 mb-xl-0">
+              <div class="card shadow">
+                <div class="card-header border-0">
+                  <div class="row align-items-center">
+                    <div class="col">
+                      <h3 class="mb-0">Percentage of Clothes Serviced</h3>
+                    </div>
+                    <!-- <div class="col text-right">
+                      <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                    </div> -->
+                    <!-- <div style="
+                         display: flex;
+                         display: inline-block;
+                         margin: 0;
+                         padding: 0;
+                         position: absolute;
+                         right: 20px;
+                         ">
+                         <div class="prc2" style="position: absolute; width: 100%; height: 100%; display: none;top:-50%; align-items: center; justify-content: center;right:120%">
+                          <img style="width:60px;" src="/static/pulse.svg">
+                       </div>
+                         <a href="#!" class="btn btn-sm btn-primary open-filterto1" style="
+                            display: inline-block;
+                            ">Filter</a>
+                      </div>
+
+                    <div style="
+                         display: none;
+                         flex-direction: column;
+                         justify-content: center;
+                         align-items: center;
+                         position: absolute;
+                         padding: 1.375rem;
+                         background: #f8f9fe;
+                         z-index: 1000;
+                         top: -14px;
+                         right: 75px;
+                         border-radius: 0.375rem;
+                         flex-wrap: wrap;
+                         box-shadow: 0 0 3rem rgba(136, 152, 170, 0.75), inset 0 0 0.3rem rgba(136, 152, 170, 0.75) !important;
+                         transform-origin: top right;
+                         " class="shadow-lg filter-cont2 open" id="">
+                         <div id="loadmonths2" style="position:absolute;width: 100%;height:100%;display: none;align-items:center;justify-content:center;/* margin-left:-15px; */">
+                            <img style="width:75px;" src="/static/pulse.svg">
+                         </div>
+                         <div style="
+                            width: 100%;
+                            margin-bottom: 0;
+                            margin-top: -7px;
+                            padding: 0;
+                            ">
+                            <h4>Sort</h4>
+                            <div style="
+                              position: absolute;
+                              width: 22px;
+                              height: 22px;
+                              top: 1.15rem;
+                              right: 1.5rem;
+                              margin: 0;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+                              flex-direction: column;
+                              cursor: pointer;
+                              " id="fclose2">        
+
+                            <span style="
+                               display: block;
+                               width: 18px;
+                               height: 2px;
+                               border-radius: 2px;
+                               opacity: 1;
+                               background: #283448;
+                               transform: rotate(45deg) translateY(50%);
+                               "></span>
+                            <span style="
+                               display: block;
+                               width: 18px;
+                               height: 2px;
+                               border-radius: 2px;
+                               opacity: 1;
+                               background: #283448;
+                               transform: rotate(-45deg) translateY(-50%);
+                               "></span>
+                        </div>
+                         </div>
+                         <div style="
+                            display: flex;
+                            ">
+                            <div style="display: block;">
+                               <h5>Year</h5>
+                               <select id="year2" style="outline: none;border: 0;padding: 0 0 6px 0;background: #f8f9fe;border-bottom: 1px solid #525f7f;"></select>
+                            </div>
+                            <div class="monthcont2" style="display: block;margin-left: 26px;">
+                               <h5>Month</h5>
+                               <select id="month2" style="outline: none;border: 0;padding: 0 0 6px 0;background: #f8f9fe;border-bottom: 1px solid #525f7f;"></select>
+                            </div>
+                         </div>
+                         <div style="
+                            margin-top: 1.1rem;
+                            ">
+                            <a href="#!" class="btn btn-sm btn-primary filterto2" style="
+                               display: inline-block;font-size:0.9rem;
+                               ">Sort</a>
+                         </div> -->
+                      </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <!-- Projects table -->
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Day</th>
+                        <th scope="col">Number of Clothes</th>
+                        <th scope="col">Clothes Serviced</th>
+                        <th scope="col"></th>
+
+                      </tr>
+                    </thead>
+                    <tbody >
+                      <!-- <tr>
+                        <th scope="row">
+                          Monday
+                        </th>
+                        <td>
+                          8
+                        </td>
+                        <td>
+                          8
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <span class="mr-2">100%</span>
+                            <div>
+                              <div class="progress">
+                                <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr> -->
+                      <tr>
+                        <th scope="row">
+                          Tuesday
+                        </th>
+                        <td>
+                          7
+                        </td>
+                        <td>
+                          4
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <span class="mr-2">55%</span>
+                            <div>
+                              <div class="progress">
+                                <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%;"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          Wednesday
+                        </th>
+                        <td>
+                          11
+                        </td>
+                        <td>
+                          9
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <span class="mr-2">80%</span>
+                            <div>
+                              <div class="progress">
+                                <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          Thursday
+                        </th>
+                        <td>
+                          2
+                        </td>
+                        <td>
+                          2
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <span class="mr-2">100%</span>
+                            <div>
+                              <div class="progress">
+                                <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          Friday
+                        </th>
+                        <td>
+                          15
+                        </td>
+                        <td>
+                          4
+                        </td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <span class="mr-2">30%</span>
+                            <div>
+                              <div class="progress">
+                                <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--   Core   -->
+     
+<!--[if IE 9]><script src="classList.min.js"></script><![endif]-->
+<!-- <script src="{% static 'simple-sidebar.min.js' %}"></script> -->
+      <script src="{% static 'assets/js/plugins/jquery/dist/jquery.min.js' %}"></script>
+      <script src="{% static 'assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+      <!--   Optional JS   -->
+      <script src="{% static 'assets/js/plugins/chart.js/dist/Chart.min.js' %}"></script>
+      <script src="{% static 'assets/js/plugins/chart.js/dist/Chart.extension.js' %}"></script>
+      <!--   Argon JS   -->
+      <script src="{% static 'assets/js/argon-dashboard.min.js' %}"></script>
+      <!-- <script src="https://cdn.trackjs.com/agent/v3/latest/t.js' %}"></script> -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script> -->
+{% if pdata.over is True %}
+<div id="payment-div">
+
+  <form action="/b/start/" method="POST" style="display:none">
+    {% csrf_token %}
+    <input type="hidden" name="cur" id="payment_form_cur" value="INR">
+    <input type="hidden" name="amount" id="payment_form_amount" value="">
+    <input type="hidden" name="plan" id="payment_form_plan" value="">
+  </form>
+</div>
+{% endif %}
+
+
+
+<!-- Paste below code base before the closing tag(</body>) of body element -->
+<!-- <script src="https://www.cashfree.com/assets/cashfree.sdk.v1.2.js" type="text/javascript"></script>
+<script type="text/javascript">
+(function() {
+  var data = {};
+  data.orderId = "1234";
+  data.orderAmount = 450;
+  data.customerName = "Seth";
+  data.customerPhone = "900XXXXX21";
+  data.customerEmail = "example@example.com";
+  data.returnUrl = "https://mysite.com/payment/response";
+  data.notifyUrl = "https://mysite.com/payment/notify";
+  data.appId = "12168bced56b2d76070a9fb7c86121";
+  data.paymentToken = "6729fa7a6f252cf7663f040f4cf937f2206be6e5";
+
+  var callback = function (event) {
+      var eventName = event.name;
+      switch(eventName) {
+        case "PAYMENT_REQUEST":
+           console.log(event.message);
+           break;
+        default:
+           console.log(event.message);
+       };
+  }
+
+  var config = {};
+  config.layout = {view: "popup", width: "650"};
+  config.mode = "TEST"; //use PROD when you go live
+  var response = CashFree.init(config);
+  if (response.status == "OK") {
+    cfInitialized = true;
+  } else {
+    //handle error
+     console.log(response.message);
+  }
+  // Make sure you put id of your payment button that triggers the payment flow in the below statement.
+  $("paymentButton").click(function () {
+    if (cfInitialized) {
+      CashFree.makePayment(data, callback);
+    }
+  });
+
+  })();
+</script> -->
+    <script>
+        $(document).ready(function(){
+          initDashboard();
+        });
+    </script>
+    <div id="chart-tooltip" class="popover bs-popover-top" role="tooltip" style="top: 531.362px; left: 641.922px; display: none; z-index: 100;"><div class="arrow"></div><h3 class="popover-header text-center">Sep</h3><div class="popover-body d-flex align-items-center justify-content-center"><span class="badge badge-dot"><i class="bg-primary"></i></span><span class="popover-body-value">$15k</span></div></div></body>
+</html>

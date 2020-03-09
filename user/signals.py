@@ -22,9 +22,15 @@ def post_save_user(sender,instance,**kwargs):
 def post_save_executive(sender,instance,**kwargs):
     if(len(instance.qr_code_data)==0):
         print("Creating qr code : {} => {}".format(instance.id,instance.name))
-        qr = pyqrcode.create(json.dumps({"wasche-services":{"name":instance.name,"id":instance.id}}))
-        dta = "data:image/png;base64," + qr.png_as_base64_str()
-        instance.qr_code_data = bytes(dta,'utf-8')
-        instance.save()
+        try:
+            qr = pyqrcode.create(json.dumps({"wasche-services":{"name":instance.name,"id":instance.id}}))
+            print(qr)
+            dta = "data:image/png;base64," + qr.png_as_base64_str()
+            print("Data : ",dta)
+            instance.qr_code_data = bytes(dta,'utf-8')
+            print("Completed")
+            instance.save()
+        except Exception as exp:
+            print("Errorr at de :  ",exp)
     
     

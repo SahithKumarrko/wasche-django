@@ -143,7 +143,12 @@ def profile(request):
         ud["tot"] = u.order_dashboard.total_orders
         qr = u.qr_code_data
         print(ud,qr)
-        return render(request,"profile.html",{"data":data,"ud":ud,"qr_code":qr.decode('utf-8')})
+        dat = {"data":data,"ud":ud}
+        try:
+            dat = {"data":data,"ud":ud,"qr_code":qr.decode('utf-8')}
+        except Exception as exp:
+            print("error :  =  ",exp)
+        return render(request,"profile.html",dat)
 
 
 

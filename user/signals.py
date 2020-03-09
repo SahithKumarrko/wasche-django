@@ -24,9 +24,7 @@ def post_save_executive(sender,instance,**kwargs):
         print("Creating qr code : {} => {}".format(instance.id,instance.name))
         try:
             qr = pyqrcode.create(json.dumps({"wasche-services":{"name":instance.name,"id":instance.id}}))
-            print(qr)
             dta = "data:image/png;base64," + qr.png_as_base64_str()
-            print("Data : ",dta)
             instance.qr_code_data = bytes(dta,'utf-8')
             print("Completed")
             instance.save()

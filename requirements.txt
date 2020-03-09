@@ -9,7 +9,7 @@ Markdown==3.1.1
 bleach==1.5.0
 whitenoise
 requests==2.22.0
-mysqlclient
+psycopg2
 channels
 channels-redis
 pyqrcode

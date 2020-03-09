@@ -21,7 +21,7 @@ urlpatterns = [
     path("upload_detect/",views.upload_detect,name="udc"),
     path("detect_file/",views.detect_file_url,name="udc"),
     path('admin/', admin.site.urls),
-    # re_path(r'^static/(?P<path>.*)$', serve, {'document_root':settings.STATIC_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve, {'document_root':settings.STATIC_ROOT}),
 
 ]
 

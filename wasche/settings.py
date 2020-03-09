@@ -100,16 +100,16 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "wdjango",
-        'USER':'root',
-        'PASSWORD':'19101972',
-        'HOST':'localhost',
-        'PORT':'3306',
-    }
-}
+# DATABASES = {
+    # 'default': {
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': "wdjango",
+        # 'USER':'root',
+        # 'PASSWORD':'19101972',
+        # 'HOST':'localhost',
+        # 'PORT':'3306',
+    # }
+# }
 
 # DATABASES = {
 #     'default': {
@@ -121,6 +121,20 @@ DATABASES = {
 #         'PORT':'3306',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': "dbpcheriq8nqhg",
+		
+        'USER':'tgeqvgweqjiuea',
+        'PASSWORD':'0d0a5d057517ee9efce425fc0d2ea5e2de03dd1eb07746d6fb501245d202d61f',
+        'HOST':'ec2-54-197-34-207.compute-1.amazonaws.com',
+        'PORT':'5432',
+		
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

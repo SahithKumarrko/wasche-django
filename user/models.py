@@ -47,7 +47,7 @@ class User(AbstractUser):
     address    = models.CharField(max_length=254, blank=False)
     phone_number    = models.CharField(max_length=20, blank=False)
     zip_code   = models.CharField(max_length=20, blank=False)
-    contract_name = models.ForeignKey(Contracts,default="No College",on_delete = models.CASCADE)
+    contract_name = models.ForeignKey(Contracts,default="Geethanjali College of Engineering and Technology",on_delete = models.CASCADE)
     gender     = models.CharField(max_length=8, blank=False)
     subscription_plan = models.CharField(max_length=4,default='off')
     news_letter_subscription = models.CharField(max_length=4,default='off')

@@ -17,7 +17,9 @@ class DeliveryAdmin(admin.ModelAdmin):
     def account_actions(self, obj):
         # print(dir(obj))
         # print(obj.pk)
-        text_html = '<a class="button" download="{}-Qr-Code.png" href="{}">Download Qr Code</a>'.format(obj.name,bytes(obj.qr_code_data).decode('utf-8'))
+        qrcd = obj.qr_code_data
+        qrcd = obj.tobytes()
+        text_html = '<a class="button" download="{}-Qr-Code.png" href="{}">Download Qr Code</a>'.format(obj.name,qrcd.decode('utf-8'))
         return format_html(
             text_html
         )

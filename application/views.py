@@ -312,6 +312,8 @@ def update_notification_setting(request):
                 try:
                     o = OneSignal.objects.get(email=u,pid=i)
                 except:
+                    o = OneSignal(email=u,pid=request.POST["pid"],type_os=request.POST["agent-type"])
+                    o.save()
                     res["no"]=True
                     res["s"]=False
                     return HttpResponse(json.dumps(res))
